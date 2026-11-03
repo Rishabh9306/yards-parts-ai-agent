@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yards & Parts — VIN to Hollander Quoting Engine</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="bg-slate-100/80 text-slate-800 min-h-screen">
+  <!-- Top Navbar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-sm">
+          <i class="fa-solid fa-barcode text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-base sm:text-lg text-slate-900 leading-tight">Yards &amp; Parts Quoting Engine</h1>
+          <p class="text-xs text-slate-500">VIN to Hollander Interchange &bull; LTL Freight &bull; Omnichannel AI</p>
+        </div>
+      </div>
+      <!-- Navigation Tabs (Center) -->
+      <nav class="flex items-center gap-2">
+        <a href="/quoting" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-blue-600 text-white border border-blue-600 shadow-xs flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-barcode"></i> VIN Quoting Engine
+        </a>
+        <a href="/dashboard/rep" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid fa-headset text-slate-500"></i> Sales Dashboard
+        </a>
+        <a href="/dashboard/auto-mailer" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid fa-envelope-open-text text-slate-500"></i> Follow-up Automation
+        </a>
+      </nav>
+      <!-- Right-most: Status -->
+      <div class="flex items-center shrink-0">
+        <span class="text-xs px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium flex items-center gap-1.5 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> NHTSA &amp; Hollander Active
+        </span>
+      </div>
+    </div>
+  </header>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+    <!-- Progress Indicator (NO TIMERS / NO PRESSURE) -->
+    <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+      <div class="flex items-center justify-between mb-3">
+        <div>
+          <h2 class="text-xs font-bold text-slate-500 uppercase tracking-wider">Automotive Quoting Workflow</h2>
+          <div class="text-sm font-bold text-slate-900 mt-0.5">Hollander Compatibility &amp; Commercial Pricing Wizard</div>
+        </div>
+        <span class="text-xs text-slate-500 font-medium">Step-by-Step Verification</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-2 text-center text-xs">
+        <div id="stepBadge1" class="bg-blue-50 border border-blue-300 rounded-lg p-2.5 text-blue-800 font-semibold transition">
+          <div class="text-base mb-0.5"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div>1. VIN &amp; NHTSA</div>
+        </div>
+        <div id="stepBadge2" class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-600 transition">
+          <div class="text-base mb-0.5">⚙️</div>
+          <div>2. Hollander Fitment</div>
+        </div>
+        <div id="stepBadge3" class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-600 transition">
+          <div class="text-base mb-0.5">💵</div>
+          <div>3. Margin &amp; Core</div>
+        </div>
+        <div id="stepBadge4" class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-600 transition">
+          <div class="text-base mb-0.5">🚚</div>
+          <div>4. Freight &amp; ZIP</div>
+        </div>
+        <div id="stepBadge5" class="bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-600 transition">
+          <div class="text-base mb-0.5">🚀</div>
+          <div>5. Dispatch &amp; PDF</div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Two-Column Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <!-- Left Column: The 4 Interactive Steps -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- STEP 1: Vehicle & VIN Identification -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wider">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">1</span>
+              Vehicle Identification &amp; VIN Decode
+            </h3>
+            <span class="text-[11px] text-slate-500 font-mono">ISO 3779 / 49 CFR Part 565</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">
+            Enter a 17-character VIN to decode factory specifications via live NHTSA vPIC or click a verified test profile.
+          </p>
+          <!-- Quick Test VIN Chips -->
+          <div class="flex flex-wrap items-center gap-1.5 mb-3">
+            <span class="text-[11px] text-slate-500 font-semibold mr-1">Demo Vehicles:</span>
+            <button type="button" onclick="loadDemoVin('19XFC2F5XJE000001')" class="text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded px-2.5 py-1 font-mono transition">
+              2018 Civic 2.0L
+            </button>
+            <button type="button" onclick="loadDemoVin('19XFC1F98JE000002')" class="text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded px-2.5 py-1 font-mono transition">
+              2018 Civic 1.5T
+            </button>
+            <button type="button" onclick="loadDemoVin('1FTFW1E48KFA00001')" class="text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded px-2.5 py-1 font-mono transition">
+              2019 Ford F-150 3.5T
+            </button>
+            <button type="button" onclick="loadDemoVin('4T1B11HK5LU000001')" class="text-[11px] bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded px-2.5 py-1 font-mono transition">
+              2020 Toyota Camry 2.5L
+            </button>
+          </div>
+          <!-- VIN Input Group -->
+          <div class="flex flex-col sm:flex-row gap-2">
+            <div class="relative flex-1">
+              <input type="text" id="vinInput" maxlength="17" placeholder="Enter 17-character VIN (e.g. 19XFC2F5XJE000001)" oninput="onVinInputChanged()" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3.5 py-2.5 text-xs font-mono uppercase tracking-wider text-slate-900 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600">
+              <div id="checkDigitIndicator" class="absolute right-3 top-2.5 text-xs text-slate-400 font-semibold flex items-center gap-1">
+                <span id="checkDigitText"></span>
+              </div>
+            </div>
+            <button type="button" id="btnDecodeVin" onclick="triggerVinDecode()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-5 py-2.5 rounded-lg transition flex items-center justify-center gap-2 shadow-xs shrink-0">
+              <i class="fa-solid fa-magnifying-glass"></i> Decode VIN via NHTSA
+            </button>
+          </div>
+          <!-- Decoded Vehicle Specs Card -->
+          <div id="vehicleSpecsCard" class="mt-4 p-4 rounded-xl border border-slate-200 bg-slate-50/50 hidden">
+            <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-car text-blue-600"></i>
+                <span id="vehicleTitle" class="text-sm font-bold text-slate-900">2018 HONDA CIVIC EX</span>
+              </div>
+              <span id="vinLatencyBadge" class="text-[10px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
+                Latency: 120ms
+              </span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase font-semibold">Make / Model</span>
+                <div id="specMakeModel" class="font-bold text-slate-800">HONDA CIVIC</div>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase font-semibold">Year &amp; Trim</span>
+                <div id="specYearTrim" class="font-bold text-slate-800">2018 EX</div>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase font-semibold">Engine Displacement</span>
+                <div id="specEngine" class="font-bold text-slate-800">2.0L I4 (Gasoline)</div>
+              </div>
+              <div>
+                <span class="text-[10px] text-slate-500 uppercase font-semibold">Transmission / Drive</span>
+                <div id="specTransDrive" class="font-bold text-slate-800">CVT &bull; FWD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+                <!-- STEP 2: Hollander Fitment & Part Selection -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wider">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">2</span>
+              Hollander Interchange &amp; Fitment Matching
+            </h3>
+            <span class="text-[11px] text-slate-500 font-mono">Verified Cross-Reference</span>
+          </div>
+          <p class="text-xs text-slate-500 mb-3">
+            Search parts by category or Hollander Interchange number. The engine automatically verifies fitment against decoded vehicle specifications.
+          </p>
+<!-- Hollander Powertrain Cross-Reference -->
+          <div class="mb-3">
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+                <i class="fa-solid fa-code-compare text-blue-600"></i> Hollander Interchange Powertrain Matching
+              </span>
+              <span class="text-[10px] text-slate-500 font-mono">Verified Cross-Reference</span>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-2">
+              <select id="selCategory" onchange="runHollanderSearch()" class="bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600">
+                <option value="All">All Categories</option>
+                <option value="Engine" selected>Engine Assemblies</option>
+                <option value="Transmission">Transmissions</option>
+                <option value="Alternator">Alternators &amp; Starters</option>
+              </select>
+              <input type="text" id="partSearchQuery" oninput="runHollanderSearch()" placeholder="Search by part name, OEM #, or Hollander code..." class="flex-1 bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-blue-600">
+            </div>
+          </div>
+          <!-- Inner Selection Tray: Available Hollander Matches -->
+          <div class="bg-slate-50/90 border border-slate-200/90 rounded-xl p-3 mb-4 shadow-2xs">
+            <div class="flex items-center justify-between mb-2 px-1">
+              <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-list-check text-blue-600"></i> Available Hollander Candidates
+              </span>
+              <span class="text-[10px] text-slate-500 font-mono">Select candidate below</span>
+            </div>
+            <div id="hollanderResultsContainer" class="space-y-2 max-h-[380px] overflow-y-auto pr-1">
+              <div class="text-xs text-slate-400 p-4 text-center border border-dashed border-slate-200 rounded-lg bg-white">
+                Decode a vehicle above or search parts to view verified Hollander Interchange options.
+              </div>
+            </div>
+          </div>
+
+          <!-- Inner Proposal Drawer: Quoted Line Items in Proposal -->
+          <div class="bg-slate-50/90 border border-slate-200/90 rounded-xl p-3 shadow-2xs">
+            <div class="flex items-center justify-between mb-2 px-1">
+              <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-boxes-stacked text-red-600"></i> Quoted Line Items in Proposal (<span id="quotedPartsCount">0</span>)
+              </span>
+              <div class="text-xs font-semibold text-emerald-700 font-mono bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded">
+                Combined Parts Total: $<span id="quotedPartsTotal">0.00</span>
+              </div>
+            </div>
+            <div id="quotedPartsList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1 text-xs">
+              <!-- Dynamically rendered list of parts with [-] remove icon -->
+            </div>
+          </div>
+        </div>
+        <!-- STEP 3: Decimal-Safe Pricing & Core Deposit -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wider">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">3</span>
+              Pricing, Margin Safeguards &amp; Core Deposit
+            </h3>
+            <span class="text-[11px] text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded font-medium">
+              Target &ge;20% Margin Advisory
+            </span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-3">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Total Unit Cost ($)</label>
+              <input type="number" id="inpUnitCost" value="0.00" oninput="recalcPricing()" step="10" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Markup (% over cost)</label>
+              <input type="number" id="inpMarkupPct" value="30" oninput="recalcPricing()" step="5" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Total Refundable Core ($)</label>
+              <input type="number" id="inpCoreCharge" value="0.00" oninput="recalcPricing()" step="25" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Account Discount (%)</label>
+              <input type="number" id="inpDiscountPct" value="0" oninput="recalcPricing()" step="1" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+          </div>
+          <!-- Mileage / Condition Grade & Warranty Tier Adjusters -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3 text-xs bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">
+                <i class="fa-solid fa-gauge text-blue-600 mr-1"></i> Part Mileage &amp; Condition Grade
+              </label>
+              <select id="selConditionGrade" onchange="recalcPricing()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-blue-600">
+                <option value="0" selected>Grade A (0 - 50k mi) &bull; Tested &amp; Bench Verified (+0%)</option>
+                <option value="15">Grade B (50k - 100k mi) &bull; Standard Inspected (-15% discount)</option>
+                <option value="30">Grade C (100k+ mi) &bull; Budget Rebuilder Unit (-30% discount)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1">
+                <i class="fa-solid fa-shield text-emerald-600 mr-1"></i> Commercial Warranty Tier
+              </label>
+              <select id="selWarrantyTier" onchange="recalcPricing()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs text-slate-800 focus:outline-none focus:border-blue-600">
+                <option value="0" selected>Standard 90-Day Replacement (Included free)</option>
+                <option value="75">Silver 6-Month Extended Replacement (+$75.00)</option>
+                <option value="150">Gold 1-Year Comprehensive Parts &amp; Labor (+$150.00)</option>
+              </select>
+            </div>
+          </div>
+          <!-- Core Policy & Return Notice -->
+          <div class="text-[10px] text-slate-500 bg-amber-50/50 border border-amber-200/80 rounded-lg px-3 py-1.5 mb-3 flex items-center justify-between">
+            <span><i class="fa-solid fa-arrow-rotate-left text-amber-600 mr-1"></i> <b>Core Return Policy:</b> 100% deposit refunded upon return of rebuildable unit within 30 days.</span>
+            <span class="text-amber-800 font-mono font-semibold">Prepaid BOL Available</span>
+          </div>
+          <div id="pricingNotice" class="text-[11px] bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-600 flex flex-wrap items-center justify-between gap-2">
+            <span>List: <b id="lblListPrice" class="text-slate-900 font-mono">$845.00</b> &bull; Net Parts: <b id="lblSellingPrice" class="text-slate-900 font-mono">$845.00</b> &bull; Gross Margin: <b id="lblGrossMargin" class="text-emerald-700 font-mono">23.1%</b></span>
+            <span id="marginBadge" class="text-[10px] text-emerald-700 font-semibold bg-emerald-100/60 px-2 py-0.5 rounded">Margin Safeguard OK</span>
+          </div>
+        </div>
+        <!-- STEP 4: LTL Freight & Delivery ZIP -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2 uppercase tracking-wider">
+              <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs">4</span>
+              LTL Freight &amp; Delivery Accessorials
+            </h3>
+            <span class="text-[11px] text-slate-500 font-mono">US Zone Calculator</span>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs mb-3">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Origin Yard ZIP</label>
+              <input type="text" id="inpOriginZip" value="43215" maxlength="5" oninput="recalcFreight()" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Destination ZIP</label>
+              <input type="text" id="inpDestZip" value="77001" maxlength="5" oninput="recalcFreight()" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Combined Weight (lbs)</label>
+              <input type="number" id="inpWeightLbs" value="0" oninput="recalcFreight()" step="25" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Freight Service</label>
+              <select id="selFreightService" onchange="recalcFreight()" class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600">
+                <option value="LTL_FREIGHT" selected>LTL Heavy Freight</option>
+                <option value="PARCEL_GROUND">Ground Parcel</option>
+                <option value="EXPEDITED">Expedited Express</option>
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center gap-4 text-xs pt-2 border-t border-slate-100">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chkLiftgate" checked onchange="recalcFreight()" class="rounded text-blue-600 focus:ring-blue-500">
+              <span class="text-slate-700 font-medium">Hydraulic Liftgate (+$65.00)</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="chkResidential" onchange="recalcFreight()" class="rounded text-blue-600 focus:ring-blue-500">
+              <span class="text-slate-700 font-medium">Residential Delivery (+$45.00)</span>
+            </label>
+            <div class="ml-auto text-xs font-bold text-slate-800">
+              Estimated Freight: <span id="lblTotalFreight" class="text-blue-700 font-mono">$0.00</span>
+              <span id="lblFreightZone" class="text-[10px] text-slate-500 font-normal ml-1">(0 lbs &bull; Cart is empty)</span>
+            </div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+            <span><i class="fa-solid fa-shield-halved text-blue-600 mr-1"></i> <b>Freight Liability Safeguard:</b> Hydraulic liftgate (+$65) &amp; residential accessorials (+$45) are passed to customer quotation — protects yard from carrier chargebacks.</span>
+            <span class="font-mono text-slate-400">NMFC Class 85</span>
+          </div>
+        </div>
+      </div>
+      <!-- Right Column: Final Quotation Summary & Omnichannel Dispatch -->
+      <div class="space-y-6">
+        <!-- Customer & Contact Info -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-user-tag text-blue-600"></i> Customer &amp; Commercial Account
+          </h3>
+          <div class="space-y-3 text-xs">
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Customer / Shop Name</label>
+              <input type="text" id="custName" value="Apex Performance Garage" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Target Phone Number</label>
+              <input type="text" id="custPhone" value="+15550192834" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+              <div class="flex items-center justify-between mt-1 text-[10px] text-slate-500">
+                <span>Twilio verified:</span>
+                <button type="button" onclick="document.getElementById('custPhone').value='+15550192834'" class="text-blue-600 font-semibold hover:underline">+15550192834 (Verified)</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] font-medium text-slate-600 mb-1">Customer Email Address</label>
+              <input type="email" id="custEmail" value="orders@yardsparts.com" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono text-slate-900 focus:outline-none focus:border-blue-600">
+            </div>
+          </div>
+        </div>
+        <!-- Financial Summary Breakdown Card -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-200 pb-2">
+            <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Quotation Summary</h3>
+            <span class="text-xs font-mono text-slate-500">USD ($)</span>
+          </div>
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between text-slate-600">
+              <span>Parts List Subtotal:</span>
+              <span id="sumPartsSub" class="font-mono font-semibold text-slate-800">$0.00</span>
+            </div>
+            <div id="rowDiscount" class="flex justify-between text-emerald-700 hidden">
+              <span id="lblDiscountPercent">Account Discount (0%):</span>
+              <span id="sumDiscount" class="font-mono font-semibold text-emerald-700">-$0.00</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Refundable Core Deposit:</span>
+              <span id="sumCoreDeposit" class="font-mono font-semibold text-slate-800">$0.00</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Palletizing &amp; Handling:</span>
+              <span id="sumHandling" class="font-mono font-semibold text-slate-800">$0.00</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>LTL Freight &amp; Liftgate:</span>
+              <span id="sumFreight" class="font-mono font-semibold text-slate-800">$0.00</span>
+            </div>
+            <div class="flex justify-between text-slate-600">
+              <span>Estimated Taxes (7.5%):</span>
+              <span id="sumTax" class="font-mono font-semibold text-slate-800">$0.00</span>
+            </div>
+            <div class="pt-3 border-t border-slate-200 flex justify-between items-baseline">
+              <span class="text-sm font-bold text-slate-900">GRAND TOTAL:</span>
+              <span id="sumGrandTotal" class="text-xl font-extrabold text-blue-700 font-mono">$0.00</span>
+            </div>
+          </div>
+          <!-- Omnichannel Action Buttons -->
+          <div class="mt-5 space-y-2.5">
+            <button type="button" id="btnCreateQuote" onclick="submitFormalQuote()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-lg transition flex items-center justify-center gap-2 shadow-xs">
+              <i class="fa-solid fa-file-pdf"></i> Generate Formal B2B PDF Quote
+            </button>
+            <div class="grid grid-cols-2 gap-2">
+              <div id="callButtonContainer" class="flex items-center gap-1 bg-red-600 rounded-lg p-0.5 transition">
+                <button type="button" id="btnTriggerCall" onclick="triggerVoiceCallForQuote()" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1 shadow-xs">
+                  <i class="fa-solid fa-phone"></i> Voice Call
+                </button>
+                <select id="selCallLanguage" class="bg-red-800 text-white text-[11px] font-bold rounded px-1.5 py-1.5 border-none focus:outline-none cursor-pointer" title="Select Voice Call Language">
+                  <option value="en-US">🇺🇸 EN</option>
+                  <option value="es-US">🇪🇸 ES</option>
+                </select>
+              </div>
+              <button type="button" id="btnSendSms" onclick="sendSmsForQuote()" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
+                <i class="fa-solid fa-comment-sms"></i> Send SMS
+              </button>
+            </div>
+            <button type="button" id="btnSendEmail" onclick="sendEmailForQuote()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1.5">
+              <i class="fa-solid fa-envelope"></i> Email Customer with PDF Attachment
+            </button>
+          </div>
+          <!-- Real-time Button State & Cart Guidance Banner -->
+          <div id="actionButtonHelper" class="mt-2.5"></div>
+          <!-- Status Feedback Message -->
+          <div id="statusMessage" class="mt-3 p-3 text-xs rounded-lg hidden"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Recent Quotations Audit Table -->
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-receipt text-blue-600"></i> Recent Formal Quotations &amp; Audit Trail
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">All quotes generated with verified Hollander fitment &amp; ReportLab PDF generation</p>
+        </div>
+        <button onclick="loadRecentQuotes()" class="text-xs text-blue-600 hover:underline font-semibold flex items-center gap-1">
+          <i class="fa-solid fa-arrows-rotate"></i> Refresh Quotes
+        </button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs text-slate-700 border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
+              <th class="py-2.5 px-3">Quote #</th>
+              <th class="py-2.5 px-3">Customer</th>
+              <th class="py-2.5 px-3">Vehicle Details</th>
+              <th class="py-2.5 px-3 text-right">Grand Total</th>
+              <th class="py-2.5 px-3 text-center">Status</th>
+              <th class="py-2.5 px-3 text-right">PDF Document</th>
+              <th class="py-2.5 px-3 text-center">Quick Actions</th>
+            </tr>
+          </thead>
+          <tbody id="quotesTableBody">
+            <tr>
+              <td colspan="7" class="text-center py-4 text-slate-400">Loading quotations...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Outbound CRM Webhook Event Stream (Kiran's In-House CRM Feed) -->
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-network-wired text-blue-600"></i> Outbound CRM Webhook Feed (Kiran's CRM Integration)
+          </h3>
+          <p class="text-xs text-slate-500 mt-0.5">Standardized JSON event streams with HMAC-SHA256 signature verification (<font class="font-mono">X-YardsParts-Signature</font>)</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="sendTestWebhookPing()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-1.5 rounded-lg font-semibold transition flex items-center gap-1.5">
+            <i class="fa-solid fa-paper-plane text-blue-600"></i> Dispatch Test Ping
+          </button>
+          <button onclick="loadCrmWebhookLogs()" class="text-xs text-blue-600 hover:underline font-semibold flex items-center gap-1">
+            <i class="fa-solid fa-arrows-rotate"></i> Refresh Webhooks
+          </button>
+        </div>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs text-slate-700 border-collapse">
+          <thead>
+            <tr class="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
+              <th class="py-2.5 px-3">Event ID</th>
+              <th class="py-2.5 px-3">Event Type</th>
+              <th class="py-2.5 px-3">Target Endpoint</th>
+              <th class="py-2.5 px-3 text-center">Delivery Status</th>
+              <th class="py-2.5 px-3 text-right">Timestamp</th>
+            </tr>
+          </thead>
+          <tbody id="crmWebhooksTableBody">
+            <tr>
+              <td colspan="5" class="text-center py-4 text-slate-400">Loading CRM webhook feed...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <script>
+    // State
+    let currentDecodedVehicle = null;
+    let quotedParts = [];
+    let lastCreatedQuoteId = null;
+
+    // Start with a clean, empty state by default (no prefilled VIN, no auto-added parts)
+    window.addEventListener('DOMContentLoaded', () => {
+      const vinInput = document.getElementById('vinInput');
+      if (vinInput) vinInput.value = '';
+      currentDecodedVehicle = null;
+      onVinInputChanged();
+
+      quotedParts = [];
+      renderQuotedParts();
+      recalcPricing();
+      recalcFreight();
+      recalcGrandTotal();
+      updateActionButtonsState();
+
+      loadRecentQuotes();
+    });
+
+    function loadDemoVin(vin) {
+      document.getElementById('vinInput').value = vin;
+      onVinInputChanged();
+      triggerVinDecode();
+    }
+
+    function onVinInputChanged() {
+      const vinInput = document.getElementById('vinInput');
+      const vin = vinInput ? vinInput.value.trim().toUpperCase() : '';
+      const txt = document.getElementById('checkDigitText');
+      if (!txt) return;
+      if (!vin) {
+        txt.innerHTML = '<span class="text-slate-400">0/17</span>';
+      } else if (vin.length === 17) {
+        txt.innerHTML = '<span class="text-emerald-600"><i class="fa-solid fa-circle-check"></i> 17 Chars</span>';
+      } else {
+        txt.innerHTML = `<span class="text-slate-400">${vin.length}/17</span>`;
+      }
+    }
+
+    async function triggerVinDecode() {
+      const vin = document.getElementById('vinInput').value.trim().toUpperCase();
+      if (!vin || vin.length !== 17) {
+        showStatus('Please enter a valid 17-character VIN.', 'error');
+        return;
+      }
+      const btn = document.getElementById('btnDecodeVin');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Decoding...';
+      try {
+        const resp = await fetch('/api/vehicles/decode', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ vin })
+        });
+        const data = await resp.json();
+        currentDecodedVehicle = data;
+        // Render card
+        document.getElementById('vehicleSpecsCard').classList.remove('hidden');
+        document.getElementById('vehicleTitle').innerText = `${data.year} ${data.make} ${data.model} ${data.trim || ''}`.trim();
+        document.getElementById('vinLatencyBadge').innerText = `API Latency: ${data.responseLatencyMs || 80}ms`;
+        document.getElementById('specMakeModel').innerText = `${data.make} ${data.model}`;
+        document.getElementById('specYearTrim').innerText = `${data.year} ${data.trim || 'Standard'}`;
+        document.getElementById('specEngine').innerText = `${data.engineDisplacementL ? data.engineDisplacementL + 'L' : 'Standard'} ${data.engineConfiguration || ''} (${data.fuelType || 'Gas'})`;
+        document.getElementById('specTransDrive').innerText = `${data.transmissionStyle || 'Automatic'} • ${data.driveType || 'Standard'}`;
+        showStatus(`Decoded ${data.year} ${data.make} ${data.model} via NHTSA vPIC!`, 'success');
+        // Reset proposal for new vehicle (strictly keep proposal empty until user chooses a part)
+        quotedParts = [];
+        lastCreatedQuoteId = null;
+        renderQuotedParts();
+        updateActionButtonsState();
+        // Load matching Hollander parts without automatically adding any to proposal
+        await runHollanderSearch();
+      } catch (err) {
+        showStatus('Error decoding VIN: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i> Decode VIN via NHTSA';
+      }
+    }
+
+    async function runHollanderSearch() {
+      if (!currentDecodedVehicle) return;
+      const category = document.getElementById('selCategory').value;
+      const query = document.getElementById('partSearchQuery').value;
+      const container = document.getElementById('hollanderResultsContainer');
+      try {
+        const resp = await fetch('/api/compatibility/check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            vehicle: currentDecodedVehicle,
+            category: category === 'All' ? null : category,
+            partQuery: query || null
+          })
+        });
+        const data = await resp.json();
+        const matches = data.matches || [];
+        window.currentMatches = matches;
+        if (matches.length === 0) {
+          container.innerHTML = `<div class="p-4 text-center text-xs text-slate-500 border border-slate-200 rounded-lg">No matching Hollander parts found for ${currentDecodedVehicle.make} ${currentDecodedVehicle.model}.</div>`;
+          return;
+        }
+        renderHollanderCards();
+      } catch (err) {
+        console.error('Error in compatibility check:', err);
+      }
+    }
+    function renderHollanderCards() {
+      const container = document.getElementById('hollanderResultsContainer');
+      const matches = window.currentMatches || [];
+      if (!matches.length) return;
+
+      container.innerHTML = matches.map((m, idx) => {
+        const isInProposal = quotedParts.some(p => p.hollanderNumber === m.hollanderNumber);
+        const isVerified = m.status === 'VERIFIED_COMPATIBLE';
+        const badgeClass = isVerified ? 'bg-emerald-50 text-emerald-800 border-emerald-200' : 'bg-amber-50 text-amber-800 border-amber-200';
+        const badgeIcon = isVerified ? 'fa-circle-check text-emerald-600' : 'fa-triangle-exclamation text-amber-600';
+
+        return `
+          <div class="p-3 rounded-lg border transition ${
+            isInProposal
+              ? 'border-2 border-blue-600 bg-blue-50/70 shadow-xs'
+              : 'border border-slate-200/90 bg-white hover:border-blue-400 hover:shadow-2xs'
+          }">
+            <!-- Top Line: Part Name & Price (Consistent text-xs size) -->
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex-1">
+                <div class="font-bold text-slate-800 text-xs leading-tight">${m.partName}</div>
+
+                <!-- Part Identifiers: Hollander, OEM, Weight -->
+                <div class="flex flex-wrap items-center gap-1.5 mt-1 text-[11px] text-slate-600">
+                  <span class="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded font-medium text-slate-800">
+                    <span class="text-slate-500">Hollander:</span> <strong class="text-blue-700 font-semibold">${m.hollanderNumber}</strong>
+                  </span>
+                  <span class="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded font-medium text-slate-800">
+                    <span class="text-slate-500">OEM:</span> <strong>${m.oemPartNumber || 'N/A'}</strong>
+                  </span>
+                  <span class="text-slate-500 font-medium">
+                    ${m.weightLbs} lbs
+                  </span>
+                </div>
+
+                <!-- Yard specs & condition pills -->
+                <div class="flex flex-wrap items-center gap-1 mt-1.5 text-[10px]">
+                  <span class="bg-slate-100 text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded font-medium">Stock: YP-${m.hollanderNumber}</span>
+                  <span class="bg-slate-100 text-slate-600 border border-slate-200 px-1.5 py-0.5 rounded">Rack: Aisle 4, Bay 12</span>
+                  <span class="bg-emerald-50 text-emerald-800 border border-emerald-200 px-1.5 py-0.5 rounded font-semibold">Grade A (48,200 mi)</span>
+                  <span class="bg-blue-50 text-blue-800 border border-blue-200 px-1.5 py-0.5 rounded font-medium">180 PSI Compression OK</span>
+                </div>
+              </div>
+
+              <!-- Price Column (Consistent text-xs size) -->
+              <div class="text-right shrink-0">
+                <div class="font-bold text-slate-900 text-xs font-mono">$${m.unitCost.toFixed(2)} <span class="font-normal text-slate-500 text-[10px]">cost</span></div>
+                <div class="text-[11px] font-semibold text-amber-700 mt-0.5">+ $${m.coreCharge.toFixed(2)} core</div>
+              </div>
+            </div>
+
+            <!-- Bottom Row: Fitment Status & Action Button -->
+            <div class="mt-2.5 flex items-center justify-between text-[11px] pt-2 border-t border-slate-100">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded border ${badgeClass} font-semibold">
+                <i class="fa-solid ${badgeIcon}"></i> ${m.status.replace('_', ' ')} (${m.confidenceScore}%)
+              </span>
+              <div class="flex items-center gap-2">
+                ${isInProposal ? `
+                  <span class="bg-blue-100 text-blue-800 border border-blue-200 px-2 py-0.5 rounded text-[11px] font-bold flex items-center gap-1">
+                    <i class="fa-solid fa-check"></i> Added to Quote
+                  </span>
+                  <button type="button" onclick="removeQuotedPartByHollander('${m.hollanderNumber}')" class="text-xs font-semibold text-red-600 hover:text-red-700 bg-white hover:bg-red-50 border border-red-200 px-2 py-0.5 rounded transition cursor-pointer" title="Remove part from quote">
+                    <i class="fa-solid fa-minus"></i> Remove
+                  </button>
+                ` : `
+                  <button type="button" onclick="addHollanderItem(${idx})" class="text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 rounded-md transition flex items-center gap-1 shadow-2xs cursor-pointer">
+                    <i class="fa-solid fa-plus"></i> Add Part
+                  </button>
+                `}
+              </div>
+            </div>
+
+            <!-- Fitment Evidence -->
+            ${m.evidence && m.evidence.length > 0 ? `
+              <div class="mt-1.5 text-[11px] text-slate-600 bg-slate-50/80 border border-slate-100 rounded px-2 py-1 flex items-center gap-1">
+                <span class="font-bold text-slate-800">Fitment:</span> <span>${m.evidence[0]}</span>
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addHollanderItem(idx) {
+      if (!window.currentMatches || !window.currentMatches[idx]) return;
+      const match = window.currentMatches[idx];
+
+      const exists = quotedParts.some(p => p.hollanderNumber === match.hollanderNumber);
+      if (exists) {
+        showStatus(`Part ${match.hollanderNumber} is already in the quote.`, 'info');
+        return;
+      }
+
+      const newPart = {
+        id: 'hol_' + match.hollanderNumber,
+        partName: match.partName,
+        partNumber: match.partNumber,
+        hollanderNumber: match.hollanderNumber,
+        oemPartNumber: match.oemPartNumber,
+        category: match.category || 'Powertrain',
+        unitCost: match.unitCost,
+        listPrice: match.listPrice || (match.unitCost * 1.30),
+        coreCharge: match.coreCharge || 0.0,
+        weightLbs: match.weightLbs || 50.0,
+        quantity: 1,
+        evidence: match.evidence || []
+      };
+
+      quotedParts.push(newPart);
+      lastCreatedQuoteId = null; // Invalidate prior quote: cart has changed!
+      renderQuotedParts();
+      showStatus(`Added "${newPart.partName}" (${newPart.hollanderNumber}) to quote!`, 'success');
+    }
+
+    function removeQuotedPart(idx) {
+      if (idx >= 0 && idx < quotedParts.length) {
+        const removed = quotedParts.splice(idx, 1)[0];
+        lastCreatedQuoteId = null; // Invalidate prior quote: cart has changed!
+        renderQuotedParts();
+        showStatus(`Removed "${removed.partName}" from proposal.`, 'info');
+      }
+    }
+
+    function removeQuotedPartByHollander(hollanderNo) {
+      const idx = quotedParts.findIndex(p => p.hollanderNumber === hollanderNo);
+      if (idx !== -1) {
+        removeQuotedPart(idx);
+      }
+    }
+
+    function renderQuotedParts() {
+      const container = document.getElementById('quotedPartsList');
+      const countSpan = document.getElementById('quotedPartsCount');
+      const totalSpan = document.getElementById('quotedPartsTotal');
+
+      countSpan.innerText = quotedParts.length;
+
+      // ── EMPTY CART: Zero out all line items, fees, and disable dispatch ──
+      if (quotedParts.length === 0) {
+        container.innerHTML = `
+          <div class="text-slate-400 py-4 text-center text-xs border border-dashed border-slate-200 rounded-lg bg-slate-50/50">
+            <i class="fa-solid fa-cart-shopping text-slate-300 text-lg mb-1 block"></i>
+            Proposal cart is empty. Select a verified Hollander item above and click "+ Add Part".
+          </div>
+        `;
+        totalSpan.innerText = '0.00';
+        document.getElementById('inpUnitCost').value = '0.00';
+        document.getElementById('inpCoreCharge').value = '0.00';
+        document.getElementById('inpWeightLbs').value = '0';
+        lastCreatedQuoteId = null;
+        recalcPricing();
+        recalcFreight();
+        renderHollanderCards();
+        updateActionButtonsState();
+        return;
+      }
+
+      let combinedListTotal = 0;
+      let combinedUnitCost = 0;
+      let combinedCore = 0;
+      let combinedWeight = 0;
+
+      container.innerHTML = quotedParts.map((p, idx) => {
+        const listPrice = p.listPrice || (p.unitCost * 1.30);
+        combinedListTotal += listPrice * (p.quantity || 1);
+        combinedUnitCost += (p.unitCost || 0) * (p.quantity || 1);
+        combinedCore += (p.coreCharge || 0) * (p.quantity || 1);
+        combinedWeight += (p.weightLbs || 10) * (p.quantity || 1);
+
+        return `
+          <div class="flex items-center justify-between p-3 rounded-lg bg-white border border-slate-200 hover:border-slate-300 transition shadow-xs">
+            <div class="truncate max-w-[70%]">
+              <span class="font-bold text-slate-900 block text-xs truncate">${p.partName}</span>
+              <div class="text-xs text-slate-600 flex flex-wrap items-center gap-2 mt-1">
+                ${p.hollanderNumber ? `<span class="bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded font-medium text-slate-800">Hollander: <strong class="text-blue-700">${p.hollanderNumber}</strong></span>` : ''}
+                <span>OEM: <strong class="text-slate-800">${p.oemPartNumber || p.partNumber || 'N/A'}</strong></span>
+                <span class="text-slate-400">&bull;</span>
+                <span class="text-slate-600 font-medium">${p.category || 'Powertrain'}</span>
+                ${p.coreCharge > 0 ? `<span class="text-amber-700 font-semibold">&bull; Core: +$${p.coreCharge.toFixed(2)}</span>` : ''}
+                <span class="text-slate-400">&bull;</span>
+                <span class="text-slate-500">${p.weightLbs || 10} lbs</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="text-right">
+                <div class="font-bold text-slate-900 text-sm">$${listPrice.toFixed(2)}</div>
+                <div class="text-xs text-slate-500">Cost: $${(p.unitCost || 0).toFixed(2)}</div>
+              </div>
+              <button type="button" onclick="removeQuotedPart(${idx})" class="text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 p-1.5 rounded transition cursor-pointer" title="Remove part from proposal">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      totalSpan.innerText = combinedListTotal.toFixed(2);
+
+      // Sync Step 3 & Step 4 inputs
+      document.getElementById('inpUnitCost').value = combinedUnitCost.toFixed(2);
+      document.getElementById('inpCoreCharge').value = combinedCore.toFixed(2);
+      document.getElementById('inpWeightLbs').value = Math.max(10, Math.round(combinedWeight));
+
+      recalcPricing();
+      recalcFreight();
+      renderHollanderCards();
+      updateActionButtonsState();
+    }
+
+    function recalcPricing() {
+      // ── EMPTY CART: Zero out parts pricing ──
+      if (!quotedParts || quotedParts.length === 0) {
+        if (document.getElementById('lblListPrice')) document.getElementById('lblListPrice').innerText = '$0.00';
+        document.getElementById('lblSellingPrice').innerText = '$0.00';
+        document.getElementById('lblGrossMargin').innerText = '0.0%';
+        const notice = document.getElementById('marginBadge');
+        if (notice) {
+          notice.className = 'text-[10px] text-slate-500 font-semibold bg-slate-100 border border-slate-200 px-2 py-0.5 rounded';
+          notice.innerText = 'No Parts in Cart';
+        }
+        document.getElementById('sumPartsSub').innerText = '$0.00';
+        document.getElementById('sumCoreDeposit').innerText = '$0.00';
+        const rowDiscount = document.getElementById('rowDiscount');
+        if (rowDiscount) rowDiscount.classList.add('hidden');
+        recalcGrandTotal();
+        return;
+      }
+
+      const markupInput = document.getElementById('inpMarkupPct').value;
+      const markupPct = markupInput === '' ? 0 : (parseFloat(markupInput) || 0);
+      const discountPct = parseFloat(document.getElementById('inpDiscountPct').value) || 0;
+      const gradeDiscountPct = parseFloat(document.getElementById('selConditionGrade') ? document.getElementById('selConditionGrade').value : 0) || 0;
+      const warrantyAddon = parseFloat(document.getElementById('selWarrantyTier') ? document.getElementById('selWarrantyTier').value : 0) || 0;
+
+      let totalUnitCost = quotedParts.reduce((sum, p) => sum + (p.unitCost || 0) * (p.quantity || 1), 0);
+      let totalCore = quotedParts.reduce((sum, p) => sum + (p.coreCharge || 0) * (p.quantity || 1), 0);
+      let totalListPrice = 0;
+
+      quotedParts.forEach(p => {
+        const cost = p.unitCost || 0;
+        // Strictly compute list price from the user's explicit markup percentage:
+        // List = Cost * (1 + Markup% / 100)
+        let list = cost * (1 + markupPct / 100.0);
+
+        // Apply mileage/condition grade discount to list price if applicable
+        if (gradeDiscountPct > 0) {
+          list = Math.max(cost, list * (1 - gradeDiscountPct / 100.0));
+        }
+        totalListPrice += list * (p.quantity || 1);
+      });
+
+      // Account discount
+      const discountAmount = totalListPrice * (discountPct / 100);
+      const netPartsPrice = Math.max(0, totalListPrice - discountAmount);
+
+      // Effective Net Gross Margin: (Net - Cost) / Net
+      let netMargin = netPartsPrice > 0 ? ((netPartsPrice - totalUnitCost) / netPartsPrice) * 100 : 0;
+
+      // Update Margin Safeguard Badge & Notice
+      const notice = document.getElementById('marginBadge');
+      if (notice) {
+        if (netPartsPrice < totalUnitCost) {
+          notice.className = 'text-[10px] text-red-700 font-semibold bg-red-100 border border-red-300 px-2 py-0.5 rounded';
+          notice.innerText = `⚠️ Selling Below Cost (${netMargin.toFixed(1)}% Margin)`;
+        } else if (netMargin < 20.0 && totalUnitCost > 0) {
+          notice.className = 'text-[10px] text-amber-800 font-semibold bg-amber-100 border border-amber-300 px-2 py-0.5 rounded';
+          notice.innerText = `⚠️ Low Margin Alert (${netMargin.toFixed(1)}% < 20% Target)`;
+        } else {
+          notice.className = 'text-[10px] text-emerald-700 font-semibold bg-emerald-100/60 border border-emerald-300 px-2 py-0.5 rounded';
+          notice.innerText = `Margin Safeguard OK (${netMargin.toFixed(1)}%)`;
+        }
+      }
+
+      // Update Step 3 labels
+      if (document.getElementById('lblListPrice')) {
+        document.getElementById('lblListPrice').innerText = `$${totalListPrice.toFixed(2)}`;
+      }
+      document.getElementById('lblSellingPrice').innerText = `$${netPartsPrice.toFixed(2)}`;
+      document.getElementById('lblGrossMargin').innerText = `${netMargin.toFixed(1)}%`;
+
+      // Update Quotation Summary card
+      const finalPartsList = totalListPrice + warrantyAddon;
+      document.getElementById('sumPartsSub').innerText = `$${finalPartsList.toFixed(2)}`;
+      document.getElementById('sumCoreDeposit').innerText = `$${totalCore.toFixed(2)}`;
+
+      const rowDiscount = document.getElementById('rowDiscount');
+      if (rowDiscount) {
+        if (discountPct > 0) {
+          rowDiscount.classList.remove('hidden');
+          document.getElementById('lblDiscountPercent').innerText = `Account Discount (${discountPct}%):`;
+          document.getElementById('sumDiscount').innerText = `-$${discountAmount.toFixed(2)}`;
+        } else {
+          rowDiscount.classList.add('hidden');
+        }
+      }
+
+      recalcGrandTotal();
+    }
+
+    function recalcFreight() {
+      // ── EMPTY CART: Zero out freight completely ──
+      if (!quotedParts || quotedParts.length === 0) {
+        if (document.getElementById('lblTotalFreight')) document.getElementById('lblTotalFreight').innerText = '$0.00';
+        if (document.getElementById('lblFreightZone')) document.getElementById('lblFreightZone').innerText = '(0 lbs • Cart is empty)';
+        if (document.getElementById('sumFreight')) document.getElementById('sumFreight').innerText = '$0.00';
+        recalcGrandTotal();
+        return;
+      }
+
+      const oZip = document.getElementById('inpOriginZip').value.trim();
+      const dZip = document.getElementById('inpDestZip').value.trim();
+      const weight = parseFloat(document.getElementById('inpWeightLbs').value) || 0;
+
+      if (weight <= 0) {
+        if (document.getElementById('lblTotalFreight')) document.getElementById('lblTotalFreight').innerText = '$0.00';
+        if (document.getElementById('lblFreightZone')) document.getElementById('lblFreightZone').innerText = '(0 lbs • Cart is empty)';
+        if (document.getElementById('sumFreight')) document.getElementById('sumFreight').innerText = '$0.00';
+        recalcGrandTotal();
+        return;
+      }
+
+      const service = document.getElementById('selFreightService').value;
+      const liftgate = document.getElementById('chkLiftgate').checked;
+      const residential = document.getElementById('chkResidential').checked;
+
+      // Approximate Zone 2-8
+      let zone = 5;
+      try {
+        const diff = Math.abs(parseInt(oZip.substring(0, 3)) - parseInt(dZip.substring(0, 3)));
+        if (diff < 50) zone = 2;
+        else if (diff < 150) zone = 3;
+        else if (diff < 300) zone = 4;
+        else if (diff < 500) zone = 5;
+        else if (diff < 700) zone = 6;
+        else zone = 7;
+      } catch (e) { zone = 5; }
+
+      let base = (120 + zone * 15);
+      let rate = 0.35 + zone * 0.08;
+      let freightBase = Math.max(base, weight * rate);
+      let fuel = freightBase * 0.125;
+      let liftFee = liftgate ? 65.0 : 0.0;
+      let resFee = residential ? 45.0 : 0.0;
+
+      let totalFreight = freightBase + fuel + liftFee + resFee;
+
+      document.getElementById('lblTotalFreight').innerText = `$${totalFreight.toFixed(2)}`;
+      document.getElementById('lblFreightZone').innerText = `(Zone ${zone} • ${2 + Math.floor(zone/2)} Days Transit)`;
+      document.getElementById('sumFreight').innerText = `$${totalFreight.toFixed(2)}`;
+
+      recalcGrandTotal();
+    }
+
+    function recalcGrandTotal() {
+      const partsSub = document.getElementById('sumPartsSub');
+      const sumHandling = document.getElementById('sumHandling');
+      const sumFreight = document.getElementById('sumFreight');
+      const sumCore = document.getElementById('sumCoreDeposit');
+      const sumTax = document.getElementById('sumTax');
+      const sumGrand = document.getElementById('sumGrandTotal');
+
+      // ── EMPTY CART: Total is strictly $0.00! No ghost freight or handling fees ──
+      if (!quotedParts || quotedParts.length === 0) {
+        if (partsSub) partsSub.innerText = '$0.00';
+        if (sumHandling) sumHandling.innerText = '$0.00';
+        if (sumFreight) sumFreight.innerText = '$0.00';
+        if (sumCore) sumCore.innerText = '$0.00';
+        if (sumTax) sumTax.innerText = '$0.00';
+        if (sumGrand) sumGrand.innerText = '$0.00';
+        updateActionButtonsState();
+        return;
+      }
+
+      const partsList = parseFloat(partsSub.innerText.replace('$', '')) || 0;
+      const discountPct = parseFloat(document.getElementById('inpDiscountPct').value) || 0;
+      const discountAmount = partsList * (discountPct / 100);
+      const netParts = Math.max(0, partsList - discountAmount);
+
+      const core = parseFloat(sumCore.innerText.replace('$', '')) || 0;
+      const freight = parseFloat(sumFreight.innerText.replace('$', '')) || 0;
+      const handling = 15.0; // Palletizing & handling applied only when items exist
+
+      if (sumHandling) sumHandling.innerText = '$15.00';
+
+      // Taxable = net parts + core
+      const taxable = Math.max(0, netParts + core);
+      const tax = taxable * 0.075; // 7.5%
+      const grand = netParts + core + handling + freight + tax;
+
+      sumTax.innerText = `$${tax.toFixed(2)}`;
+      sumGrand.innerText = `$${grand.toFixed(2)}`;
+
+      updateActionButtonsState();
+    }
+
+    // ── Omnichannel Action Buttons State Guardrails ──────────────────────────
+    function updateActionButtonsState() {
+      const btnCreateQuote = document.getElementById('btnCreateQuote');
+      const btnTriggerCall = document.getElementById('btnTriggerCall');
+      const btnSendSms = document.getElementById('btnSendSms');
+      const btnSendEmail = document.getElementById('btnSendEmail');
+      const selCallLanguage = document.getElementById('selCallLanguage');
+      const callContainer = document.getElementById('callButtonContainer');
+      const helper = document.getElementById('actionButtonHelper');
+
+      const hasParts = quotedParts && quotedParts.length > 0;
+      const hasQuote = Boolean(lastCreatedQuoteId);
+
+      // 1. Generate Formal B2B PDF Quote Button
+      if (!hasParts) {
+        btnCreateQuote.disabled = true;
+        btnCreateQuote.className = 'w-full bg-slate-300 text-slate-500 font-bold text-xs py-2.5 rounded-lg cursor-not-allowed flex items-center justify-center gap-2 shadow-none opacity-60';
+        btnCreateQuote.title = 'Add at least one part in Step 2 to generate a formal quote';
+      } else {
+        btnCreateQuote.disabled = false;
+        btnCreateQuote.className = 'w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs py-2.5 rounded-lg transition flex items-center justify-center gap-2 shadow-xs cursor-pointer';
+        btnCreateQuote.title = 'Generate formal B2B PDF quote and lock in pricing';
+      }
+
+      // 2. Voice Call Button & Language Select
+      if (!hasParts || !hasQuote) {
+        btnTriggerCall.disabled = true;
+        btnTriggerCall.className = 'flex-1 bg-slate-200 text-slate-400 font-semibold text-xs py-2 rounded-lg cursor-not-allowed flex items-center justify-center gap-1 shadow-none';
+        if (callContainer) callContainer.className = 'flex items-center gap-1 bg-slate-200 rounded-lg p-0.5 opacity-60 cursor-not-allowed';
+        if (selCallLanguage) {
+          selCallLanguage.disabled = true;
+          selCallLanguage.className = 'bg-slate-300 text-slate-500 text-[11px] font-bold rounded px-1.5 py-1.5 border-none cursor-not-allowed';
+        }
+        btnTriggerCall.title = !hasParts ? 'Add a part to the proposal first' : 'Click "Generate Formal B2B PDF Quote" first';
+      } else {
+        btnTriggerCall.disabled = false;
+        btnTriggerCall.className = 'flex-1 bg-red-600 hover:bg-red-700 text-white font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1 shadow-xs cursor-pointer';
+        if (callContainer) callContainer.className = 'flex items-center gap-1 bg-red-600 rounded-lg p-0.5 cursor-pointer';
+        if (selCallLanguage) {
+          selCallLanguage.disabled = false;
+          selCallLanguage.className = 'bg-red-800 text-white text-[11px] font-bold rounded px-1.5 py-1.5 border-none focus:outline-none cursor-pointer';
+        }
+        btnTriggerCall.title = 'Initiate AI Voice Call for this formal quote';
+      }
+
+      // 3. Send SMS Button
+      if (!hasParts || !hasQuote) {
+        btnSendSms.disabled = true;
+        btnSendSms.className = 'bg-slate-200 text-slate-400 font-semibold text-xs py-2 rounded-lg cursor-not-allowed flex items-center justify-center gap-1.5 shadow-none opacity-60';
+        btnSendSms.title = !hasParts ? 'Add a part to the proposal first' : 'Click "Generate Formal B2B PDF Quote" first';
+      } else {
+        btnSendSms.disabled = false;
+        btnSendSms.className = 'bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer';
+        btnSendSms.title = 'Dispatch instant SMS quote summary to customer';
+      }
+
+      // 4. Email Customer with PDF Attachment Button
+      if (!hasParts || !hasQuote) {
+        btnSendEmail.disabled = true;
+        btnSendEmail.className = 'w-full bg-slate-100 text-slate-400 border border-slate-200 font-semibold text-xs py-2 rounded-lg cursor-not-allowed flex items-center justify-center gap-1.5 shadow-none opacity-60';
+        btnSendEmail.title = !hasParts ? 'Add a part to the proposal first' : 'Click "Generate Formal B2B PDF Quote" first';
+      } else {
+        btnSendEmail.disabled = false;
+        btnSendEmail.className = 'w-full bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-semibold text-xs py-2 rounded-lg transition flex items-center justify-center gap-1.5 cursor-pointer shadow-2xs';
+        btnSendEmail.title = 'Email official Quote PDF to customer';
+      }
+
+      // 5. Visual Guidance Banner
+      if (helper) {
+        if (!hasParts) {
+          helper.className = 'text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-2.5 text-center font-medium mt-2.5';
+          helper.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Cart is empty. Add at least one verified part in Step 2 to generate a quote.';
+          helper.classList.remove('hidden');
+        } else if (!hasQuote) {
+          helper.className = 'text-[11px] text-blue-700 bg-blue-50 border border-blue-200 rounded-lg p-2.5 text-center font-medium mt-2.5';
+          helper.innerHTML = '<i class="fa-solid fa-file-invoice mr-1"></i> Click <b>Generate Formal B2B PDF Quote</b> above to lock in proposal and unlock Voice Call, SMS &amp; Email.';
+          helper.classList.remove('hidden');
+        } else {
+          helper.className = 'text-[11px] text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 text-center font-medium mt-2.5';
+          helper.innerHTML = '<i class="fa-solid fa-circle-check mr-1"></i> Formal quote ready! Omnichannel Voice, SMS and Email dispatch are now active.';
+          helper.classList.remove('hidden');
+        }
+      }
+    }
+
+    async function submitFormalQuote() {
+      if (!currentDecodedVehicle) {
+        showStatus('Please decode a VIN first.', 'error');
+        return;
+      }
+      if (!quotedParts || quotedParts.length === 0) {
+        showStatus('Please add at least one part to the quote proposal from Step 2.', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('btnCreateQuote');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Generating Quote & PDF...';
+
+      const markupVal = document.getElementById('inpMarkupPct').value;
+      const markup = markupVal === '' ? 0 : (parseFloat(markupVal) || 0);
+      const discount = parseFloat(document.getElementById('inpDiscountPct').value) || 0;
+
+      const itemsPayload = quotedParts.map(p => {
+        const itemCost = p.unitCost || 0;
+        let itmList = itemCost * (1 + markup / 100.0);
+        return {
+          partName: p.partName,
+          partNumber: p.partNumber || p.oemPartNumber || 'PART-GEN',
+          hollanderNumber: p.hollanderNumber || null,
+          oemPartNumber: p.oemPartNumber || p.partNumber || null,
+          category: p.category || 'General',
+          unitCost: itemCost,
+          listPrice: itmList,
+          markupPercent: markup,
+          minMarginPercent: 0,
+          coreCharge: p.coreCharge || 0.0,
+          discountPercent: discount,
+          quantity: p.quantity || 1,
+          weightLbs: p.weightLbs || 15.0,
+          evidence: p.evidence || ['Decoded vehicle fitment verified']
+        };
+      });
+
+      const payload = {
+        vin: currentDecodedVehicle.vin,
+        customerName: document.getElementById('custName').value.trim(),
+        customerPhone: document.getElementById('custPhone').value.trim(),
+        customerEmail: document.getElementById('custEmail').value.trim(),
+        destinationZip: document.getElementById('inpDestZip').value.trim(),
+        originZip: document.getElementById('inpOriginZip').value.trim(),
+        freightServiceType: document.getElementById('selFreightService').value,
+        requiresLiftgate: document.getElementById('chkLiftgate').checked,
+        isResidential: document.getElementById('chkResidential').checked,
+        items: itemsPayload
+      };
+
+      try {
+        const resp = await fetch('/api/quotes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!resp.ok) {
+          const errData = await resp.json();
+          throw new Error(errData.detail || 'Failed to create quote');
+        }
+        const res = await resp.json();
+        lastCreatedQuoteId = res.id;
+        showStatus(`Quote ${res.quoteNumber} created successfully! Grand Total: $${res.financials.grandTotal.toFixed(2)}. PDF ready.`, 'success');
+        updateActionButtonsState();
+        loadRecentQuotes();
+
+        // Open PDF in new tab
+        window.open(res.pdfUrl, '_blank');
+      } catch (err) {
+        showStatus('Error creating quote: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-file-pdf"></i> Generate Formal B2B PDF Quote';
+        updateActionButtonsState();
+      }
+    }
+
+    async function triggerVoiceCallForQuote() {
+      if (!quotedParts || quotedParts.length === 0) {
+        showStatus('Cart is empty. Please add a part in Step 2 before initiating outreach.', 'error');
+        return;
+      }
+      if (!lastCreatedQuoteId) {
+        showStatus('Please click "Generate Formal B2B PDF Quote" first before dispatching call.', 'error');
+        return;
+      }
+      const lang = document.getElementById('selCallLanguage').value;
+      const btn = document.getElementById('btnTriggerCall');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Dialing...';
+
+      try {
+        const resp = await fetch(`/api/quotes/${lastCreatedQuoteId}/trigger-call`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ language: lang })
+        });
+        const rawText = await resp.text();
+        let res;
+        try { res = JSON.parse(rawText); } catch(e) { throw new Error(rawText.substring(0, 100)); }
+        if (!resp.ok) throw new Error(res.detail || 'Call initiation failed');
+        if (res.callResult && res.callResult.status === 'error') {
+          showStatus(res.callResult.error || 'Failed to connect voice call', 'error');
+        } else {
+          showStatus(`Twilio Voice Call (${lang === 'es-US' ? 'Spanish' : 'English'}) dispatched for Quote ${res.quoteNumber}!`, 'success');
+        }
+      } catch (err) {
+        showStatus('Error triggering call: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-phone"></i> Voice Call';
+        updateActionButtonsState();
+      }
+    }
+
+    async function sendSmsForQuote() {
+      if (!quotedParts || quotedParts.length === 0) {
+        showStatus('Cart is empty. Please add a part in Step 2 before initiating outreach.', 'error');
+        return;
+      }
+      if (!lastCreatedQuoteId) {
+        showStatus('Please click "Generate Formal B2B PDF Quote" first before sending SMS.', 'error');
+        return;
+      }
+      const btn = document.getElementById('btnSendSms');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending SMS...';
+
+      try {
+        const resp = await fetch(`/api/quotes/${lastCreatedQuoteId}/send-sms`, { method: 'POST' });
+        const rawText = await resp.text();
+        let res;
+        try { res = JSON.parse(rawText); } catch(e) { throw new Error(rawText.substring(0, 100)); }
+        if (!resp.ok) throw new Error(res.detail || 'SMS dispatch failed');
+        if (res.smsResult && res.smsResult.status === 'error') {
+          showStatus(res.smsResult.error || 'Failed to dispatch SMS', 'error');
+        } else {
+          showStatus(`Twilio SMS sent to customer for Quote ${res.quoteNumber}!`, 'success');
+        }
+      } catch (err) {
+        showStatus('Error sending SMS: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-comment-sms"></i> Send SMS';
+        updateActionButtonsState();
+      }
+    }
+
+    async function sendEmailForQuote() {
+      if (!quotedParts || quotedParts.length === 0) {
+        showStatus('Cart is empty. Please add a part in Step 2 before initiating outreach.', 'error');
+        return;
+      }
+      if (!lastCreatedQuoteId) {
+        showStatus('Please click "Generate Formal B2B PDF Quote" first before emailing customer.', 'error');
+        return;
+      }
+      const btn = document.getElementById('btnSendEmail');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending Email...';
+
+      try {
+        const resp = await fetch(`/api/quotes/${lastCreatedQuoteId}/send-email`, { method: 'POST' });
+        const rawText = await resp.text();
+        let res;
+        try { res = JSON.parse(rawText); } catch(e) { throw new Error(rawText.substring(0, 100)); }
+        if (!resp.ok) throw new Error(res.detail || 'Email dispatch failed');
+        showStatus(`Quote email with attached PDF sent for Quote ${res.quoteNumber}!`, 'success');
+      } catch (err) {
+        showStatus('Error sending email: ' + err.message, 'error');
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-envelope"></i> Email Customer with PDF Attachment';
+        updateActionButtonsState();
+      }
+    }
+
+    async function loadRecentQuotes() {
+      const tbody = document.getElementById('quotesTableBody');
+      try {
+        const resp = await fetch('/api/quotes');
+        const list = await resp.json();
+        if (!list || list.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="7" class="text-center py-4 text-slate-400">No quotes generated yet. Build your first quote above!</td></tr>';
+          return;
+        }
+        tbody.innerHTML = list.map(q => `
+          <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition">
+            <td class="py-2.5 px-3 font-mono font-bold text-blue-600">${q.quoteNumber}</td>
+            <td class="py-2.5 px-3">
+              <div class="font-semibold text-slate-800">${q.customerName}</div>
+              <div class="text-[10px] text-slate-500 font-mono">${q.customerPhone || 'No Phone'}</div>
+            </td>
+            <td class="py-2.5 px-3">
+              <div class="text-slate-800">${q.vehicleSummary || 'Vehicle on file'}</div>
+              <div class="text-[10px] text-slate-500">${q.createdAt}</div>
+            </td>
+            <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">$${q.grandTotal.toFixed(2)}</td>
+            <td class="py-2.5 px-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                ${q.status}
+              </span>
+            </td>
+            <td class="py-2.5 px-3 text-right">
+              <a href="${q.pdfUrl}" target="_blank" class="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-300 rounded text-[11px] font-semibold transition">
+                <i class="fa-solid fa-file-pdf text-red-600"></i> View PDF
+              </a>
+            </td>
+            <td class="py-2.5 px-3 text-center">
+              <button onclick="dispatchVoiceForId(${q.id})" class="p-1.5 hover:bg-red-50 text-red-600 rounded transition" title="Trigger Voice Call">
+                <i class="fa-solid fa-phone"></i>
+              </button>
+              <button onclick="dispatchSmsForId(${q.id})" class="p-1.5 hover:bg-blue-50 text-blue-600 rounded transition" title="Send SMS">
+                <i class="fa-solid fa-comment-sms"></i>
+              </button>
+            </td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-red-500">Error loading quotes: ${err.message}</td></tr>`;
+      }
+    }
+    async function loadCrmWebhookLogs() {
+      const tbody = document.getElementById('crmWebhooksTableBody');
+      try {
+        const resp = await fetch('/api/crm/webhook-logs');
+        const data = await resp.json();
+        const events = data.events || [];
+        if (events.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="text-center py-4 text-slate-400">No CRM webhook events dispatched yet.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = events.map(e => `
+          <tr class="border-b border-slate-100 hover:bg-slate-50/80 transition">
+            <td class="py-2.5 px-3 font-mono font-semibold text-blue-600">${e.eventId}</td>
+            <td class="py-2.5 px-3">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200">
+                ${e.eventType}
+              </span>
+            </td>
+            <td class="py-2.5 px-3 font-mono text-[11px] text-slate-600 truncate max-w-xs">${e.targetUrl}</td>
+            <td class="py-2.5 px-3 text-center">
+              <span class="px-2 py-0.5 rounded text-[10px] font-semibold ${e.deliveryStatus === 'delivered' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-blue-50 text-blue-700 border border-blue-200'}">
+                ${e.deliveryStatus.toUpperCase()} (${e.statusCode})
+              </span>
+            </td>
+            <td class="py-2.5 px-3 text-right text-slate-500 font-mono">${e.timestamp}</td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center py-4 text-red-500">Error loading webhook logs: ${err.message}</td></tr>`;
+      }
+    }
+    async function sendTestWebhookPing() {
+      try {
+        const resp = await fetch('/api/crm/test-webhook', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ eventType: 'ping.test', payload: { source: 'Quoting Engine UI' } })
+        });
+        const res = await resp.json();
+        showStatus(`Test webhook event ${res.result.eventId} dispatched to CRM!`, 'success');
+        loadCrmWebhookLogs();
+      } catch (err) {
+        showStatus('Error sending test webhook: ' + err.message, 'error');
+      }
+    }
+    async function dispatchVoiceForId(id) {
+      try {
+        const lang = document.getElementById('selCallLanguage') ? document.getElementById('selCallLanguage').value : 'en-US';
+        const resp = await fetch(`/api/quotes/${id}/trigger-call`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ language: lang })
+        });
+        const rawText = await resp.text();
+        let res;
+        try { res = JSON.parse(rawText); } catch(e) { throw new Error(rawText.substring(0, 120)); }
+        if (!resp.ok) throw new Error(res.detail || 'Call initiation failed');
+        if (res.callResult && res.callResult.status === 'error') {
+          showStatus(res.callResult.error || 'Failed to connect voice call', 'error');
+        } else {
+          showStatus(`Voice Call (${lang === 'es-US' ? 'Spanish' : 'English'}) dispatched for Quote ${res.quoteNumber || id}!`, 'success');
+        }
+      } catch (err) {
+        showStatus('Call failed: ' + err.message, 'error');
+      }
+    }
+    async function dispatchSmsForId(id) {
+      try {
+        const resp = await fetch(`/api/quotes/${id}/send-sms`, { method: 'POST' });
+        const rawText = await resp.text();
+        let res;
+        try { res = JSON.parse(rawText); } catch(e) { throw new Error(rawText.substring(0, 120)); }
+        if (!resp.ok) throw new Error(res.detail || 'SMS dispatch failed');
+        if (res.smsResult && res.smsResult.status === 'error') {
+          showStatus(res.smsResult.error || 'Failed to dispatch SMS', 'error');
+        } else {
+          showStatus(`SMS sent for Quote ${res.quoteNumber || id}!`, 'success');
+        }
+      } catch (err) {
+        showStatus('SMS failed: ' + err.message, 'error');
+      }
+    }
+    let statusTimeout = null;
+    function showStatus(msg, type = 'info', durationMs = 3000) {
+      const box = document.getElementById('statusMessage');
+      if (!box) return;
+
+      if (statusTimeout) {
+        clearTimeout(statusTimeout);
+        statusTimeout = null;
+      }
+
+      let icon = 'fa-circle-check text-emerald-600';
+      let borderBg = 'bg-emerald-50 text-emerald-800 border border-emerald-200';
+
+      if (type === 'error') {
+        icon = 'fa-circle-exclamation text-red-600';
+        borderBg = 'bg-red-50 text-red-800 border border-red-200';
+      } else if (type === 'info') {
+        icon = 'fa-circle-info text-blue-600';
+        borderBg = 'bg-blue-50 text-blue-800 border border-blue-200';
+      }
+
+      box.className = `mt-3 p-3 text-xs rounded-lg transition-opacity duration-300 opacity-100 ${borderBg}`;
+      box.innerHTML = `
+        <div class="flex items-center justify-between gap-2">
+          <span class="flex items-center gap-2"><i class="fa-solid ${icon}"></i> <span>${msg}</span></span>
+          <button type="button" onclick="const b=document.getElementById('statusMessage'); if(b) b.classList.add('hidden');" class="text-slate-400 hover:text-slate-600 p-0.5 cursor-pointer" title="Dismiss">
+            <i class="fa-solid fa-xmark text-xs"></i>
+          </button>
+        </div>
+      `;
+      box.classList.remove('hidden');
+
+      // Auto-hide in exactly 3 seconds (3,000ms) with smooth fade-out
+      statusTimeout = setTimeout(() => {
+        box.classList.remove('opacity-100');
+        box.classList.add('opacity-0');
+        setTimeout(() => {
+          box.classList.add('hidden');
+        }, 300);
+      }, durationMs);
+    }
+    // Customer Web Chat Assistant
+    let chatContext = {};
+    let chatLanguage = 'en';
+    function toggleChatWindow() {
+      const box = document.getElementById('chatBox');
+      box.classList.toggle('hidden');
+      if (!box.classList.contains('hidden') && document.getElementById('chatMessages').children.length === 0) {
+        initChatGreeting();
+      }
+    }
+    function toggleChatLanguage() {
+      chatLanguage = chatLanguage === 'en' ? 'es' : 'en';
+      document.getElementById('chatLangToggle').innerText = chatLanguage.toUpperCase();
+      sendChatMessageAuto(chatLanguage === 'es' ? 'Hola, prefiero español' : 'Hi, English please');
+    }
+    function initChatGreeting() {
+      sendChatMessageAuto('Hello');
+    }
+    async function sendChatMessage() {
+      const inp = document.getElementById('chatInput');
+      const text = inp.value.trim();
+      if (!text) return;
+      inp.value = '';
+      sendChatMessageAuto(text);
+    }
+    async function sendChatMessageAuto(text) {
+      appendChatMessage(text, 'user');
+      const messagesDiv = document.getElementById('chatMessages');
+      const typingEl = document.createElement('div');
+      typingEl.id = 'typingIndicator';
+      typingEl.className = 'text-[11px] text-slate-400 italic flex items-center gap-1';
+      typingEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Yards & Parts AI thinking...';
+      messagesDiv.appendChild(typingEl);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      try {
+        const resp = await fetch('/api/chat/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: text,
+            context: chatContext,
+            language: chatLanguage
+          })
+        });
+        const data = await resp.json();
+        chatContext = data.context || chatContext;
+        const ti = document.getElementById('typingIndicator');
+        if (ti) ti.remove();
+        appendChatMessage(data.reply, 'assistant');
+        renderChatChips(data.chips || []);
+      } catch (err) {
+        const ti = document.getElementById('typingIndicator');
+        if (ti) ti.remove();
+        appendChatMessage('Sorry, connection issue. Please try again.', 'assistant');
+      }
+    }
+    function appendChatMessage(html, sender) {
+      const container = document.getElementById('chatMessages');
+      const msgDiv = document.createElement('div');
+      if (sender === 'user') {
+        msgDiv.className = 'flex justify-end';
+        msgDiv.innerHTML = `<div class="bg-blue-600 text-white rounded-2xl rounded-tr-xs px-3.5 py-2 max-w-[80%] shadow-xs leading-relaxed text-xs">${html}</div>`;
+      } else {
+        msgDiv.className = 'flex items-start gap-2';
+        msgDiv.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-slate-800 text-white flex items-center justify-center text-[10px] shrink-0 mt-0.5">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-xs px-3.5 py-2 max-w-[85%] shadow-2xs leading-relaxed text-xs">
+            ${html}
+          </div>
+        `;
+      }
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+    function renderChatChips(chips) {
+      const container = document.getElementById('chatChipsContainer');
+      if (!chips || chips.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = chips.map(c => `
+        <button onclick="sendChatMessageAuto('${c.replace(/'/g, "\\'")}')" class="bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-full px-2.5 py-1 text-[10px] font-semibold text-slate-700 transition">
+          ${c}
+        </button>
+      `).join('');
+    }
+    // Refresh CRM logs on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCrmWebhookLogs();
+    });
+  </script>
+  <!-- Floating Customer Web Chat Widget -->
+  <div id="chatLauncher" onclick="toggleChatWindow()" class="fixed bottom-5 right-5 z-50 bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center cursor-pointer transition-transform hover:scale-105" title="Chat with Yards & Parts AI">
+    <i class="fa-solid fa-comments text-xl"></i>
+    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+    </span>
+  </div>
+  <div id="chatBox" class="fixed bottom-20 right-5 z-50 w-96 h-[520px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden hidden transition-all">
+    <!-- Chat Header -->
+    <div class="bg-slate-900 text-white p-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+          <i class="fa-solid fa-car-side"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold leading-tight">Yards &amp; Parts Assistant</div>
+          <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online &bull; VIN &amp; Fitment AI
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleChatLanguage()" id="chatLangToggle" class="text-[10px] bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded font-bold uppercase border border-slate-700 text-slate-300">
+          EN / ES
+        </button>
+        <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Chat Messages Scroll Area -->
+    <div id="chatMessages" class="flex-1 p-3.5 space-y-3 overflow-y-auto bg-slate-50/50">
+    </div>
+    <!-- Quick Action Suggestion Chips -->
+    <div id="chatChipsContainer" class="p-2 border-t border-slate-100 flex flex-wrap gap-1 bg-white">
+    </div>
+    <!-- Input Box -->
+    <div class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-1.5">
+      <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendChatMessage()" placeholder="Type part request or paste 17-char VIN..." class="flex-1 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white">
+      <button onclick="sendChatMessage()" class="w-8 h-8 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center text-xs transition">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</body>
+</html>
+

@@ -1,0 +1,541 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Yards & Parts AI Agent</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#F7F4EE;
+    --surface:#FFFFFF;
+    --ink:#1C1917;
+    --ink-soft:#635C52;
+    --ink-faint:#8C8478;
+    --accent:#C24A1C;
+    --accent-ink:#FFFFFF;
+    --accent-soft:#F3E1D3;
+    --steel:#31576A;
+    --steel-soft:#DCE7EA;
+    --line:#E5DFD3;
+    --good:#2E6E45;
+    --good-soft:#E1EEE3;
+    --warn:#8A6412;
+    --warn-soft:#F4E7C8;
+    --info:#31576A;
+    --info-soft:#DCE7EA;
+    --code-bg:#22201C;
+    --code-ink:#EFE9DE;
+  }
+  :root:not([data-theme="light"]){
+    @media (prefers-color-scheme: dark){
+      --bg:#151310;
+      --surface:#1D1A16;
+      --ink:#F1ECE2;
+      --ink-soft:#B7AE9F;
+      --ink-faint:#8C8478;
+      --accent:#FF8A52;
+      --accent-ink:#1C1310;
+      --accent-soft:#3B2417;
+      --steel:#8FC2D8;
+      --steel-soft:#20343D;
+      --line:#33302A;
+      --good:#7ED09A;
+      --good-soft:#1E3327;
+      --warn:#F0C868;
+      --warn-soft:#3A2E10;
+      --info:#8FC2D8;
+      --info-soft:#20343D;
+      --code-bg:#0F0E0C;
+      --code-ink:#EFE9DE;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#151310;
+    --surface:#1D1A16;
+    --ink:#F1ECE2;
+    --ink-soft:#B7AE9F;
+    --ink-faint:#8C8478;
+    --accent:#FF8A52;
+    --accent-ink:#1C1310;
+    --accent-soft:#3B2417;
+    --steel:#8FC2D8;
+    --steel-soft:#20343D;
+    --line:#33302A;
+    --good:#7ED09A;
+    --good-soft:#1E3327;
+    --warn:#F0C868;
+    --warn-soft:#3A2E10;
+    --info:#8FC2D8;
+    --info-soft:#20343D;
+    --code-bg:#0F0E0C;
+    --code-ink:#EFE9DE;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;
+    line-height:1.62;
+    padding-inline:20px;
+    padding-block:0 48px;
+    max-width:100%;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:"Archivo",system-ui,sans-serif;
+    color:var(--ink);
+    text-wrap:balance;
+    line-height:1.15;
+    margin:0 0 .4em;
+  }
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace;}
+  a{color:var(--accent)}
+  p{margin:0 0 1em}
+  .container{max-width:760px;margin:0 auto}
+
+  /* ---- top bar ---- */
+  .topbar{
+    position:sticky;
+    top:env(safe-area-inset-top,0px);
+    z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding-block:12px;
+    margin-inline:-20px;
+    padding-inline:20px;
+  }
+  .topbar-inner{
+    max-width:760px;margin:0 auto;
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    justify-content:space-between;
+  }
+  .brand{
+    font-family:"Archivo",sans-serif;font-weight:800;font-size:.95rem;
+    letter-spacing:.02em;color:var(--ink);white-space:nowrap;
+  }
+  .brand span{color:var(--accent)}
+  select.jump{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    background:var(--surface);color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:6px;
+    padding:6px 10px;max-width:220px;
+  }
+
+  /* ---- hero ---- */
+  .hero{padding-block:36px 8px}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .eyebrow::before{content:"";width:22px;height:2px;background:var(--accent);display:inline-block}
+  h1.title{font-size:clamp(1.7rem,5.5vw,2.5rem);font-weight:800;margin-bottom:.3em}
+  .subtitle{font-size:1.05rem;color:var(--ink-soft);max-width:56ch;font-family:"Source Serif 4",serif}
+  .meta-row{
+    display:flex;gap:18px;flex-wrap:wrap;margin-top:20px;
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-faint);
+  }
+  .meta-row b{color:var(--ink-soft);font-weight:600}
+
+  /* ---- status legend ---- */
+  .legend{
+    display:flex;flex-wrap:wrap;gap:10px;margin-block:22px 6px;
+  }
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;font-weight:500;
+    padding:5px 10px;border-radius:100px;white-space:nowrap;
+  }
+  .chip.ready{background:var(--good-soft);color:var(--good)}
+  .chip.decision{background:var(--warn-soft);color:var(--warn)}
+  .chip.later{background:var(--info-soft);color:var(--info)}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+
+  /* ---- section ---- */
+  section{padding-block:38px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  .section-num{
+    font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:.82rem;
+    font-weight:600;margin-bottom:6px;display:block;
+  }
+  h2{font-size:1.5rem}
+  h3{font-size:1.12rem;margin-top:1.6em;color:var(--ink)}
+  .lede{color:var(--ink-soft);font-size:1.02rem;margin-bottom:1.3em}
+
+  /* ---- callouts ---- */
+  .callout{
+    border:1px solid var(--line);border-left:3px solid var(--accent);
+    background:var(--surface);border-radius:4px;
+    padding:14px 16px;margin:1.2em 0;font-size:.94rem;
+  }
+  .callout.finding{border-left-color:var(--warn)}
+  .callout.verified{border-left-color:var(--good)}
+  .callout-label{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.08em;
+    text-transform:uppercase;font-weight:600;margin-bottom:6px;display:block;
+  }
+  .callout.finding .callout-label{color:var(--warn)}
+  .callout.verified .callout-label{color:var(--good)}
+  .callout:not(.finding):not(.verified) .callout-label{color:var(--accent)}
+
+  /* ---- spec sheet block ---- */
+  .specsheet{
+    border:1px solid var(--line);border-radius:6px;overflow:hidden;margin:1.4em 0;background:var(--surface);
+  }
+  .specsheet .row{
+    display:grid;grid-template-columns:120px 1fr;gap:12px;
+    padding:10px 14px;border-top:1px solid var(--line);font-size:.88rem;
+  }
+  .specsheet .row:first-child{border-top:none}
+  .specsheet .row dt{
+    font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.04em;
+    text-transform:uppercase;color:var(--ink-faint);align-self:start;padding-top:2px;
+  }
+  .specsheet .row dd{margin:0;color:var(--ink)}
+
+  /* ---- diagram (flow boxes) ---- */
+  .flow{
+    display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:1.4em 0;
+  }
+  .flow-box{
+    flex:1 1 130px;background:var(--surface);border:1px solid var(--line);
+    border-radius:6px;padding:12px 12px;font-size:.8rem;
+  }
+  .flow-box b{display:block;font-family:"Archivo",sans-serif;font-size:.82rem;margin-bottom:4px}
+  .flow-arrow{
+    display:flex;align-items:center;justify-content:center;color:var(--ink-faint);
+    font-size:1.1rem;flex:0 0 auto;padding-inline:2px;
+  }
+  @media (max-width:640px){
+    .flow{flex-direction:column}
+    .flow-arrow{transform:rotate(90deg);padding-block:2px}
+  }
+  .flow-box.core{border-color:var(--accent);background:var(--accent-soft)}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto;margin:1.4em 0;border:1px solid var(--line);border-radius:6px}
+  table{border-collapse:collapse;width:100%;min-width:560px;font-size:.85rem}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  thead th{
+    font-family:"IBM Plex Mono",monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;
+    color:var(--ink-faint);background:var(--surface);
+  }
+  tbody tr:last-child td{border-bottom:none}
+  tbody{background:var(--surface)}
+  td.mono, th.mono{font-family:"IBM Plex Mono",monospace;font-size:.8rem}
+
+  /* ---- code block ---- */
+  pre{
+    background:var(--code-bg);color:var(--code-ink);border-radius:6px;
+    padding:14px 16px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;
+    font-size:.78rem;line-height:1.55;margin:1.2em 0;
+  }
+  code{font-family:"IBM Plex Mono",monospace;font-size:.88em;background:var(--accent-soft);color:var(--ink);padding:.1em .35em;border-radius:3px}
+  pre code{background:none;padding:0;color:inherit}
+
+  /* ---- roadmap ---- */
+  .phase{
+    display:grid;grid-template-columns:88px 1fr;gap:16px;padding-block:16px;
+    border-top:1px solid var(--line);
+  }
+  .phase:first-child{border-top:none}
+  .phase-when{font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-faint);padding-top:3px}
+  .phase h4{font-size:.98rem;margin-bottom:.3em}
+  .phase p{font-size:.88rem;color:var(--ink-soft);margin-bottom:.5em}
+
+  /* ---- checklist ---- */
+  ul.decisions{list-style:none;padding:0;margin:1.2em 0;display:flex;flex-direction:column;gap:10px}
+  ul.decisions li{
+    display:flex;gap:10px;align-items:flex-start;font-size:.92rem;
+    background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:11px 13px;
+  }
+  ul.decisions li::before{content:"□";color:var(--accent);font-size:1rem;line-height:1.3}
+
+  ul.plain{padding-left:1.2em;margin:0 0 1em}
+  ul.plain li{margin-bottom:.4em}
+
+  footer{
+    padding-block:28px 8px;border-top:1px solid var(--line);margin-top:10px;
+    font-family:"IBM Plex Mono",monospace;font-size:.72rem;color:var(--ink-faint);
+  }
+</style>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">YARDS&amp;PARTS <span>/</span> AI AGENT SPEC</div>
+    <select class="jump" onchange="if(this.value) document.getElementById(this.value).scrollIntoView({behavior:'smooth'})">
+      <option value="">Jump to section…</option>
+      <option value="overview">0 — System overview</option>
+      <option value="vin">1 — VIN decoding</option>
+      <option value="interchange">2 — ACES/PIES &amp; interchange</option>
+      <option value="commerce">3 — Shopify &amp; commerce layer</option>
+      <option value="agent">4 — Agent core &amp; sales flow</option>
+      <option value="channels">5 — Channels: chat, email, SMS, voice</option>
+      <option value="followup">6 — Follow-up automation</option>
+      <option value="crm">7 — CRM &amp; reporting feed</option>
+      <option value="roadmap">8 — Phased roadmap</option>
+      <option value="decisions">9 — Decisions needed from you</option>
+      <option value="appendix">10 — References</option>
+    </select>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="hero">
+    <div class="eyebrow">Build spec &amp; architecture</div>
+    <h1 class="title">An AI sales agent for Yards &amp; Parts</h1>
+    <p class="subtitle">A buildable plan for a bilingual AI agent that decodes a customer's vehicle, finds the right engine or transmission across your inventory, sells it start to finish on Shopify, and follows up until the deal closes — grounded in what's free and working today versus what needs a vendor decision from you.</p>
+    <div class="meta-row">
+      <span><b>Prepared for</b> Kiran, Yards &amp; Parts</span>
+      <span><b>Date</b> Sept 15, 2026</span>
+      <span><b>Builds on</b> your "Auto Parts Retail Pain Points" roadmap</span>
+    </div>
+    <div class="legend">
+      <span class="chip ready">Buildable now, free/existing tools</span>
+      <span class="chip decision">Needs a vendor decision from you</span>
+      <span class="chip later">Later phase</span>
+    </div>
+  </div>
+
+  <section id="overview">
+    <span class="section-num">00</span>
+    <h2>System overview</h2>
+    <p class="lede">Five layers, decoupled so Shopify can be joined later by other stores without a rewrite.</p>
+
+    <div class="flow">
+      <div class="flow-box"><b>Channels</b>Web chat, email, SMS, phone</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box core"><b>Agent core</b>Claude, tool-calling, EN/ES, sales flow</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><b>Data &amp; commerce</b>VIN decode, fitment, Shopify</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box"><b>CRM feed</b>Events → your in-house CRM</div>
+    </div>
+
+    <p>The agent core is the one piece every channel shares — it's what actually understands a customer, decodes their vehicle, and carries the conversation from "does this fit my car" to a closed order. Everything else is a tool the core calls: decode this VIN, check this fitment, look up this SKU, send this text, log this event. That's what makes "integrate with all ecommerce stores" realistic — the core never talks to Shopify's API directly, it talks to a <code>CommerceConnector</code> interface that Shopify implements today and WooCommerce/BigCommerce/etc. can implement later.</p>
+
+    <div class="callout">
+      <span class="callout-label">How to read this document</span>
+      Each numbered component below has a status chip, what it does, what's actually verified working versus what depends on a choice only you can make (mainly: which paid parts-interchange vendor, and which voice-AI vendor). Section 9 collects every open decision in one checklist.
+    </div>
+  </section>
+
+  <section id="vin">
+    <span class="section-num">01</span>
+    <span class="chip ready" style="margin-bottom:10px">Ready — free, verified live</span>
+    <h2>VIN decoding: year, make, model, sub-model</h2>
+    <p class="lede">NHTSA's vPIC API decodes a full VIN into vehicle attributes. It's the U.S. government's own vehicle database, free, requires no API key, and has no rate limit for reasonable use.</p>
+
+    <div class="specsheet">
+      <div class="row"><dt>Endpoint</dt><dd class="mono">GET https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValuesExtended/{vin}?format=json</dd></div>
+      <div class="row"><dt>Auth</dt><dd>None</dd></div>
+      <div class="row"><dt>Returns</dt><dd>Make, Model, Model Year, Trim, Body Class, Engine Cylinders, Displacement (L), Fuel Type, Drive Type, Plant, and ~100 more fields per VIN</dd></div>
+      <div class="row"><dt>Cost</dt><dd>$0</dd></div>
+    </div>
+
+    <div class="callout verified">
+      <span class="callout-label">Verified during this research</span>
+      A live query against a sample VIN pattern returned a correctly decoded <b>2011 BMW X3 xDrive35i</b> — 3.0L inline-6, AWD, 300&nbsp;hp, built in Munich — confirming the endpoint is live and the field set is rich enough to drive fitment matching (year, make, model, engine size and cylinder count are the fields that matter for engine/transmission interchange).
+    </div>
+
+    <p><b>The one limitation to design around:</b> "Trim" (sub-model) isn't populated for every VIN — older or lower-volume vehicles sometimes come back with year/make/model/engine but a blank trim. The agent should treat vPIC as the first pass and always read the decoded year/make/model/engine back to the customer for confirmation before quoting ("So that's a 2011 BMW X3 xDrive35i with the 3.0L six — sound right?") rather than silently trusting an incomplete decode.</p>
+
+    <p>Fallback path: if a customer doesn't have their VIN handy (common on the phone), the agent asks year → make → model → engine size conversationally instead — the same fields, just gathered by question instead of decode.</p>
+  </section>
+
+  <section id="interchange">
+    <span class="section-num">02</span>
+    <span class="chip decision" style="margin-bottom:10px">Needs a vendor decision</span>
+    <h2>ACES/PIES &amp; parts interchange</h2>
+    <p class="lede">This is the part of your request I want to be direct about, because it changes how you plan the budget.</p>
+
+    <div class="callout finding">
+      <span class="callout-label">Key finding</span>
+      ACES (Aftermarket Catalog Exchange Standard) and PIES (Product Information Exchange Standard) are data <i>formats</i> maintained by the Auto Care Association — not a free database of "which part fits which car." The Association's own API, released in January 2025, gives you the <i>reference tables</i> (vehicle configurations, qualifiers, product categories, brand IDs) that the format is built from — the shared dictionary every supplier's catalog is supposed to speak. It does not contain actual fitment applications for engines, transmissions, or any other part. Every company that offers real interchange lookup (including Car-Parts.com, referenced in your own PDF) built that mapping themselves, part by part, and licenses access to it.
+    </div>
+
+    <p>In plain terms: there's no free, complete "does this part fit this car" answer for the whole U.S. market. There's a free shared vocabulary (which is genuinely useful — see below), and there are paid vendors who did the actual mapping work.</p>
+
+    <h3>What to use the free tables for</h3>
+    <p>Auto Care's VCdb (Vehicle Configuration Database) is the standard vehicle taxonomy the whole industry keys against — base vehicle, sub-model, engine configuration, each with a stable ID. Mapping your own yard inventory to VCdb vehicle IDs (instead of free-text "2010-2013 Honda Civic") is worth doing on its own: it's what lets a future interchange vendor, or Shopify's own product data, line up with your inventory without manual re-entry later. This is a one-time data-modeling step your developer can do against the free reference tables.</p>
+
+    <h3>Interchange data vendors (need one for real coverage)</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Vendor</th><th>What it gives you</th><th>Fit for a used engine/transmission yard</th><th>Access</th></tr></thead>
+        <tbody>
+          <tr><td><b>Car-Parts.com</b></td><td>Interchange part-number lookup + live retail pricing by fitment</td><td>Already anticipated in your own PDF (section 11-G) — closest match to "check price vs. market" workflow</td><td>Contact for API access/pricing</td></tr>
+          <tr><td><b>WHI Solutions / PartsTech</b></td><td>Broad ACES/PIES-native catalog + fitment across many suppliers</td><td>Strong if you want to cross-reference multiple yards' catalogs, not just your own</td><td>Sales-negotiated</td></tr>
+          <tr><td><b>MOTOR</b></td><td>OEM-grade vehicle & repair data, deep fitment specs</td><td>Higher-end; more than a small yard typically needs day one</td><td>Enterprise licensing</td></tr>
+          <tr><td><b>Epicor</b></td><td>Aftermarket catalog + fitment, widely used by parts distributors</td><td>Good general option; comparable scope to WHI</td><td>Sales-negotiated</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><b>Recommendation:</b> start the conversation with Car-Parts.com since your own team already scoped that integration — it also gives you the competitive retail price check your PDF describes in the same call. Treat WHI/Epicor as the fallback if Car-Parts.com's API terms don't fit.</p>
+
+    <h3>What the prototype ships instead</h3>
+    <p>Rather than block the whole build on a vendor contract, the prototype (section 4 of the code) defines an <code>InterchangeProvider</code> interface with a documented method signature, a mock implementation seeded with a few realistic sample interchange records so the sales flow is fully testable end-to-end today, and a stub file ready for whichever vendor you sign with — swapping providers means writing one class, not touching the agent.</p>
+  </section>
+
+  <section id="commerce">
+    <span class="section-num">03</span>
+    <span class="chip ready" style="margin-bottom:10px">Ready — Shopify is unusually well-suited to this</span>
+    <h2>Shopify &amp; the commerce layer</h2>
+    <p class="lede">Shopify shipped exactly the primitive an AI shopping agent needs in 2026: a <b>Storefront MCP server</b>, built for this use case specifically.</p>
+
+    <div class="specsheet">
+      <div class="row"><dt>Endpoint</dt><dd class="mono">https://{your-shop}.myshopify.com/api/mcp</dd></div>
+      <div class="row"><dt>Auth</dt><dd>None for standard read/cart tools</dd></div>
+      <div class="row"><dt>Tools exposed</dt><dd><code>search_catalog</code>, <code>get_product</code>, <code>get_cart</code>, <code>update_cart</code>, <code>search_shop_policies_and_faqs</code></dd></div>
+      <div class="row"><dt>Use for</dt><dd>Letting the agent search your live product catalog, build a cart, and answer policy/warranty questions during the conversation</dd></div>
+    </div>
+
+    <p>For anything the Storefront MCP doesn't cover — precise inventory counts across locations, creating draft orders for a phone sale, applying a quote-specific discount — the agent uses the <b>Admin GraphQL API</b> (current version cycle: 2026-07) via a private custom-app access token scoped to just those permissions.</p>
+
+    <h3>Multi-platform, without a rewrite</h3>
+    <p>The agent core never calls Shopify directly. It calls a small interface:</p>
+    <pre><code>class CommerceConnector:
+    def search_products(self, query: str) -> list[Product]: ...
+    def get_product(self, sku: str) -> Product | None: ...
+    def check_inventory(self, sku: str) -> InventoryStatus: ...
+    def create_cart_or_checkout(self, items: list[LineItem]) -> CheckoutLink: ...
+    def create_order(self, items: list[LineItem], customer: Customer) -> Order: ...</code></pre>
+    <p><code>ShopifyConnector</code> implements it now, using Storefront MCP for reads and Admin API for writes. A <code>WooCommerceConnector</code> or <code>BigCommerceConnector</code> later is new code behind the same interface — nothing about the agent, the VIN decoding, or the fitment logic changes.</p>
+  </section>
+
+  <section id="agent">
+    <span class="section-num">04</span>
+    <span class="chip ready" style="margin-bottom:10px">Ready — built on Claude's native tool-calling</span>
+    <h2>Agent core &amp; guided sales flow</h2>
+    <p class="lede">One conversational core, driven by Claude with tool-calling, shared by every channel.</p>
+
+    <h3>Bilingual by default, not by toggle</h3>
+    <p>Claude detects the language a customer writes or speaks in and responds in kind — a customer who opens in Spanish gets the whole conversation in Spanish, including quotes, objection handling, and follow-up messages; a mixed-language customer gets handled fluidly. The one thing to store explicitly is the customer's confirmed preferred language on their lead record, so a human agent (or a follow-up SMS) picks up in the same language later.</p>
+
+    <h3>Guided sales flow (the state machine)</h3>
+    <div class="phase"><div class="phase-when mono">1</div><div><h4>Greet &amp; qualify</h4><p>Detect channel, language, and rough intent (fitment question / pricing / warranty / just browsing) within the first exchange — this is the "answer in 30 seconds, not 30 minutes" requirement from your pain-points doc.</p></div></div>
+    <div class="phase"><div class="phase-when mono">2</div><div><h4>Vehicle ID</h4><p>Get VIN (decode via NHTSA) or year/make/model/engine by conversation. Confirm back to the customer.</p></div></div>
+    <div class="phase"><div class="phase-when mono">3</div><div><h4>Fitment &amp; sourcing</h4><p>Query the interchange engine, then check availability against your yard inventory and Shopify. Present exact match first, compatible alternatives if the exact part isn't in stock, with honest lead-time framing (ships today / 3 days / sourced in 7–10).</p></div></div>
+    <div class="phase"><div class="phase-when mono">4</div><div><h4>Quote &amp; persona-aware pitch</h4><p>Detect DIYer vs. mechanic vs. dealer from question style and adjust technical depth. Present price with the anchor-and-value framing your PDF already scripted ("industry standard $X, our price $Y with warranty").</p></div></div>
+    <div class="phase"><div class="phase-when mono">5</div><div><h4>Objection handling</h4><p>Detects hesitation language and deploys your existing objection scripts (quality, fitment, installation, durability, trust, price), customized with the specific part's warranty and specs rather than generic copy.</p></div></div>
+    <div class="phase"><div class="phase-when mono">6</div><div><h4>Close or hand off</h4><p>Completes checkout via the commerce connector, or — for a large/complex order, or if the customer asks for a human — books a callback and hands off with full context attached, never a cold transfer.</p></div></div>
+    <div class="phase"><div class="phase-when mono">7</div><div><h4>Follow-up</h4><p>If the conversation stalls without a close, hands off to the follow-up automation layer (section 6) instead of just ending.</p></div></div>
+
+    <p>Every tool call in this flow — decode VIN, check fitment, check inventory, create order, log event — is logged with a timestamp, which is what makes the funnel-tracking and CRM reporting in section 7 possible without extra instrumentation work later.</p>
+  </section>
+
+  <section id="channels">
+    <span class="section-num">05</span>
+    <h2>Channels: chat, email, SMS, and phone</h2>
+    <p class="lede">The agent core is channel-agnostic; each channel is a thin adapter that turns messages into the same conversation loop.</p>
+
+    <h3><span class="chip ready" style="margin-right:8px">Ready</span>Web chat</h3>
+    <p>Embedded on your landing page and Shopify storefront. Lowest-effort channel to ship first — no telephony, no email deliverability to configure.</p>
+
+    <h3><span class="chip ready" style="margin-right:8px">Ready</span>Email</h3>
+    <p>Outbound via SendGrid or Postmark (or Microsoft Graph API, since your team already works in Outlook — worth asking your developer which is less friction). Inbound replies parsed and routed back into the same conversation thread as a lead's chat/SMS history, so the agent has full context regardless of which channel the customer replies on.</p>
+
+    <h3><span class="chip ready" style="margin-right:8px">Ready — reuses what you already pay for</span>SMS</h3>
+    <p>RingCentral's own SMS API (<span class="mono">developers.ringcentral.com/sms-api</span>) sends and receives texts from your existing business number — no new vendor needed for this channel specifically.</p>
+
+    <h3><span class="chip decision" style="margin-right:8px">Needs a vendor decision</span>Phone / voice</h3>
+    <div class="callout finding">
+      <span class="callout-label">Key finding</span>
+      RingCentral's own Voice API is built for call control and analytics (mute, hold, transfer, transcription via RingSense) — it has no speech recognition, text-to-speech, or real-time conversation hooks, so it cannot host an autonomous AI phone agent by itself. Building the "AI answers the phone and qualifies the lead" capability from your PDF requires a dedicated voice-AI platform layered on top.
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Platform</th><th>Connects to your RingCentral number via</th><th>Pricing</th><th>EN/ES fit</th></tr></thead>
+        <tbody>
+          <tr><td><b>Retell AI</b></td><td>SIP trunk, any provider — no number porting</td><td>~$0.07/min, no platform fee</td><td>55 languages incl. Spanish</td></tr>
+          <tr><td><b>Vapi</b></td><td>SIP, multiple providers</td><td>Usage-based</td><td>Broad language support</td></tr>
+          <tr><td><b>Bland AI</b></td><td>Twilio-based, bring-your-own-telephony option</td><td>~$0.09–0.14/min + subscription</td><td>Multi-language</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Recommendation:</b> Retell AI — SIP trunking means your RingCentral number and existing setup stay exactly as they are; the AI sits alongside it rather than replacing it, and pay-per-minute billing suits a small team's call volume better than a flat subscription tier.</p>
+  </section>
+
+  <section id="followup">
+    <span class="section-num">06</span>
+    <span class="chip ready" style="margin-bottom:10px">Ready — automates a sequence you've already written</span>
+    <h2>Follow-up automation &amp; lead nurturing</h2>
+    <p>Your PDF mentions a 7-email sequence already built — the agent's job here is timing and personalization, not writing new copy:</p>
+    <ul class="plain">
+      <li><b>Drip delivery</b> — the existing sequence sent automatically, timed to lead behavior rather than a fixed clock (e.g. slower cadence for a lead who's still browsing, faster for one who asked about price).</li>
+      <li><b>Smart re-engagement</b> — if a customer goes quiet mid-conversation, the agent checks back with something specific ("that 2015 Camry engine you asked about is still available") rather than a generic nudge.</li>
+      <li><b>Appointment/callback scheduling</b> — booked directly by the agent into whatever calendar your team uses, no human round-trip required.</li>
+      <li><b>Multi-touch nurturing</b> — email, SMS, and chat reminders coordinated so a lead isn't hit with the same message on three channels at once.</li>
+    </ul>
+  </section>
+
+  <section id="crm">
+    <span class="section-num">07</span>
+    <span class="chip ready" style="margin-bottom:10px">Ready to hand your developer</span>
+    <h2>CRM &amp; reporting feed</h2>
+    <p class="lede">Section 11 of your PDF (CRM Integration &amp; Intelligence Suite) is a reporting and dashboard layer — it needs a clean stream of events to build on, which this system produces as a side effect of normal operation.</p>
+    <p>Every agent action already gets logged (section 4). The event schema your developer's dashboard work would consume:</p>
+    <pre><code>{
+  "event": "quote_generated",
+  "lead_id": "L-48213",
+  "timestamp": "2026-09-15T14:32:00Z",
+  "channel": "chat",
+  "agent": "ai",
+  "vehicle": {"year": 2015, "make": "Toyota", "model": "Camry", "engine": "2.5L"},
+  "part_matched": {"sku": "ENG-2AR-FE-0472", "category": "engine"},
+  "cost": 410.00,
+  "shipping": 85.00,
+  "price_quoted": 895.00,
+  "gross_profit": 400.00,
+  "source": "google_ads"
+}</code></pre>
+    <p>Feeding this stream into your in-house CRM (your developer already owns that system) is what makes the gross-profit reports, agent scorecards, order pipeline view, and day-end summary from your PDF buildable — this document doesn't re-spec that dashboard work, it defines the data it needs.</p>
+  </section>
+
+  <section id="roadmap">
+    <span class="section-num">08</span>
+    <h2>Phased roadmap</h2>
+    <p class="lede">Extends your PDF's roadmap with the plumbing each phase actually depends on.</p>
+
+    <div class="phase"><div class="phase-when mono">Wk 0</div><div><h4>Foundation <span class="chip ready">ready</span></h4><p>Shopify Storefront MCP connected; agent core skeleton with tool-calling; VIN decoder wired to NHTSA; event-logging schema agreed with your developer.</p></div></div>
+    <div class="phase"><div class="phase-when mono">Wk 1–2</div><div><h4>Web chat + email <span class="chip ready">ready</span></h4><p>Guided shopping live on your landing page and Shopify: VIN decode → fitment (mock provider until a vendor is signed) → quote from live inventory. Automated email drip sequence turned on.</p></div></div>
+    <div class="phase"><div class="phase-when mono">Wk 2–3</div><div><h4>SMS + scheduling <span class="chip ready">ready</span></h4><p>RingCentral SMS API wired in; appointment/callback booking automated.</p></div></div>
+    <div class="phase"><div class="phase-when mono">Wk 3–4</div><div><h4>Voice <span class="chip decision">decision needed</span></h4><p>Retell AI (or chosen alternative) connected via SIP trunk to your existing RingCentral number for call answering and lead qualification.</p></div></div>
+    <div class="phase"><div class="phase-when mono">Mo 2</div><div><h4>Bilingual polish + lead scoring <span class="chip later">later</span></h4><p>Persona detection tuned on real conversation data; predictive lead scoring layered onto the funnel events already being logged.</p></div></div>
+    <div class="phase"><div class="phase-when mono">Mo 2–3</div><div><h4>Real interchange data + CRM suite <span class="chip decision">decision needed</span></h4><p>Mock fitment provider swapped for whichever vendor you sign (Car-Parts.com recommended first); your developer builds the CEO dashboard and scorecards described in PDF section 11 on top of the event feed.</p></div></div>
+  </section>
+
+  <section id="decisions">
+    <span class="section-num">09</span>
+    <h2>Decisions only you can make</h2>
+    <p class="lede">Everything else in this document can move forward today. These five can't.</p>
+    <ul class="decisions">
+      <li>Pick a parts-interchange vendor to license (start the Car-Parts.com conversation, since your team already scoped that integration) — blocks real nationwide fitment coverage.</li>
+      <li>Pick a voice-AI platform for phone calls (Retell AI recommended) — blocks the "AI answers the phone" capability.</li>
+      <li>Confirm with your developer whether the in-house CRM can accept an incoming event feed (webhook or API) — determines how section 7 gets wired up.</li>
+      <li>Issue a Shopify custom-app access token scoped for inventory/order writes — needed the moment the agent needs to do more than read your catalog.</li>
+      <li>Approve API usage budget for Claude (agent core) and whichever voice/SMS/email vendors are chosen — all are usage-priced, not flat licenses, so cost scales with lead volume.</li>
+    </ul>
+  </section>
+
+  <section id="appendix">
+    <span class="section-num">10</span>
+    <h2>References used in this research</h2>
+    <ul class="plain">
+      <li><a href="https://vpic.nhtsa.dot.gov/api/">NHTSA vPIC Vehicle API</a> — free VIN decoding, verified live during this research.</li>
+      <li><a href="https://www.autocare.org/news/latest-news/details/2025/01/07/auto-care-association-releases-api-for-aces-pies-ipo-reference-databases">Auto Care Association — API for ACES/PIES/IPO reference databases</a> (Jan 2025).</li>
+      <li><a href="https://shopify.dev/docs/apps/build/storefront-mcp/servers/storefront">Shopify Storefront MCP server documentation</a>.</li>
+      <li><a href="https://shopify.dev/docs/api/admin-graphql/latest">Shopify Admin GraphQL API reference</a>.</li>
+      <li><a href="https://developers.ringcentral.com/voice-api">RingCentral Voice API</a> and <a href="https://developers.ringcentral.com/sms-api">SMS API</a> documentation.</li>
+      <li><a href="https://www.ringcentral.com/us/en/blog/introducing-ringcentral-apis-for-ai-video-and-social-messaging-and-no-code-workflow-builder/">RingCentral — AI, video &amp; messaging API announcement</a>.</li>
+      <li><a href="https://www.retellai.com/blog/best-ai-voice-agent-services-businesses">Retell AI — voice-AI platform comparison</a> (telephony integration &amp; pricing).</li>
+    </ul>
+  </section>
+
+  <footer>
+    Yards &amp; Parts — AI Agent Build Spec — v1, Sept 2026
+  </footer>
+
+</div>
+
+</body></html>

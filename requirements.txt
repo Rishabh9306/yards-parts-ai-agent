@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+twilio
+reportlab
+sendgrid
+python-dotenv
+sqlalchemy
+apscheduler
+pandas
+openpyxl
+httpx
+pydantic
+pydantic-settings
+python-multipart

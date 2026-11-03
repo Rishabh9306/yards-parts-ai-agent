@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yards &amp; Parts Automotive — Sales Dashboard</title>
+  <script src="https://cdn.tailwindcss.com">
+    // Battlecards Dropdown & Filter Utilities
+    function toggleBattlecardsDropdown(e) {
+      if (e) e.stopPropagation();
+      const dd = document.getElementById('battlecardsDropdown');
+      const chev = document.getElementById('battlecardsChev');
+      if (!dd) return;
+      const isHidden = dd.classList.contains('hidden');
+      if (isHidden) {
+        dd.classList.remove('hidden');
+        if (chev) chev.style.transform = 'rotate(180deg)';
+        const searchInput = document.getElementById('battlecardSearchInput');
+        if (searchInput) setTimeout(() => searchInput.focus(), 60);
+        dd.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        dd.classList.add('hidden');
+        if (chev) chev.style.transform = '';
+      }
+    }
+
+    function filterBattlecards(query) {
+      const q = (query || '').toLowerCase().trim();
+      const items = document.querySelectorAll('.battlecard-dropdown-item');
+      items.forEach(el => {
+        const text = el.innerText.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    // Dismiss battlecards dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('battlecardsDropdown');
+      const btn = document.getElementById('battlecardBtn');
+      if (dd && !dd.classList.contains('hidden')) {
+        if (!dd.contains(e.target) && (!btn || !btn.contains(e.target))) {
+          dd.classList.add('hidden');
+          const chev = document.getElementById('battlecardsChev');
+          if (chev) chev.style.transform = '';
+        }
+      }
+    });
+
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+  <!-- Top Navbar (White Theme) -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center font-bold text-white shadow-sm">
+          <i class="fa-solid fa-car text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-base sm:text-lg text-slate-900 leading-tight">Yards &amp; Parts Automotive</h1>
+          <p class="text-xs text-slate-500">Sales Dashboard &bull; Abandoned Quote Recovery</p>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs (Center) -->
+      <nav class="flex items-center gap-2">
+        <a href="/quoting" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid fa-barcode text-slate-500"></i> VIN Quoting Engine
+        </a>
+        <a href="/dashboard/rep" class="text-xs font-bold px-3 py-1.5 rounded-lg bg-blue-600 text-white border border-blue-600 shadow-xs flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-headset"></i> Sales Dashboard
+        </a>
+        <a href="/dashboard/auto-mailer" class="text-xs font-medium px-3 py-1.5 rounded-lg bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 hover:text-slate-900 transition flex items-center gap-1.5 shadow-2xs">
+          <i class="fa-solid fa-envelope-open-text text-slate-500"></i> Follow-up Automation
+        </a>
+      </nav>
+
+      <!-- Right-most: Action Button -->
+      <div class="flex items-center shrink-0">
+        <button onclick="syncToCRM()" id="syncBtn" class="bg-red-600 hover:bg-red-700 text-white text-xs font-semibold px-3.5 py-1.5 rounded-lg transition flex items-center gap-1.5 shadow-xs" title="Sync leads, quotes & deal stages to CRM">
+          <i class="fa-solid fa-arrows-rotate"></i> Sync to CRM
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- KPI Summary Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Total Quotes in Cadence</div>
+        <div class="text-2xl font-bold text-slate-900 mt-1" id="kpiTotal">0</div>
+        <div class="text-xs text-slate-500 mt-1">Multi-touch abandoned quotes</div>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Re-engaged Leads</div>
+        <div class="text-2xl font-bold text-emerald-600 mt-1" id="kpiReengaged">0</div>
+        <div class="text-xs text-emerald-600 font-medium mt-1">Responded to Voice or SMS</div>
+      </div>
+      <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Re-engagement Rate</div>
+        <div class="text-2xl font-bold text-amber-600 mt-1" id="kpiRate">0.0%</div>
+        <div class="text-xs text-slate-500 mt-1">Responded vs total quotes</div>
+      </div>
+    </div>
+
+    <!-- Visual Dynamic Call Flow State Diagram (White Theme) -->
+    <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-sitemap text-red-600"></i> AI Sales Call Workflow
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">Real-time conversation: verifies vehicle fitment, handles objections, negotiates pricing, and sends follow-up SMS</p>
+        </div>
+        <span class="text-xs bg-slate-100 text-slate-700 border border-slate-200 px-2.5 py-1 rounded font-medium">Live Twilio Voice</span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-7 gap-2 text-center text-xs">
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1">👋</div>
+          <div class="font-bold text-slate-800">1. Greeting</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Identity check</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1 text-slate-500"><i class="fa-solid fa-magnifying-glass"></i></div>
+          <div class="font-bold text-slate-800">2. Service Check</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Quote review</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1">📋</div>
+          <div class="font-bold text-slate-800">3. Project Scope</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Fitting timeline</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1">⚙️</div>
+          <div class="font-bold text-slate-800">4. Fitment Check</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Compatibility check</div>
+        </div>
+        <div onclick="toggleBattlecardsDropdown(event)" class="bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 rounded-lg p-2.5 cursor-pointer transition" title="Click to open 13 Battlecards tips dropdown">
+          <div class="text-base mb-1">🛡️</div>
+          <div class="font-bold text-slate-800 flex items-center justify-between">
+            <span>5. Battlecards</span>
+            <i class="fa-solid fa-chevron-down text-[8px] text-slate-400"></i>
+          </div>
+          <div class="text-[10px] text-slate-500 mt-0.5">13 Quick reference tips</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1">📝</div>
+          <div class="font-bold text-slate-800">6. Wrap Up</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Email spec sheet</div>
+        </div>
+        <div class="bg-slate-50 border border-slate-200 rounded-lg p-2.5">
+          <div class="text-base mb-1">🏁</div>
+          <div class="font-bold text-slate-800">7. Post-Call SMS</div>
+          <div class="text-[10px] text-slate-500 mt-0.5">Auto-sent recap</div>
+        </div>
+      </div>
+
+      <div class="mt-3 pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between text-xs gap-2">
+        <div class="flex items-center gap-2">
+          <span class="px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-semibold border border-purple-200">
+            ⚡ GLOBAL INTERRUPTS
+          </span>
+          <span class="text-slate-600"><b>Pricing (4% Trade Discount after Explicit Negotiation), Multi-Email Discount Offers (Emails &gt; 2) &amp; 13 Active Battlecards:</b> Integrated natively across Voice, SMS &amp; Email</span>
+        </div>
+        <div class="text-slate-500">
+          <i class="fa-solid fa-clock-rotate-left text-slate-400"></i> Adaptive: Pauses cadence if customer replies on Voice or SMS
+        </div>
+      </div>
+    </div>
+
+        <!-- Top Row: Customer Quote Simulator & Conversation Timeline (Side-by-Side, Equal Length) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch mb-6">
+
+      <!-- Left Column: Customer Quote & Follow-up Simulator (7 Columns) -->
+      <div class="lg:col-span-7 flex flex-col h-full">
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex-1 flex flex-col justify-between h-full">
+          <!-- Customer Quote & Follow-up Simulator -->
+        
+          <div class="flex items-center justify-between mb-1">
+            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-calculator text-red-600"></i> Customer Quote &amp; Follow-up Simulator
+            </h2>
+            <span class="text-[11px] text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200 font-medium">
+              659 Master Catalog Items
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 mb-4">
+            Select vehicle model &amp; catalog parts to build single or multi-part quotes, then trigger a live voice call, SMS, or quote email with attached PDF quote.
+          </p>
+
+          <!-- Model & Live Part Search -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Vehicle Model</label>
+              <select id="selModel" onchange="onModelChange()" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
+                <option value="FORTUNER" selected>FORTUNER (118 parts)</option>
+                <option value="INNOVA">INNOVA (146 parts)</option>
+                <option value="CRYSTA">CRYSTA (98 parts)</option>
+                <option value="GLANZA">GLANZA (42 parts)</option>
+                <option value="HICROSS">HICROSS (40 parts)</option>
+                <option value="HYRYDER">HYRYDER (34 parts)</option>
+                <option value="QUALIS">QUALIS (112 parts)</option>
+                <option value="URBAN_CRUSER">URBAN_CRUSER (29 parts)</option>
+                <option value="YARIS">YARIS (40 parts)</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-medium text-slate-700 mb-1 flex items-center justify-between">
+                <span>Live Parts Search</span>
+                <span id="partCountBadge" class="text-[10px] text-slate-500 font-normal">Loading parts...</span>
+              </label>
+              <div class="relative">
+                <input type="text" id="partSearchInput" oninput="filterPartsDropdown()" placeholder="Live search Fortuner parts by name or OEM #..." class="w-full bg-white border border-slate-300 rounded-lg pl-8 pr-3 py-2 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600">
+                <i class="fa-solid fa-magnifying-glass text-slate-400 absolute left-2.5 top-2.5 text-xs"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Catalog Part Selector & Add Button -->
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3.5 mb-4">
+            <div class="flex flex-col sm:flex-row gap-2 items-end">
+              <div class="flex-1 w-full">
+                <label class="block text-[11px] font-medium text-slate-600 mb-1">Catalog Part (Strictly Filtered to Selected Model)</label>
+                <select id="selPart" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-red-600">
+                  <option value="">Loading catalog parts...</option>
+                </select>
+              </div>
+              <button type="button" onclick="addSelectedPart()" class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-semibold text-xs px-3.5 py-2 rounded-lg transition flex items-center justify-center gap-1.5 shadow-xs">
+                <i class="fa-solid fa-plus"></i> Add Part
+              </button>
+            </div>
+
+            <!-- Quoted Parts Table (Single or Multiple items) -->
+            <div class="mt-3 pt-3 border-t border-slate-200">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+                  <i class="fa-solid fa-boxes-stacked text-red-600"></i> Quoted Items in Proposal (<span id="selectedPartsCount">0</span>)
+                </span>
+                <div class="text-xs font-semibold text-emerald-700 font-mono bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded">
+                  Combined Total: $<span id="selectedPartsTotal">0.00</span>
+                </div>
+              </div>
+              <div id="selectedPartsList" class="space-y-1.5 max-h-40 overflow-y-auto pr-1 text-xs">
+                <!-- Dynamically rendered list of parts with [-] remove icon -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Customer Name & Contact Information -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Lead / Customer</label>
+              <select id="custNameSelect" onchange="onCustomerSelectChange()" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-red-600">
+                <option value="John Miller" selected>John Miller</option>
+                <option value="Mike Davis">Mike Davis</option>
+                <option value="Sarah Wilson">Sarah Wilson</option>
+                <option value="Emily Brown">Emily Brown</option>
+                <option value="Alex Carter">Alex Carter</option>
+                <option value="David Smith">David Smith</option>
+                <option value="Emma Taylor">Emma Taylor</option>
+                <option value="Ryan Cooper">Ryan Cooper</option>
+                <option value="Anna Parker">Anna Parker</option>
+                <option value="Chris Martin">Chris Martin</option>
+                <option value="Jake Wilson">Jake Wilson</option>
+                <option value="Lisa Morgan">Lisa Morgan</option>
+                <option value="Ben Adams">Ben Adams</option>
+                <option value="Kate Collins">Kate Collins</option>
+                <option value="Sam Turner">Sam Turner</option>
+                <option value="Mark Evans">Mark Evans</option>
+                <option value="Amy Brooks">Amy Brooks</option>
+                <option value="Tom Harris">Tom Harris</option>
+                <option value="Jack Reed">Jack Reed</option>
+                <option value="Mia Foster">Mia Foster</option>
+                <option value="__custom__">Custom / Enter Name...</option>
+              </select>
+              <input type="text" id="custNameCustom" placeholder="Enter custom name" class="w-full mt-1.5 bg-white border border-slate-300 rounded-lg px-3 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-red-600 hidden">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Target Phone Number</label>
+              <input type="text" id="custPhone" value="+15550192834" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-red-600 font-mono">
+              <div class="flex items-center justify-between mt-1">
+                <span class="text-[10px] text-slate-500">Twilio Trial verified:</span>
+                <button type="button" onclick="document.getElementById('custPhone').value='+15550192834'" class="text-[10px] font-mono text-red-600 font-semibold hover:underline cursor-pointer" title="Click to fill verified test number">+15550192834 (Verified)</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Customer Email Address</label>
+              <input type="email" id="custEmail" value="orders@yardsparts.com" placeholder="your_email@domain.com" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-red-600 font-mono">
+            </div>
+          </div>
+
+          <!-- Action Buttons (Simple Colors) -->
+          <div class="flex flex-wrap items-center gap-3">
+            <button onclick="triggerAction('voice')" id="btnVoice" class="bg-red-600 hover:bg-red-700 text-white font-semibold text-xs px-4 py-2.5 rounded-lg transition flex items-center gap-2 shadow-xs">
+              <i class="fa-solid fa-phone"></i> <span>Trigger Voice Call</span>
+            </button>
+            <button onclick="triggerAction('sms')" id="btnSms" class="bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs px-4 py-2.5 rounded-lg transition flex items-center gap-2 shadow-xs">
+              <i class="fa-solid fa-message"></i> <span>Send Follow-up SMS</span>
+            </button>
+            <button onclick="triggerAction('email')" id="btnEmail" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs px-4 py-2.5 rounded-lg transition flex items-center gap-2 shadow-xs">
+              <i class="fa-solid fa-envelope"></i> <span>Send Quote Email (PDF)</span>
+            </button>
+          </div>
+          <div id="triggerStatus" class="mt-3 text-xs hidden"></div>
+        </div>
+      </div>
+
+      <!-- Right Column: Conversation Timeline (5 Columns, Expanded to match Simulator length) -->
+      <div class="lg:col-span-5 flex flex-col h-full">
+        <!-- Live Conversation Timeline (Expanded to match simulator length) -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex-1 flex flex-col relative h-full">
+          <div class="flex items-center justify-between mb-1">
+            <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+              <i class="fa-solid fa-comments text-amber-500"></i> Conversation Timeline
+            </h2>
+            
+            <!-- Battlecards Quick Tips Dropdown (Non-intrusive, 0 Vertical Space) -->
+            <div class="relative inline-block text-left" id="battlecardsDropdownWrapper">
+              <button type="button" id="battlecardBtn" onclick="toggleBattlecardsDropdown(event)" class="text-xs font-semibold px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 transition flex items-center gap-1.5 shadow-2xs" title="Open 13 sales battlecard scripts & tips">
+                <i class="fa-solid fa-shield-halved text-emerald-600"></i>
+                <span>Battlecards (13)</span>
+                <i class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200" id="battlecardsChev"></i>
+              </button>
+
+              <!-- Floating Popover / Dropdown Menu -->
+              <div id="battlecardsDropdown" class="hidden absolute right-0 mt-2 w-80 sm:w-96 bg-white border border-slate-200 rounded-xl shadow-xl z-50 p-3 max-h-[490px] overflow-hidden flex flex-col">
+                <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-100">
+                  <span class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                    <i class="fa-solid fa-shield-halved text-emerald-600"></i> Battlecards Quick Reference
+                  </span>
+                  <span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-2 py-0.5 rounded-full">13 Official Tips</span>
+                </div>
+                <div class="relative mb-2">
+                  <input type="text" id="battlecardSearchInput" oninput="filterBattlecards(this.value)" placeholder="Search objection, e.g. warranty, mileage..." class="w-full bg-slate-50 border border-slate-200 rounded-lg pl-7 pr-3 py-1.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white">
+                  <i class="fa-solid fa-magnifying-glass text-slate-400 absolute left-2.5 top-2 text-[10px]"></i>
+                </div>
+                <div id="battlecardsList" class="space-y-1.5 overflow-y-auto pr-1 text-xs max-h-[380px]">
+                  
+                  <!-- 1. Mileage Concern -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer" open>
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🔧 Mileage Concern</span>
+                      <span class="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">Verified &lt;80k km</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">All engine and transmission units sourced under 80,000 km with full vehicle inspection logs attached.</p>
+                  </details>
+
+                  <!-- 2. Compression Testing -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🔩 Compression Testing</span>
+                      <span class="text-[9px] text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full font-medium">4-Point Bench</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Certified 4-point hydraulic bench test certificate sent prior to warehouse dispatch.</p>
+                  </details>
+
+                  <!-- 3. Freight Timelines -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🚚 Freight Timelines</span>
+                      <span class="text-[9px] text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full font-medium">24h Dispatch</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">24-hour dispatch. Metro delivery within 3–5 business days with direct carrier tracking link.</p>
+                  </details>
+
+                  <!-- 4. Warranty & Fitment -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🛡️ Warranty &amp; Fitment</span>
+                      <span class="text-[9px] text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full font-medium">30d + 90d</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">30-day fitment guarantee + 90-day mechanical replacement warranty.</p>
+                  </details>
+
+                  <!-- 5. Part Compatibility -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>📋 Part Compatibility</span>
+                      <span class="text-[9px] text-teal-700 bg-teal-50 border border-teal-200 px-2 py-0.5 rounded-full font-medium">VIN Verified</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Vehicle compatibility verified using the VIN, year, make, model, and engine specifications before quoting.</p>
+                  </details>
+
+                  <!-- 6. Product Transparency -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>📸 Product Transparency</span>
+                      <span class="text-[9px] text-pink-700 bg-pink-50 border border-pink-200 px-2 py-0.5 rounded-full font-medium">Actual Unit Photos</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Actual product photos available on request to verify the unit's condition, configuration, and visible identification numbers.</p>
+                  </details>
+
+                  <!-- 7. Competitive Pricing -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>💰 Competitive Pricing</span>
+                      <span class="text-[9px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-medium">Value First</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Transparent pricing with part cost and freight charges clearly itemized. Alternative options offered when available.</p>
+                  </details>
+
+                  <!-- 8. Inventory Availability -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>📦 Inventory Availability</span>
+                      <span class="text-[9px] text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full font-medium">Stock Confirmed</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Stock availability and warehouse location confirmed before payment or order commitment.</p>
+                  </details>
+
+                  <!-- 9. Returns & Replacements -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🔄 Returns &amp; Replacements</span>
+                      <span class="text-[9px] text-orange-700 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full font-medium">Clear Process</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Clear return and replacement procedures communicated upfront, subject to the applicable warranty and return policy.</p>
+                  </details>
+
+                  <!-- 10. Order Updates -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>📞 Order Updates</span>
+                      <span class="text-[9px] text-sky-700 bg-sky-50 border border-sky-200 px-2 py-0.5 rounded-full font-medium">Proactive Comm</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Customers receive updates on order confirmation, dispatch, tracking, and any unexpected delivery delays.</p>
+                  </details>
+
+                  <!-- 11. Part Number Matching -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span class="flex items-center gap-1"><i class="fa-solid fa-magnifying-glass text-slate-500 text-[10px]"></i> Part Number Matching</span>
+                      <span class="text-[9px] text-cyan-700 bg-cyan-50 border border-cyan-200 px-2 py-0.5 rounded-full font-medium">Cross-Reference</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">OEM and interchange part numbers cross-checked against available catalog data to reduce incorrect-part orders.</p>
+                  </details>
+
+                  <!-- 12. Quote Follow-Up -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🤝 Quote Follow-Up</span>
+                      <span class="text-[9px] text-violet-700 bg-violet-50 border border-violet-200 px-2 py-0.5 rounded-full font-medium">No-Pressure</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Follow up on pending quotes, answer technical questions, and provide suitable alternatives without pressuring the customer.</p>
+                  </details>
+
+                  <!-- 13. Trusted Experience -->
+                  <details class="battlecard-dropdown-item bg-slate-50 hover:bg-slate-100/80 rounded-lg p-2.5 border border-slate-200 transition cursor-pointer">
+                    <summary class="font-semibold text-slate-800 flex items-center justify-between text-xs">
+                      <span>🏆 Trusted Experience</span>
+                      <span class="text-[9px] text-yellow-700 bg-yellow-50 border border-yellow-200 px-2 py-0.5 rounded-full font-medium">25 Yrs | 100k+</span>
+                    </summary>
+                    <p class="text-slate-600 text-[11px] mt-1.5 leading-relaxed">Backed by 25 years of industry experience and the trust of over 100,000 satisfied customers, delivering reliable automotive parts and customer-focused service.</p>
+                  </details>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <p class="text-xs text-slate-500 mb-4">Unified cross-channel transcript (Voice turns, SMS, Post-call summaries)</p>
+
+          <div id="timelineContainer" class="space-y-3 flex-1 overflow-y-auto pr-1 text-xs min-h-[380px] max-h-[640px]">
+            <div class="text-center py-16 text-slate-400">
+              <i class="fa-solid fa-headset text-3xl mb-2 opacity-40"></i>
+              <p class="font-medium">Select a lead from the table below or trigger a test call to view conversation turns.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Row: Active Cadence Leads Table (Full Screen Width) -->
+    <div class="w-full">
+      <!-- Leads in Cadence Table with Live Customer Name Search -->
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+            <div>
+              <h2 class="text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-list-check text-slate-500"></i> Active Cadence Leads
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">Filter by customer name in real time</p>
+            </div>
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <div class="relative flex-1 sm:w-60">
+                <input type="text" id="leadNameFilter" oninput="filterLeadsByName()" placeholder="Search customer name..." class="w-full bg-white border border-slate-300 rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-red-600">
+                <i class="fa-solid fa-user text-slate-400 absolute left-2.5 top-2 text-[11px]"></i>
+              </div>
+              <button onclick="loadLeads()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 px-2.5 py-1.5 rounded-lg transition flex items-center gap-1 border border-slate-200" title="Refresh leads">
+                <i class="fa-solid fa-rotate-right"></i>
+              </button>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-50 text-slate-600 uppercase tracking-wider text-[10px] border-b border-slate-200">
+                <tr>
+                  <th class="py-2.5 px-3">Lead / Customer</th>
+                  <th class="py-2.5 px-3">Model &amp; Quoted Part(s)</th>
+                  <th class="py-2.5 px-3">Quote ($)</th>
+                  <th class="py-2.5 px-3">Status</th>
+                  <th class="py-2.5 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="leadsTableBody" class="divide-y divide-slate-100 text-slate-700">
+                <tr><td colspan="5" class="py-4 text-center text-slate-400">Loading leads...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Global Catalog & Selection State
+    let currentCatalogParts = [];
+    let selectedParts = [];
+    let allLeads = [];
+    const openCartDrawers = new Set();
+    const openConnectTrays = new Set();
+
+    // On page load, initialize catalog for FORTUNER
+    document.addEventListener('DOMContentLoaded', () => {
+      onModelChange();
+      loadAnalytics();
+      loadLeads();
+      setInterval(() => { loadAnalytics(); }, 10000);
+    });
+
+    // Model Change: Strictly load parts for this model
+    async function onModelChange() {
+      const model = document.getElementById('selModel').value;
+      const countBadge = document.getElementById('partCountBadge');
+      const searchInput = document.getElementById('partSearchInput');
+
+      countBadge.innerText = `Fetching ${model} parts...`;
+      searchInput.value = '';
+      searchInput.placeholder = `Live search ${model} parts by name or OEM #...`;
+
+      try {
+        const res = await fetch(`/api/catalog/parts?model=${encodeURIComponent(model)}`);
+        const data = await res.json();
+        currentCatalogParts = data.parts || [];
+        countBadge.innerText = `${currentCatalogParts.length} parts available`;
+
+        // Reset selected parts if model changed and pre-select first part
+        selectedParts = [];
+        if (currentCatalogParts.length > 0) {
+          selectedParts.push(currentCatalogParts[0]);
+        }
+        renderPartsDropdown(currentCatalogParts);
+        renderSelectedParts();
+      } catch (e) {
+        console.error("Failed to load catalog parts", e);
+        countBadge.innerText = "Error loading catalog";
+      }
+    }
+
+    // Populate the dropdown
+    function renderPartsDropdown(partsList) {
+      const partSelect = document.getElementById('selPart');
+      if (!partsList.length) {
+        partSelect.innerHTML = '<option value="">No matching parts found</option>';
+        return;
+      }
+
+      partSelect.innerHTML = partsList.map(p => {
+        return `<option value="${p.id}">${p.part_description} (OEM: ${p.part_number}) &mdash; $${p.price_usd.toFixed(2)}</option>`;
+      }).join('');
+    }
+
+    // Live Search Filter for Parts Dropdown
+    function filterPartsDropdown() {
+      const q = document.getElementById('partSearchInput').value.toLowerCase().trim();
+      const countBadge = document.getElementById('partCountBadge');
+
+      if (!q) {
+        renderPartsDropdown(currentCatalogParts);
+        countBadge.innerText = `${currentCatalogParts.length} parts available`;
+        return;
+      }
+
+      const filtered = currentCatalogParts.filter(p => 
+        p.part_description.toLowerCase().includes(q) ||
+        p.part_number.toLowerCase().includes(q) ||
+        (p.category && p.category.toLowerCase().includes(q))
+      );
+
+      renderPartsDropdown(filtered);
+      countBadge.innerText = `Showing ${filtered.length} of ${currentCatalogParts.length} parts`;
+    }
+
+    // Add selected part to the proposal
+    function addSelectedPart() {
+      const partSelect = document.getElementById('selPart');
+      const selectedId = parseInt(partSelect.value, 10);
+      if (!selectedId) return;
+
+      const partObj = currentCatalogParts.find(p => p.id === selectedId);
+      if (partObj) {
+        selectedParts.push(partObj);
+        renderSelectedParts();
+      }
+    }
+
+    // Remove part from proposal
+    function removePart(index) {
+      if (index >= 0 && index < selectedParts.length) {
+        selectedParts.splice(index, 1);
+        renderSelectedParts();
+      }
+    }
+
+    // Render Quoted Parts Table & Calculate Dynamic Total
+    function renderSelectedParts() {
+      const listContainer = document.getElementById('selectedPartsList');
+      const totalSpan = document.getElementById('selectedPartsTotal');
+      const countSpan = document.getElementById('selectedPartsCount');
+
+      countSpan.innerText = selectedParts.length;
+
+      if (!selectedParts.length) {
+        listContainer.innerHTML = '<div class="text-slate-400 py-2 text-center text-xs">No parts added yet. Click "+ Add Part" above.</div>';
+        totalSpan.innerText = '0.00';
+        return;
+      }
+
+      let total = 0;
+      listContainer.innerHTML = selectedParts.map((p, idx) => {
+        total += p.price_usd;
+        return `
+          <div class="flex items-center justify-between p-2 rounded-lg bg-white border border-slate-200 hover:border-slate-300 transition shadow-2xs">
+            <div class="truncate max-w-[70%]">
+              <span class="font-semibold text-slate-800 block truncate">${p.part_description}</span>
+              <span class="text-[10px] text-slate-500 font-mono">OEM: ${p.part_number} &bull; ${p.category || 'General'}</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-slate-900">$${p.price_usd.toFixed(2)}</span>
+              <button type="button" onclick="removePart(${idx})" class="text-red-600 hover:text-red-700 p-1 rounded hover:bg-red-50 transition" title="Remove part">
+                <i class="fa-solid fa-minus text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      totalSpan.innerText = total.toFixed(2);
+    }
+
+    // Customer Name Select Handling
+    function onCustomerSelectChange() {
+      const sel = document.getElementById('custNameSelect');
+      const customInput = document.getElementById('custNameCustom');
+      if (sel.value === '__custom__') {
+        customInput.classList.remove('hidden');
+        customInput.focus();
+      } else {
+        customInput.classList.add('hidden');
+      }
+    }
+
+    function getSelectedCustomerName() {
+      const sel = document.getElementById('custNameSelect');
+      if (sel.value === '__custom__') {
+        const val = document.getElementById('custNameCustom').value.trim();
+        return val || "John Miller";
+      }
+      return sel.value;
+    }
+
+    // Live Search Leads by Customer Name
+    function filterLeadsByName() {
+      const q = document.getElementById('leadNameFilter').value.toLowerCase().trim();
+      if (!allLeads.length) return;
+
+      if (!q) {
+        renderLeadsTable(allLeads);
+        return;
+      }
+
+      const filtered = allLeads.filter(l => 
+        (l.customer_name && l.customer_name.toLowerCase().includes(q))
+      );
+      renderLeadsTable(filtered);
+    }
+
+    // Load Analytics
+    async function loadAnalytics() {
+      try {
+        const res = await fetch('/api/analytics');
+        const data = await res.json();
+        document.getElementById('kpiTotal').innerText = data.total_leads || 0;
+        document.getElementById('kpiReengaged').innerText = data.re_engaged_count || 0;
+        document.getElementById('kpiRate').innerText = (data.re_engagement_rate || 0).toFixed(1) + '%';
+        const revEl = document.getElementById('kpiRevenue');
+        if (revEl) revEl.innerText = '$' + (data.recovered_revenue || 0).toFixed(2);
+      } catch (e) {
+        console.error("Analytics load failed", e);
+      }
+    }
+
+    // Load Leads
+    async function loadLeads() {
+      try {
+        const res = await fetch('/leads');
+        allLeads = await res.json();
+        const currentFilter = document.getElementById('leadNameFilter').value.trim();
+        if (currentFilter) {
+          filterLeadsByName();
+        } else {
+          renderLeadsTable(allLeads);
+        }
+      } catch (e) {
+        console.error("Leads load failed", e);
+      }
+    }
+
+    // Render Leads Table
+    function renderLeadsTable(leads) {
+      const tbody = document.getElementById('leadsTableBody');
+      if (!leads.length) {
+        tbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-slate-400">No matching leads found.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = leads.map(l => {
+        let badge = 'bg-slate-100 text-slate-700 border border-slate-200';
+        if (l.status === 're_engaged' || l.status === 'verbal_agreement') badge = 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+        if (l.status === 'active') badge = 'bg-amber-50 text-amber-700 border border-amber-200';
+        if (l.status === 'closed_won') badge = 'bg-blue-50 text-blue-700 border border-blue-200';
+        if (l.status === 'quote_emailed') badge = 'bg-sky-50 text-sky-700 border border-sky-200';
+        if (l.status === 'closed_lost') badge = 'bg-slate-100 text-slate-600 border border-slate-200';
+
+        const quoteVal = l.quote_value_usd || 0;
+        const isHighValue = quoteVal >= 100.0;
+
+        const isCartOpen = openCartDrawers.has(l.id);
+        const cartHiddenClass = isCartOpen ? '' : 'hidden';
+        const cartChevRotate = isCartOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+
+        const isConnectOpen = openConnectTrays.has(l.id);
+        const connectHiddenClass = isConnectOpen ? '' : 'hidden';
+        const connChevRotate = isConnectOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+
+        const itemsList = (l.items && l.items.length) ? l.items : [{
+          part_description: l.part_description || 'OEM / Recycled Part',
+          part_number: l.part_number || 'OEM',
+          category: l.category || 'Mechanical System',
+          price_usd: quoteVal,
+        }];
+
+        const itemsCount = itemsList.length;
+        const itemCountBadge = itemsCount === 1
+          ? `<span class="text-[10px] bg-slate-100 group-hover:bg-red-50 text-slate-700 group-hover:text-red-700 font-semibold px-2 py-0.5 rounded-full border border-slate-200 transition flex items-center gap-1"><i class="fa-solid fa-cart-shopping text-red-600 text-[9px]"></i> 1 Item <i class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200" id="cartChev-${l.id}" style="transform: ${cartChevRotate};"></i></span>`
+          : `<span class="text-[10px] bg-red-50 text-red-700 font-bold px-2 py-0.5 rounded-full border border-red-200 transition flex items-center gap-1 shadow-2xs"><i class="fa-solid fa-cart-shopping text-red-600 text-[9px]"></i> ${itemsCount} Items in Basket <i class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200" id="cartChev-${l.id}" style="transform: ${cartChevRotate};"></i></span>`;
+
+        const itemsRows = itemsList.map((it, idx) => `
+          <tr class="hover:bg-slate-50/70 transition">
+            <td class="py-2.5 px-3 font-semibold text-slate-900 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center text-[10px] font-bold shrink-0 border border-slate-200">${idx + 1}</span>
+              <span class="leading-tight">${it.part_description || 'OEM / Recycled Part'}</span>
+            </td>
+            <td class="py-2.5 px-3 font-mono font-medium text-slate-600">${it.part_number || 'OEM'}</td>
+            <td class="py-2.5 px-3 text-slate-500">${it.category || 'Genuine Assembly'}</td>
+            <td class="py-2.5 px-3 text-center font-bold text-slate-800">1</td>
+            <td class="py-2.5 px-3 text-right font-mono font-bold text-slate-900">$${parseFloat(it.price_usd || 0).toFixed(2)}</td>
+          </tr>
+        `).join('');
+
+        const multiTotalFooter = itemsCount > 1 ? `
+          <tfoot class="border-t-2 border-slate-200 bg-slate-50/80 font-bold">
+            <tr>
+              <td colspan="3" class="py-2.5 px-3 text-right text-slate-700">Combined Cart Total (${itemsCount} Items):</td>
+              <td class="py-2.5 px-3 text-center text-slate-900">${itemsCount}</td>
+              <td class="py-2.5 px-3 text-right font-mono text-emerald-700 text-sm">$${quoteVal.toFixed(2)}</td>
+            </tr>
+          </tfoot>
+        ` : '';
+
+        const primaryBtn = isHighValue
+          ? `<button onclick="event.stopPropagation(); triggerLeadCall(${l.id})" class="text-[11px] bg-red-600 hover:bg-red-700 text-white font-semibold px-2.5 py-1 rounded transition flex items-center gap-1 shadow-2xs" title="High-value quote ($${quoteVal.toFixed(2)}) &mdash; Voice Call Recommended"><i class="fa-solid fa-phone text-[10px]"></i> Call</button>`
+          : `<button onclick="event.stopPropagation(); triggerContextEmail(${l.id})" class="text-[11px] bg-blue-600 hover:bg-blue-700 text-white font-semibold px-2.5 py-1 rounded transition flex items-center gap-1 shadow-2xs" title="Consumable/Lower quote ($${quoteVal.toFixed(2)}) &mdash; Email Recommended"><i class="fa-solid fa-envelope text-[10px]"></i> Email</button>`;
+
+        const connectBtn = `
+          <div class="relative inline-block text-left" onclick="event.stopPropagation()">
+            <button onclick="toggleConnectTray(${l.id})" class="text-[11px] bg-slate-800 hover:bg-slate-900 text-white font-semibold px-2.5 py-1 rounded transition flex items-center gap-1.5 shadow-2xs" title="Connect options">
+              <span>Connect</span> <i class="fa-solid fa-chevron-down text-[8px] transition-transform duration-200" id="connChev-${l.id}" style="transform: ${connChevRotate};"></i>
+            </button>
+            <div id="connectTray-${l.id}" class="${connectHiddenClass} absolute right-0 mt-1.5 w-36 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50 text-left text-xs font-medium">
+              <button onclick="event.stopPropagation(); triggerLeadCall(${l.id}); toggleConnectTray(${l.id})" class="w-full px-3 py-1.5 text-slate-700 hover:bg-red-50 hover:text-red-700 flex items-center gap-2 transition text-left">
+                <i class="fa-solid fa-phone text-red-600 w-3.5 text-center text-[10px]"></i>
+                <span>Voice Call</span>
+              </button>
+              <button onclick="event.stopPropagation(); triggerContextEmail(${l.id}); toggleConnectTray(${l.id})" class="w-full px-3 py-1.5 text-slate-700 hover:bg-blue-50 hover:text-blue-700 flex items-center gap-2 transition text-left">
+                <i class="fa-solid fa-envelope text-blue-600 w-3.5 text-center text-[10px]"></i>
+                <span>Quote Email</span>
+              </button>
+              <button onclick="event.stopPropagation(); triggerLeadSms(${l.id}); toggleConnectTray(${l.id})" class="w-full px-3 py-1.5 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 flex items-center gap-2 transition text-left">
+                <i class="fa-solid fa-message text-emerald-600 w-3.5 text-center text-[10px]"></i>
+                <span>Follow-up SMS</span>
+              </button>
+            </div>
+          </div>
+        `;
+
+        return `
+          <!-- Main Table Row -->
+          <tr class="hover:bg-slate-50/80 cursor-pointer transition border-b border-slate-100" onclick="selectLead(${l.id})">
+            <td class="py-3 px-3">
+              <span class="font-semibold text-slate-900 block">${l.customer_name}</span>
+              <span class="text-[10px] text-slate-500 font-mono">${l.phone || ''}</span>
+            </td>
+            <td class="py-3 px-3 group" onclick="event.stopPropagation(); toggleCartDrawer(${l.id}); selectLead(${l.id})" title="Click to expand complete cart details">
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-900 group-hover:text-red-600 transition">${l.model}</span>
+                ${itemCountBadge}
+              </div>
+              <span class="text-slate-600 block text-[11px] group-hover:text-slate-900 transition leading-tight mt-0.5">${l.part_description || ''}</span>
+            </td>
+            <td class="py-3 px-3 font-mono font-semibold text-slate-900">$${quoteVal.toFixed(2)}</td>
+            <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-semibold ${badge}">${l.status}</span></td>
+            <td class="py-3 px-3 text-right">
+              <div class="flex items-center justify-end gap-1.5">
+                ${primaryBtn}
+                ${connectBtn}
+              </div>
+            </td>
+          </tr>
+
+          <!-- Expandable Complete Cart Order Details Drawer -->
+          <tr id="cartDrawer-${l.id}" class="${cartHiddenClass} bg-slate-50/95 border-b border-slate-200 transition-all">
+            <td colspan="5" class="p-3.5">
+              <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-md bg-red-600 text-white flex items-center justify-center text-xs font-bold">
+                      <i class="fa-solid fa-boxes-stacked"></i>
+                    </span>
+                    <span class="font-bold text-slate-900 text-xs">Complete Cart Order Details &bull; ${l.customer_name} (${itemsCount} ${itemsCount === 1 ? 'Item' : 'Items in Basket'})</span>
+                    <span class="text-[10px] bg-slate-100 text-slate-600 border border-slate-200 px-2 py-0.5 rounded font-mono">Model: ${l.model} &bull; Lead #${l.id}</span>
+                  </div>
+                  <button onclick="toggleCartDrawer(${l.id})" class="text-slate-400 hover:text-slate-600 text-xs p-1" title="Close cart view">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+                </div>
+
+                <!-- Complete Itemized Order Table (Shows all 1 to 6 items!) -->
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left text-xs">
+                    <thead class="bg-slate-50 text-slate-500 uppercase tracking-wider text-[10px] border-b border-slate-200">
+                      <tr>
+                        <th class="py-2 px-3">Catalog Part Full Description</th>
+                        <th class="py-2 px-3">OEM Part Number</th>
+                        <th class="py-2 px-3">Category</th>
+                        <th class="py-2 px-3 text-center">Qty</th>
+                        <th class="py-2 px-3 text-right">Price (USD)</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                      ${itemsRows}
+                    </tbody>
+                    ${multiTotalFooter}
+                  </table>
+                </div>
+
+                <!-- Order Guarantees & Link -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2 text-[11px] text-slate-600 border-t border-slate-100">
+                  <div class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-emerald-600"></i> <b>Warranty:</b> 30d Fitment + 90d Mechanical</div>
+                  <div class="flex items-center gap-1.5"><i class="fa-solid fa-truck-fast text-blue-600"></i> <b>Shipping:</b> Priority Express Freight (24h Dispatch)</div>
+                  <div class="flex items-center gap-1.5 justify-end">
+                    <a href="/quoting" class="text-blue-600 hover:text-blue-800 font-semibold flex items-center gap-1">
+                      <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i> Open Quoting Engine
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          `;
+      }).join('');
+    }
+
+    // Select Lead to view unified conversation timeline
+    async function selectLead(leadId) {
+      try {
+        const res = await fetch(`/api/lead-timeline/${leadId}`);
+        const data = await res.json();
+        const container = document.getElementById('timelineContainer');
+        
+        let html = `<div class="p-2.5 bg-slate-100 border border-slate-200 rounded-lg text-slate-800 font-semibold mb-2 text-xs">Lead #${data.lead.id} &bull; ${data.lead.customer_name} (${data.lead.model})</div>`;
+
+        if (!data.messages.length) {
+          html += '<p class="text-slate-400 text-center py-4">No conversation turns recorded yet.</p>';
+        } else {
+          html += data.messages.map(m => {
+            const isAi = m.role === 'assistant';
+            const isSystem = m.role === 'system';
+            let bg = isAi ? 'bg-slate-50 border-slate-200 text-slate-800' : 'bg-red-50 border-red-200 text-slate-900';
+            if (isSystem) bg = 'bg-amber-50 border-amber-200 text-amber-800 italic';
+
+            const icon = m.channel === 'voice' ? 'fa-phone text-blue-600' : (m.channel === 'sms' ? 'fa-comment text-emerald-600' : 'fa-envelope text-purple-600');
+            let speakerLabel = isAi ? 'Alex (AI Parts Specialist)' : data.lead.customer_name;
+            if (isSystem) speakerLabel = 'System Log';
+
+            return `
+              <div class="p-3 rounded-lg border ${bg} text-xs shadow-2xs">
+                <div class="flex items-center justify-between text-[10px] text-slate-500 mb-1">
+                  <span class="font-bold flex items-center gap-1.5"><i class="fa-solid ${icon}"></i> ${speakerLabel}</span>
+                  <span>${new Date(m.created_at).toLocaleTimeString()}</span>
+                </div>
+                <p class="leading-relaxed">${m.content}</p>
+              </div>
+            `;
+          }).join('');
+        }
+        container.innerHTML = html;
+      } catch (e) {
+        console.error("Timeline load failed", e);
+      }
+    }
+
+    // Trigger Simulator Action (Voice, SMS, Email) with Multi-Part Support
+    async function triggerAction(channel) {
+      if (!selectedParts.length) {
+        alert("Please add at least one catalog part to the proposal!");
+        return;
+      }
+
+      const model = document.getElementById('selModel').value;
+      const name = getSelectedCustomerName();
+      const phone = document.getElementById('custPhone').value.trim();
+      const email = document.getElementById('custEmail').value.trim() || "orders@yardsparts.com";
+      const statusDiv = document.getElementById('triggerStatus');
+
+      const targetDesc = channel === 'email' ? email : phone;
+      statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200 block";
+      statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Triggering ${channel.toUpperCase()} to ${targetDesc}...`;
+
+      try {
+        const res = await fetch('/api/leads/test-trigger', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({
+            customer_name: name,
+            phone: phone,
+            email: email,
+            model: model,
+            parts: selectedParts,
+            channel: channel,
+          })
+        });
+        let data;
+        try {
+          data = await res.json();
+        } catch (e) {
+          throw new Error("Server returned non-JSON response. Check backend connection.");
+        }
+
+        if (!res.ok || data.status === 'error') {
+          statusDiv.className = "mt-3 text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 block";
+          statusDiv.innerHTML = `
+            <div class="font-bold flex items-center gap-1.5 text-red-700">
+              <i class="fa-solid fa-circle-exclamation text-red-600"></i> Dispatch Notice
+            </div>
+            <p class="mt-1 leading-relaxed text-slate-800">${data.message || 'Operation failed'}</p>
+          `;
+          return;
+        }
+
+        statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+        
+        let instructions = "Check your phone!";
+        if (channel === 'email') instructions = `Dispatched to ${email} with Quote_Detail.pdf attached. Check your inbox!`;
+        if (channel === 'voice') instructions = "Phone is ringing now! Answer and speak naturally.";
+
+        statusDiv.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${data.message} <span class="block mt-1 font-semibold text-slate-800">${instructions}</span>`;
+        loadAnalytics();
+        loadLeads();
+      } catch (e) {
+        statusDiv.className = "mt-3 text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 block";
+        statusDiv.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-red-700">
+            <i class="fa-solid fa-triangle-exclamation text-red-600"></i> Dispatch Error
+          </div>
+          <p class="mt-1 leading-relaxed text-slate-800">${e.message}</p>
+        `;
+      }
+    }
+
+    // Trigger Contextual Email
+    async function triggerContextEmail(leadId) {
+      const statusDiv = document.getElementById('triggerStatus');
+      statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200 block";
+      statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Generating context-aware email with Quote_Detail.pdf for Lead #${leadId}...`;
+
+      try {
+        const res = await fetch(`/api/leads/${leadId}/send-context-email`, {method: 'POST'});
+        const data = await res.json();
+        if (!res.ok || data.status === 'error') {
+          throw new Error(data.message || 'Failed to dispatch email');
+        }
+        statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+        statusDiv.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${data.message} <span class="block mt-1 font-mono text-[11px] text-slate-800 bg-white border border-slate-200 p-2 rounded">Subject: ${data.subject}</span>`;
+        loadAnalytics();
+        loadLeads();
+        selectLead(leadId);
+      } catch (e) {
+        statusDiv.className = "mt-3 text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 block";
+        statusDiv.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-red-700">
+            <i class="fa-solid fa-triangle-exclamation text-red-600"></i> Email Dispatch Error
+          </div>
+          <p class="mt-1 leading-relaxed text-slate-800">${e.message}</p>
+        `;
+      }
+    }
+
+    // Toggle Complete Cart Details Drawer
+    function toggleCartDrawer(leadId) {
+      const drawer = document.getElementById(`cartDrawer-${leadId}`);
+      const chev = document.getElementById(`cartChev-${leadId}`);
+      if (!drawer) return;
+      if (openCartDrawers.has(leadId)) {
+        openCartDrawers.delete(leadId);
+        drawer.classList.add('hidden');
+        if (chev) chev.style.transform = 'rotate(0deg)';
+      } else {
+        openCartDrawers.add(leadId);
+        drawer.classList.remove('hidden');
+        if (chev) chev.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Toggle Connect Communication Dropdown (Call, Email, SMS)
+    function toggleConnectTray(leadId) {
+      const tray = document.getElementById(`connectTray-${leadId}`);
+      const chev = document.getElementById(`connChev-${leadId}`);
+      if (!tray) return;
+
+      // Close all other open connect dropdowns first
+      openConnectTrays.forEach(otherId => {
+        if (otherId !== leadId) {
+          const otherTray = document.getElementById(`connectTray-${otherId}`);
+          const otherChev = document.getElementById(`connChev-${otherId}`);
+          if (otherTray) otherTray.classList.add('hidden');
+          if (otherChev) otherChev.style.transform = 'rotate(0deg)';
+          openConnectTrays.delete(otherId);
+        }
+      });
+
+      if (openConnectTrays.has(leadId)) {
+        openConnectTrays.delete(leadId);
+        tray.classList.add('hidden');
+        if (chev) chev.style.transform = 'rotate(0deg)';
+      } else {
+        openConnectTrays.add(leadId);
+        tray.classList.remove('hidden');
+        if (chev) chev.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    // Close connect dropdowns when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.relative.inline-block')) {
+        openConnectTrays.forEach(id => {
+          const tray = document.getElementById(`connectTray-${id}`);
+          const chev = document.getElementById(`connChev-${id}`);
+          if (tray) tray.classList.add('hidden');
+          if (chev) chev.style.transform = 'rotate(0deg)';
+        });
+        openConnectTrays.clear();
+      }
+    });
+
+    // Trigger Follow-up SMS for Lead
+    async function triggerLeadSms(leadId) {
+      const statusDiv = document.getElementById('triggerStatus');
+      statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200 block";
+      statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Dispatching follow-up SMS for Lead #${leadId}...`;
+
+      try {
+        const res = await fetch(`/api/leads/${leadId}/send-sms`, {method: 'POST'});
+        const data = await res.json();
+        if (!res.ok || data.status === 'error') {
+          throw new Error(data.message || 'Failed to dispatch SMS');
+        }
+        statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+        statusDiv.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${data.message} <span class="block mt-1 font-mono text-[11px] text-slate-800 bg-white border border-slate-200 p-2 rounded">"${data.body || 'SMS queued'}"</span>`;
+        loadAnalytics();
+        loadLeads();
+        selectLead(leadId);
+      } catch (e) {
+        statusDiv.className = "mt-3 text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 block";
+        statusDiv.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-red-700">
+            <i class="fa-solid fa-triangle-exclamation text-red-600"></i> SMS Dispatch Notice
+          </div>
+          <p class="mt-1 leading-relaxed text-slate-800">${e.message}</p>
+        `;
+      }
+    }
+
+    // Trigger Voice Call for Lead
+    async function triggerLeadCall(leadId) {
+      const statusDiv = document.getElementById('triggerStatus');
+      statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-blue-50 text-blue-800 border border-blue-200 block";
+      statusDiv.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Dialing voice call for Lead #${leadId}...`;
+
+      try {
+        const res = await fetch(`/api/leads/${leadId}/call`, {method: 'POST'});
+        const data = await res.json();
+        if (!res.ok || data.status === 'error') {
+          throw new Error(data.message || 'Failed to initiate call');
+        }
+        statusDiv.className = "mt-3 text-xs p-2.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 block";
+        statusDiv.innerHTML = `<i class="fa-solid fa-circle-check text-emerald-600"></i> ${data.message} <span class="block mt-1 font-semibold text-slate-800">Phone is ringing now!</span>`;
+        loadAnalytics();
+        loadLeads();
+        selectLead(leadId);
+      } catch (e) {
+        statusDiv.className = "mt-3 text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200 block";
+        statusDiv.innerHTML = `
+          <div class="font-bold flex items-center gap-1.5 text-red-700">
+            <i class="fa-solid fa-triangle-exclamation text-red-600"></i> Voice Dispatch Notice
+          </div>
+          <p class="mt-1 leading-relaxed text-slate-800">${e.message}</p>
+        `;
+      }
+    }
+
+    // Floating Toast Notification (Auto-dismisses in 3 seconds)
+    function showToastNotification(message, isError = false) {
+      let toast = document.getElementById('repToastNotification');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.id = 'repToastNotification';
+        toast.className = 'fixed bottom-5 right-5 z-50 max-w-md px-4 py-3 rounded-xl shadow-xl border text-xs font-medium transition-all duration-300 transform translate-y-2 opacity-0 pointer-events-none flex items-start gap-2.5';
+        document.body.appendChild(toast);
+      }
+      
+      const icon = isError ? 'fa-triangle-exclamation text-red-500' : 'fa-circle-check text-emerald-500';
+      const bg = isError ? 'bg-red-50 text-red-900 border-red-200' : 'bg-slate-900 text-white border-slate-800';
+      toast.className = `fixed bottom-5 right-5 z-50 max-w-md px-4 py-3 rounded-xl shadow-xl border text-xs font-medium transition-all duration-300 flex items-start gap-2.5 ${bg}`;
+      toast.innerHTML = `<i class="fa-solid ${icon} mt-0.5 text-sm shrink-0"></i> <div><p class="font-semibold">${isError ? 'CRM Sync Alert' : 'CRM Synchronized'}</p><p class="mt-0.5 opacity-90 leading-relaxed">${message}</p></div>`;
+      
+      setTimeout(() => {
+        if (toast) {
+          toast.classList.add('opacity-0', 'translate-y-2', 'pointer-events-none');
+        }
+      }, 3500);
+    }
+
+    // Sync to CRM
+    async function syncToCRM() {
+      const btn = document.getElementById('syncBtn');
+      const originalHtml = '<i class="fa-solid fa-arrows-rotate"></i> Sync to CRM';
+      btn.innerHTML = '<i class="fa-solid fa-arrows-rotate fa-spin"></i> Syncing to CRM...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/sync-crm', {method: 'POST'});
+        const data = await res.json();
+        
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Synced to CRM';
+        btn.classList.remove('bg-red-600', 'hover:bg-red-700');
+        btn.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+        
+        showToastNotification(data.message || `Successfully synced ${data.synced_leads} leads and ${data.synced_quotes} quotes to CRM.`);
+        loadAnalytics();
+        loadLeads();
+
+        setTimeout(() => {
+          btn.innerHTML = originalHtml;
+          btn.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+          btn.classList.add('bg-red-600', 'hover:bg-red-700');
+          btn.disabled = false;
+        }, 3000);
+      } catch (e) {
+        btn.innerHTML = originalHtml;
+        btn.disabled = false;
+        showToastNotification("CRM sync error: " + e.message, true);
+      }
+    }
+    const syncToZoho = syncToCRM;
+
+    // Customer Web Chat Assistant
+    let chatContext = {};
+    let chatLanguage = 'en';
+
+    function toggleChatWindow() {
+      const box = document.getElementById('chatBox');
+      box.classList.toggle('hidden');
+      if (!box.classList.contains('hidden') && document.getElementById('chatMessages').children.length === 0) {
+        initChatGreeting();
+      }
+    }
+
+    function toggleChatLanguage() {
+      chatLanguage = chatLanguage === 'en' ? 'es' : 'en';
+      document.getElementById('chatLangToggle').innerText = chatLanguage.toUpperCase();
+      sendChatMessageAuto(chatLanguage === 'es' ? 'Hola, prefiero español' : 'Hi, English please');
+    }
+
+    function initChatGreeting() {
+      sendChatMessageAuto('Hello');
+    }
+
+    async function sendChatMessage() {
+      const inp = document.getElementById('chatInput');
+      const text = inp.value.trim();
+      if (!text) return;
+      inp.value = '';
+      sendChatMessageAuto(text);
+    }
+
+    async function sendChatMessageAuto(text) {
+      appendChatMessage(text, 'user');
+      const messagesDiv = document.getElementById('chatMessages');
+
+      const typingEl = document.createElement('div');
+      typingEl.id = 'typingIndicator';
+      typingEl.className = 'text-[11px] text-slate-400 italic flex items-center gap-1';
+      typingEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Yards & Parts AI thinking...';
+      messagesDiv.appendChild(typingEl);
+      messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+      try {
+        const resp = await fetch('/api/chat/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: text,
+            context: chatContext,
+            language: chatLanguage
+          })
+        });
+        const data = await resp.json();
+        chatContext = data.context || chatContext;
+
+        const ti = document.getElementById('typingIndicator');
+        if (ti) ti.remove();
+
+        appendChatMessage(data.reply, 'assistant');
+        renderChatChips(data.chips || []);
+      } catch (err) {
+        const ti = document.getElementById('typingIndicator');
+        if (ti) ti.remove();
+        appendChatMessage('Sorry, connection issue. Please try again.', 'assistant');
+      }
+    }
+
+    function appendChatMessage(html, sender) {
+      const container = document.getElementById('chatMessages');
+      const msgDiv = document.createElement('div');
+      if (sender === 'user') {
+        msgDiv.className = 'flex justify-end';
+        msgDiv.innerHTML = `<div class="bg-blue-600 text-white rounded-2xl rounded-tr-xs px-3.5 py-2 max-w-[80%] shadow-xs leading-relaxed text-xs">${html}</div>`;
+      } else {
+        msgDiv.className = 'flex items-start gap-2';
+        msgDiv.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-slate-800 text-white flex items-center justify-center text-[10px] shrink-0 mt-0.5">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-white border border-slate-200 text-slate-800 rounded-2xl rounded-tl-xs px-3.5 py-2 max-w-[85%] shadow-2xs leading-relaxed text-xs">
+            ${html}
+          </div>
+        `;
+      }
+      container.appendChild(msgDiv);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function renderChatChips(chips) {
+      const container = document.getElementById('chatChipsContainer');
+      if (!chips || chips.length === 0) {
+        container.innerHTML = '';
+        return;
+      }
+      container.innerHTML = chips.map(c => `
+        <button onclick="sendChatMessageAuto('${c.replace(/'/g, "\\'")}')" class="bg-slate-100 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-300 border border-slate-200 rounded-full px-2.5 py-1 text-[10px] font-semibold text-slate-700 transition">
+          ${c}
+        </button>
+      `).join('');
+    }
+  
+    // Battlecards Dropdown & Filter Utilities
+    function toggleBattlecardsDropdown(e) {
+      if (e) e.stopPropagation();
+      const dd = document.getElementById('battlecardsDropdown');
+      const chev = document.getElementById('battlecardsChev');
+      if (!dd) return;
+      const isHidden = dd.classList.contains('hidden');
+      if (isHidden) {
+        dd.classList.remove('hidden');
+        if (chev) chev.style.transform = 'rotate(180deg)';
+        const searchInput = document.getElementById('battlecardSearchInput');
+        if (searchInput) setTimeout(() => searchInput.focus(), 60);
+        dd.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        dd.classList.add('hidden');
+        if (chev) chev.style.transform = '';
+      }
+    }
+
+    function filterBattlecards(query) {
+      const q = (query || '').toLowerCase().trim();
+      const items = document.querySelectorAll('.battlecard-dropdown-item');
+      items.forEach(el => {
+        const text = el.innerText.toLowerCase();
+        el.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    // Dismiss battlecards dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const dd = document.getElementById('battlecardsDropdown');
+      const btn = document.getElementById('battlecardBtn');
+      if (dd && !dd.classList.contains('hidden')) {
+        if (!dd.contains(e.target) && (!btn || !btn.contains(e.target))) {
+          dd.classList.add('hidden');
+          const chev = document.getElementById('battlecardsChev');
+          if (chev) chev.style.transform = '';
+        }
+      }
+    });
+
+  </script>
+
+  <!-- Floating Customer Web Chat Widget -->
+  <div id="chatLauncher" onclick="toggleChatWindow()" class="fixed bottom-5 right-5 z-50 bg-blue-600 hover:bg-blue-700 text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center cursor-pointer transition-transform hover:scale-105" title="Chat with Yards & Parts AI">
+    <i class="fa-solid fa-comments text-xl"></i>
+    <span class="absolute -top-1 -right-1 flex h-4 w-4">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-500"></span>
+    </span>
+  </div>
+
+  <div id="chatBox" class="fixed bottom-20 right-5 z-50 w-96 h-[520px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden hidden transition-all">
+    <!-- Chat Header -->
+    <div class="bg-slate-900 text-white p-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold">
+          <i class="fa-solid fa-car-side"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold leading-tight">Yards &amp; Parts Assistant</div>
+          <div class="text-[10px] text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online &bull; VIN &amp; Fitment AI
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="toggleChatLanguage()" id="chatLangToggle" class="text-[10px] bg-slate-800 hover:bg-slate-700 px-2 py-1 rounded font-bold uppercase border border-slate-700 text-slate-300">
+          EN / ES
+        </button>
+        <button onclick="toggleChatWindow()" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Messages Scroll Area -->
+    <div id="chatMessages" class="flex-1 p-3.5 space-y-3 overflow-y-auto bg-slate-50/50">
+    </div>
+
+    <!-- Quick Action Suggestion Chips -->
+    <div id="chatChipsContainer" class="p-2 border-t border-slate-100 flex flex-wrap gap-1 bg-white">
+    </div>
+
+    <!-- Input Box -->
+    <div class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-1.5">
+      <input type="text" id="chatInput" onkeydown="if(event.key==='Enter') sendChatMessage()" placeholder="Type part request or paste 17-char VIN..." class="flex-1 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2 text-xs text-slate-900 focus:outline-none focus:border-blue-600 focus:bg-white">
+      <button onclick="sendChatMessage()" class="w-8 h-8 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center justify-center text-xs transition">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+</body>
+</html>

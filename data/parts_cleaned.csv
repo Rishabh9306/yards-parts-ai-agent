@@ -1,0 +1,660 @@
+model,part_description,part_number,price_usd,image_url,multi_model_part,category,cadence_priority,price_tier,battlecard
+GLANZA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+GLANZA,"Bridgestone,185/65 R15 88H",TY01B15123,67.28,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+GLANZA,"Bridgestone,185/65 R15 88T",TY01B15122,64.93,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+GLANZA,AMARON  FLO,BA01A35P10,43.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+GLANZA,AMARON BLACK,BA01A35P11,32.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+GLANZA,AMARON GO,BA01A35P13,35.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+GLANZA,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+GLANZA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+GLANZA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+GLANZA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+GLANZA,CLUTCH DISC ASSEMBLY FRICTION DISC,31250WC001,17.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+GLANZA,CLIP OIL FILTER,90118WC341,1.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Low,mileage
+GLANZA,FILTER CANISTER,77746WC001,3.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Low,mileage
+GLANZA,BRAKE PAD KIT DISC FRONT,04465WC001,22.54,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+GLANZA,Mud Flap,P6389WC050,7.88,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+GLANZA,Body Side Moulding  Chrome + Black,P6170WC050,27.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,3D Floormat,P6210WC070A0,32.86,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Back Door Garnish chrome,P6405WC060A0,6.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+GLANZA,Pvc 3D Boot Mat,P6241WC050,16.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Body Cover  Basic,P6372WC050,19.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Door Visor Basic,P6162WC060,17.17,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Fog Lamp,P6593WC030,73.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+GLANZA,Grill Garnish ( Lower ),P6417WC070,24.41,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Rear Lamp Garnish  Chrome,P6415WC010,5.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+GLANZA,Bumper Corner Protector,P6177WC040,13.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Door Visor Premium,P6162WC070,23.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Rear Skid Plategrey + Black,P6415WC020A0,24.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Fender Garnish Chrome,P6186WC010A0,3.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+GLANZA,Designer Mat,P6210WC210,19.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Orvm Garnish chrome,P6403WC030C0,3.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+GLANZA,Door Sill Guard Non Illuminated,P6241WC070,18.31,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Front Bumper Garnish,P6417WC060,57.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+GLANZA,Rear Bumper Garnish chrome,P6405WC030A0,12.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Premium  Carpet Mat White,P6210WC120,38.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,"Floor Mat , Pvc  Transparent",P6210WC200,27.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Orvm Cover Paino Black W/O Winker,P6403WC030H0,20.22,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Orvm Cover Carbon With Winker,P6403WC030E0,25.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Orvm Cover Paino Black With Winker,P6403WC030G0,20.22,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+GLANZA,Orvm Garnishgray,P6403WC030D0,2.63,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HICROSS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+HICROSS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HICROSS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+HICROSS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HICROSS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+HICROSS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+HICROSS,Bumper Corner Protector W/Chrome,P61770K003,15.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Car Cover - Prm,P63720K005,72.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Car Cover - Std,P63720K004,39.51,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Car Cushion,P62B00K001,10.49,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+HICROSS,Door Edge Protector,P61740K005,10.06,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Door Handle Cover Chrome,P61680K008,58.76,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Door Housing Chrome,P61680K007,35.41,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Fender Garnish,P64030K006,58.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Floormat - 3D,P62100K01Z,66.49,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Floormat - Designer,P62100K022,45.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Floormat - Fabric,P62100K017,39.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Floormat - Rubber,P62100K01A,37.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Fog Lamp Kit,P65930K001,154.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+HICROSS,Front Under Run,P61540K002,70.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+HICROSS,Grill Jewel Garnish ( Chrome ),P64010K003,34.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Hood Emblem ( Chrome ),P61870K001,34.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+HICROSS,Luggage Tray ( High Grade ),P62410K001,29.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+HICROSS,Mud Guard,P63890K006,38.49,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+HICROSS,Muffler Cutter,P64130K002,23.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+HICROSS,Rear Bike Protector,P69630K004,117.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+HICROSS,Rear Door Lid Garnish Chrome,P64050K009,58.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Rear Reflector  Garnish,P64050K00A,34.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Rear Under Run,P61580K001,69.93,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+HICROSS,Roof Ornament,P63080K005,142.12,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+HICROSS,Safety Belt Pad,P622C0K002,8.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Low,freight_warranty
+HICROSS,Side P Mold Chrome,P61700K006,117.98,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+HICROSS,Side Visor W/Chrome,P61620K00B,90.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HICROSS,Tail Lamp Garnish,P64050K008,71.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+HICROSS,"Trunk Mat, Fabric ( High Grade )",P62100K027,8.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HICROSS,"Trunk Mat, Fabric ( Low Grade )",P62100K029,8.98,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HICROSS,"Trunk Mat, Rubber ( High Grade )",P62100K026,13.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,"Trunk Mat, Rubber ( Low Grade )",P62100K028,13.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HICROSS,Welcome Door Lamp,P65330K002,50.41,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+HICROSS,Window Beeding ( Chrome ),P61730K002,58.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+INNOVA,"SHOCK ABSORBER ASSEMBLY, FRONT RH",4851009X80,56.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+INNOVA,"HOUSING SUB-ASSEMBLY, HEADLAMP, RH",811300K160,63.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"SHOCK ABSORBER ASSEMBLY, FRONT RH",485108Z023,51.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+INNOVA,"WIPER ARM ASSEMBLY, REAR",852410K020,6.08,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,"UNIT ASSEMBLY, HEADLAMP, RH",811300K550,82.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"COVER ASSEMBLY, CLUTCH",312100K030,49.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+INNOVA,"COVER ASSEMBLY, CLUTCH",312100K120,49.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+INNOVA,"DISC ASSEMBLY, CLUTCH",312500K040,73.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+INNOVA,"DISC ASSEMBLY, CLUTCH",312500K100,61.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+INNOVA,"SHOCK ABSORBER ASSEMBLY, FRONT LH",4852009Q80,56.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+INNOVA,"WIPER ARM, FRONT LH",852210K080,12.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+INNOVA,"HEADLAMP ASSEMBLY, LH",811500K160,124.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"SHOCK ABSORBER ASSEMBLY, FRONT LH",4852009U80,51.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+INNOVA,"WIPER ARM, FRONT RH",852110K070,10.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+INNOVA,"HEADLAMP ASSEMBLY, LH",811500K331,108.82,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"HEADLAMP ASSEMBLY, LH",811500K550,101.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",178010C030,22.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,"LINK ASSEMBLY, FRONT WIPER",851500K091,39.04,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+INNOVA,"LAMP ASSEMBLY, LICENSE PLATE",812700K041,8.08,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,"SHOCK ABSORBER ASSEMBLY, REAR RH",4853109700,35.75,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+INNOVA,"LAMP ASSEMBLY, LICENSE PLATE",812700K042,6.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,"LAMP ASSEMBLY, SIDE TURN SIGNAL, RH",817300B021,9.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,"HOUSING SUB-ASSEMBLY, HEADLAMP, LH",811700K160,63.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"LAMP ASSEMBLY, SIDE TURN SIGNAL, LH",817400K010,23.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+INNOVA,"SHOCK ABSORBER ASSEMBLY, REAR RH",4853109A30,35.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+INNOVA,"UNIT ASSEMBLY, HEADLAMP, LH",811700K550,82.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"BLADE, FRONT WIPER, RH",852120K061,8.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,"BULB (FOR HEADLAMP, NO.1)",9098113015,8.33,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",90916T2006,41.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,"BLADE, FRONT WIPER, LH",852120K081,5.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,FUEL FILTER ASSEMBLY (FOR EFI),233000C020,32.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+INNOVA,"MOTOR ASSEMBLY, REAR WIPER",851300K030,79.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,High,warranty
+INNOVA,FUEL FILTER ASSEMBLY,233000L042,59.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,High,mileage
+INNOVA,"MOTOR ASSEMBLY, FRONT WIPER",851100K090,95.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,High,warranty
+INNOVA,"DRUM SUB-ASSEMBLY, REAR BRAKE",424310K110,67.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+INNOVA,FUEL FILTER ASSEMBLY,2330030450,21.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,"HUB SUB-ASSEMBLY, FRONT AXLE, RH",43502KK030,80.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+INNOVA,"BLADE ASSEMBLY, REAR WIPER",852420K020,4.98,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,"FUEL FILTER, ELEMENT ASSEMBLY",233900L041,24.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,"LAMP ASSEMBLY, FOG, RH",8121006052,113.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"LAMP ASSEMBLY, FOG",812100K031,224.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+INNOVA,"BRAKE DISC, FRONT",435120K051,74.18,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+INNOVA,"LAMP ASSEMBLY, FOG",812100K090,225.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+INNOVA,AIR FILTER (A/C),87139YZZ78,17.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Mid,mileage
+INNOVA,"LAMP ASSEMBLY, FOG, LH",8122006052,113.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"SHOE KIT, REAR BRAKE",044950K110,60.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+INNOVA,"RUBBER, REAR WIPER",852140K080,2.51,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,"LAMP ASSEMBLY, FOG, LH",812200K031,224.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+INNOVA,"RUBBER, WIPER, RH",852140K100,5.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,"RUBBER, WIPER, LH",852140K110,3.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+INNOVA,"LAMP ASSEMBLY, FOG, LH",812200K090,225.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+INNOVA,WINDSHIELD WASHER FLUID,0880880020,0.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+INNOVA,"PAD KIT, DISC BRAKE, FRONT",044650K190,61.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+INNOVA,"LENS, REAR COMBINATION LAMP, RH",815510K090,48.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"LENS, REAR COMBINATION LAMP, RH",815510K220,44.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"LENS, REAR COMBINATION LAMP, LH",815610K090,48.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"LENS, REAR COMBINATION LAMP, LH",815610K220,44.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+INNOVA,BULB (FOR CENTER STOP LAMP),9098111059,2.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,"HOSE, WATER BY-PASS",162610L040,0.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+INNOVA,"BULB, DOME",9098114011,1.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,BULB (FOR FRONT TURN SIGNAL LAMP),9098115009,3.33,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,BULB (FOR SIDE TURN SIGNAL LAMP),9098115012,3.23,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,"HOSE, WATER BY-PASS NO-2",162640L040,2.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+INNOVA,"CABLE ASSEMBLY, HOOD LOCK CONTROL",536300K040,2.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+INNOVA,"CABLE SUB-ASSEMBLY, AIRMIX DAMPER CONTROL",559090K010,7.26,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+INNOVA,BULB (FOR LICENSE PLATE LAMP),9913212050,1.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,"CABLE SUB-ASSEMBLYY, FUEL LID LOCK CONTROL",770350K100,7.5,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,warranty
+INNOVA,BULB (FOR REAR COMBINATION LAMP,9913221210,2.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+INNOVA,"CABLE SUB-ASSEMBLY, SPIRAL",843060K021,139.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,High,warranty
+INNOVA,"CABLE SUB-ASSEMBLY, SPIRAL",843060K051,139.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Cables & Controls,False,High,warranty
+INNOVA,"HOSE, RADIATOR, INLET",165710L030,10.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+INNOVA,"HOSE, RADIATOR, INLET",165710L060,2.79,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500K090,45.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"CABLE SUB-ASSEMBLY, SPIRAL",0400407122,15.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+INNOVA,"HOSE, RADIATOR, OUTLET",165720L030,10.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500K132,39.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"HOSE, RADIATOR, OUTLET",165720L060,4.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500K220,38.03,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"HOSE, FLEXIBLE, NO.1(FOR FRONT)",90947T2006,10.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+INNOVA,"HOSE, FLEXIBLE, NO.1(FOR FRONT)",90947T2007,10.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600K090,51.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600K132,39.8,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"HEADLAMP ASSEMBLY, RH",811100K160,124.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"HEADLAMP ASSEMBLY, RH",811100K331,108.82,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"HEADLAMP ASSEMBLY, RH",811100K550,101.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+INNOVA,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600K220,38.08,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,"LAMP ASSEMBLY, DOME, ROOM, NO.1",812400K010E1,23.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+INNOVA,OIL FILTER,90915YZZD2,5.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Low,mileage
+INNOVA,"MIRROR ASSEMBLY, OUTER REAR VIEW, LH",879400K490,128.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+INNOVA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+INNOVA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+INNOVA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+INNOVA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+INNOVA,"BRAKE PAD, MVP",04465YZZS7,32.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+INNOVA,SEAT BELT BUCKLE FRONT,732300K160E0,5.08,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+INNOVA,UNION BOLT HUB BOLT,9094202082,2.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+INNOVA,ARM BUSH,90385T0005,1.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,ARM BUSH,90385T0004,1.31,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,CABLE DEFROSTER DAMPER CONTROL,559060K010,7.38,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+INNOVA,CAP WIPER ARM HEAD,852920K040,0.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,CLIP,9046710186,1.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,CLIP,9046709050,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+INNOVA,CLIP,90467T0019,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+INNOVA,CONTROL UNIT PRINTED CIRCUIT BOARD,559000K074,11.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+INNOVA,CONTROL ASSEMBLY AIR CO,559000K540,10.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+INNOVA,SHIFT SEAT,3350535020,7.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+INNOVA,CHECK ASSY FRONT DOOR,686100K051,4.01,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,BATTERY CLAMP,744040K170,2.93,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,COVER CTR STOP LAMP,819770K020,1.95,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,CLIP,9046705138,1.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,BULB,9001111049,2.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+INNOVA,O RING,90301T0013,2.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+INNOVA,BACK DOOR NAME PLATE,754420K021,1.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,BOLT WITH WASHER,90119T0001,0.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,COOLER BRACKET REAR,636110K030,0.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,MOULDING FRONT DOOR,757100K010,4.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,DOOR HINGE REAR,687600K050,3.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,DOOR HANDLE COVER FRONT DOOR OUTSIDE,692170K200,3.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,BACK DOOR NAME PLATE,754410K031,1.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,CLIP,90467T0021,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,SCREW WITH WASHER,9015960603,0.5,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,DOOR GLOVE COMPARTMENT,555500K050A0,18.9,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+INNOVA,DOOR GLOVE COMPARTMENT,555500K030E0,18.9,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+INNOVA,FLANGE NUT,90178T0073,0.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+INNOVA,BUMPER BRACKET FRONT,52533DX020,0.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,GASKET,90430T0008,0.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+INNOVA,SCREW,9338316025,0.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+INNOVA,HOOD SUPPORT ROD,534510K020,2.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+INNOVA,DOOR TRIM RETAINER,6777158010,1.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+INNOVA,ASSIST GRIP PLUG,746170K050E0,1.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+INNOVA,BUSH UPPER ARM,486320K060,2.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,GAS FILTER,9091711036,16.58,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Mid,mileage
+INNOVA,BUSH LOWER ARM,486540K070,12.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+INNOVA,SHOCK ABSORBER SUPPORT FRONT,486090K090,9.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,BRAKE TUBE FRONT NO 8,473180K080,19.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+INNOVA,CLUTCH RELEASE FORK COLLAR,312430K010,1.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+INNOVA,WHEEL DISC,426110K341,62.38,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+INNOVA,DISC BRAKE PAD FITTING KIT,049470K020,13.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+INNOVA,HEADLAMP SWITCH,841400K091,13.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+INNOVA,CLUTCH CYLINDER,314700K020,53.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+INNOVA,SEAT CUSHION PAD FRONT,715110K050,26.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+INNOVA,SHOCK ABSORBER WASHER,90948T3002,3.75,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+INNOVA,SHOCK ABSORBER WASHER,90948T3001,3.27,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+CRYSTA,"BULB (FOR HEADLAMP, NO.1)",9098113046,14.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+CRYSTA,"BULB, FOG LAMP",9098113075,14.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+CRYSTA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+CRYSTA,BULB,9098113044,1.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+CRYSTA,"JOINT, UPPER BALL",4331009040,23.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,"RUBBER, WIPER BLADE",8521428090,6.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Wipers,False,Low,warranty
+CRYSTA,"BUSH, STABILIZER",488150K080,9.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Suspension,False,Low,warranty
+CRYSTA,"RUBBER, WIPER BLADE",8521452110,10.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+CRYSTA,"DISC, FR",435120K310,73.31,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+CRYSTA,"JOINT, LOWER BALL",4333009500,31.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,SHOE KIT BRAKE RR,044950K150,61.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Brakes,False,High,freight_warranty
+CRYSTA,LAMP ASSY FR TURN,815200K030,53.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+CRYSTA,END STEERING RACK,455030K120,64.95,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,"ELEMENT ASSY, FUEL FILTER",233900L070,28.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+CRYSTA,"DISC ASSY, CLUTCH",312500K452,87.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+CRYSTA,CABIN AIR FILTER,87139YZZ49,29.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Mid,mileage
+CRYSTA,COVER ASSY CLUTCH,312100K450,78.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+CRYSTA,"BLADE, FR WIPER, LH",8522271050,10.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+CRYSTA,"BLADE, FR WIPER, RH",8521252250,34.52,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+CRYSTA,END SET TIE ROD,4504609830,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,"ARM SA,SUSPN,LWR RH",480680K030,108.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+CRYSTA,"RUBBER, WIPER BLADE",8521442040,4.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+CRYSTA,"ARM SA,SUSPN LWR,LH",480690K030,108.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+CRYSTA,ABSORBER SET SHOCK,485108Z266,96.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+CRYSTA,"FILTER, GAS",9091711044,15.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Mid,mileage
+CRYSTA,ABSORBER SET SHOCK,485208Z126,96.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+CRYSTA,ABSORBER SET SHOCK,485308Z037,38.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+CRYSTA,CLEANER AIR ELEMENT,177000L370,99.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,High,warranty
+CRYSTA,BLADE RR WIPER,852420K050,9.49,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+CRYSTA,ARM SUSPENSION UP RH,486100K030,196.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Premium,warranty
+CRYSTA,RADIATOR ASSY,164000L401,161.58,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+CRYSTA,RADIATOR ASSY,164000L521,135.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,ARM SUSPENSION UP LH,486300K030,193.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Premium,warranty
+CRYSTA,"KIT, PUMP, FUEL",0400986175,23.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,warranty
+CRYSTA,"HORN ASSY, HIGH PITC",8651002012,5.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+CRYSTA,"HORN ASSY, LOW PITCH",8652002082,5.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+CRYSTA,GEAR POWER STEERING,442500K611,415.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Premium,mileage_compression
+CRYSTA,ELEMENT AIR REFINER,871390K050,22.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,ELEMENT AIR CLEANER,178010L040,21.27,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,warranty
+CRYSTA,PAD KIT DISC BRAKE,044650K440,71.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+CRYSTA,"GASKET, DRAIN PLUG",1215710010,0.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+CRYSTA,BATTERY TRANSMITTER,897450K010,1.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+CRYSTA,"Bridgestone,205/65 R16 95S",TY01B16100,79.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+CRYSTA,"Bridgestone,215/55 R17 94V",TY01B17100,119.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+CRYSTA,"Goodyear,215/60 R17 96 H",TY01G17101,99.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+CRYSTA,AMARON  FLO,BA01A65D10,72.63,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,AMARON  FLO,BA01A60P10,72.49,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,AMARON FLO,BA01A80D12,105.76,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,AMARON GO,BA01A65D13,70.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,ENGINE FLUSH - DIESEL,0881480090,17.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,CLEANER INJECTOR-DIESEL,0881300860,17.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+CRYSTA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+CRYSTA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+CRYSTA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+CRYSTA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+CRYSTA,Side Visor W/Chrome Insert,P61620K003D3,79.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+CRYSTA,UNIVERSAL TABLET HOLDER,PC22B0K008,94.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,COMBO HOOK DOCK- BLK,PC22B0K004,48.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,DOOR EDGE PROTECTOR,P61740K002A1,11.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,Luggage Tray,P62460K001,28.31,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,GEAR SHIFT KNOB,P64660K001A3,28.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+CRYSTA,GEAR SHIFT KNOB - TOP COVER,P64660K002A3,3.8,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+CRYSTA,Gear Shift Knob,P64660K002B3,6.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+CRYSTA,"Front Fender Mirror, 040",PC4010K01011,153.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+CRYSTA,Rear lamp Chrome Cover SUV - Paint(Matt Black),PC4100K00F,66.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+CRYSTA,Rear lamp Chrome Cover SUV - Paint(Gloss Dark Grey),PC4100K00H,66.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+CRYSTA,"FLOOR MATS, FABRIC, STANDARD (AT)",P62100K003,28.9,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,"Floor Mats, Fabric, Standard (Mt)",P62100K005,36.51,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,"FLOOR MATS, FABRIC, PREMIUM (AT)",P62100K004,53.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+CRYSTA,"Floor Mats, Fabric, Premium (Mt)",P62100K006,64.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+CRYSTA,"FLOOR MATS, RUBBER (AT)",P62100K007,25.33,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,"Floor Mats, Rubber (Mt)",P62100K008,37.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,"Trunk Mat, Fabric",P62100K001,8.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+CRYSTA,"Trunk Mat, Rubber",P62100K002,14.57,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,Fabric Floor Mat - Premium(AT),P62100K009,77.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+CRYSTA,Fabric Floor Mat - Premium(MT),P62100K00C,77.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+CRYSTA,Trunk Mat (Fabric),P62100K00D,22.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,Leg Room Lamp ( Multicolour),P65230K006A3,90.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+CRYSTA,UNION BOLT HUB BOLT,9094202082,2.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+CRYSTA,CLIP,9046709050,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+CRYSTA,CLIP,90467T0019,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+CRYSTA,CLIP,9046710161,0.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+CRYSTA,MIRROR COVER OUTER RH,879150K929,3.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+CRYSTA,FLUID WINDSHIELD WASH,0880880210,0.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+CRYSTA,GARNISH INSTRUMENT NO.1,55474KK010E0,6.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+CRYSTA,GARNISH INSTRUMENT NO.2,55475KK010E0,5.73,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+CRYSTA,INSULATOR FRONT COIL,481570K050,2.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+CRYSTA,Rear Camera,P66340K011,65.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,Rear Door Chrome Lid Garnish,P64050K004,47.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+CRYSTA,Roof Ornament Silver,P63080K002A3,140.8,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+CRYSTA,Side P Mould (Full Chrome),P61700K002,208.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+CRYSTA,Side Step,P63880K001A4,203.95,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+CRYSTA,Sunshade,P62340K002,44.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+CRYSTA,Tail Lamp Chrome Garnish,P64100K001A3,108.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+CRYSTA,Orvm Garnish,P64030K004,53.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Body & Accessories,False,High,warranty
+FORTUNER,"SHOCK ABSORBER ASSEMBLY, FRONT RH/ LH",4851009J40,149.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+FORTUNER,"SHOCK ABSORBER ASSEMBLY, FRONT RH",4851009V00,177.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Premium,warranty
+FORTUNER,"UNIT ASSEMBLY, HEADLAMP, RH",811300K350,504.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"UNIT ASSEMBLY, HEADLAMP, RH",811450K500,459.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"COVER ASSEMBLY, CLUTCH",312100K190,146.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+FORTUNER,"DISC ASSEMBLY, CLUTCH",312500K222,105.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+FORTUNER,"BRAKE DISC, FRONT",435120K090,79.57,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,"HEADLAMP ASSEMBLY, LH",811500K350,597.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",178010C030,22.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"LAMP ASSEMBLY, SIDE TURN SIGNAL, RH",817300K010,23.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+FORTUNER,"SHOCK ABSORBER ASSEMBLY, REAR RH",4853109730,45.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+FORTUNER,"SHOCK ABSORBER ASSEMBLY, REAR RH",4853109800,47.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+FORTUNER,"LAMP ASSEMBLY, SIDE TURN SIGNAL, LH",817400K010,23.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+FORTUNER,"UNIT ASSEMBLY, HEADLAMP, LH",811700K350,504.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"LINK ASSEMBLY, FRONT WIPER",851500K011,98.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,High,warranty
+FORTUNER,"BLADE, FRONT WIPER, RH",852120K010,25.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+FORTUNER,"UNIT ASSEMBLY, HEADLAMP, LH",811850K500,459.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",90916T2006,41.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+FORTUNER,FUEL FILTER ASSEMBLY,233000L042,59.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,High,mileage
+FORTUNER,"BULB, FOG LAMP",9098113075,14.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+FORTUNER,"BULB, DISCHARGE HEADLAMP",9098120024,166.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Premium,freight_warranty
+FORTUNER,"DRUM SUB-ASSEMBLY, REAR BRAKE",424310K120,60.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,FUEL FILTER ASSEMBLY,2330030450,21.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"FUEL FILTER, ELEMENT ASSEMBLY",233900L041,24.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"BLADE ASSEMBLY, REAR WIPER",852420K010,11.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+FORTUNER,AIR FILTER (A/C),8713902060,22.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Mid,mileage
+FORTUNER,"LAMP ASSEMBLY, FOG",812100K051,187.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"FOG LAMP ASSEMBLY,RH",812100K080,130.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"RUBBER, WIPER, RH",852140D070,7.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+FORTUNER,"RUBBER, REAR WIPER",852140K010,5.12,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+FORTUNER,"RUBBER, WIPER, LH",852140K040,8.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+FORTUNER,"SHOE KIT, REAR BRAKE",044950K120,76.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,"LAMP ASSEMBLY, FOG, LH",812200K050,187.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"LAMP ASSEMBLY, FOG, LH",812200K080,130.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"BLADE, FRONT WIPER, LH",85220YZZC8,19.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+FORTUNER,"HUB SUB-ASSEMBLY, FRONT AXLE RH",435020K050,97.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+FORTUNER,"LENS, REAR COMBINATION LAMP, LH",815610K200,110.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"HUB SUB-ASSEMBLY, FRONT AXLE RH",435020K030,97.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+FORTUNER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+FORTUNER,"HOSE, WATER BY-PASS",162610L040,0.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+FORTUNER,"BULB, DOME",9098114011,1.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+FORTUNER,BULB (FOR FRONT TURN SIGNAL LAMP),9098115009,3.33,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+FORTUNER,"CABLE ASSEMBLY, HOOD LOCK CONTROL",536300K010,16.28,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+FORTUNER,BULB (FOR SIDE TURN SIGNAL LAMP),9098115012,3.23,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+FORTUNER,"HOSE, WATER BY-PASS NO-2",162640L040,2.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+FORTUNER,"BULB, REAR TURN SIGNAL LAMP",9913211210,2.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+FORTUNER,BULB (FOR LICENSE PLATE LAMP),9913212050,1.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+FORTUNER,BULB (FOR REAR COMBINATION LAMP,9913221210,2.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+FORTUNER,"CABLE SUB-ASSEMBLY, SPIRAL",843060K051,139.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Cables & Controls,False,High,warranty
+FORTUNER,"HOSE, RADIATOR, INLET",165710L030,10.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+FORTUNER,"HOSE, RADIATOR, INLET",165710L060,2.79,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500K110,154.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"HOSE, RADIATOR, OUTLET",165720L030,10.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+FORTUNER,"HOSE, RADIATOR, OUTLET",165720L060,4.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+FORTUNER,"CABLE ASSEMBLY, HOOD LOCK CONTROL",536300K120,17.04,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500K190,108.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600K110,154.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600K200,108.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"HEADLAMP ASSEMBLY, RH",811100K350,597.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"HEADLAMP ASSEMBLY, RH",811100K501,838.17,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR, RH",815800K020,126.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR, RH",815800K030,102.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR, LH",815900K020,126.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"LAMP ASSEMBLY, REAR, LH",815900K030,102.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,"LAMP ASSEMBLY, DOME, ROOM, NO.1",812400K010E1,23.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Mid,warranty
+FORTUNER,"HEADLAMP ASSEMBLY, LH",811500K501,838.17,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Premium,warranty
+FORTUNER,"WIPER ARM, REAR",852410K010,23.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+FORTUNER,"PAD KIT, DISC BRAKE, FRONT",04465YZZQ7,70.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,OIL FILTER,90915YZZD2,5.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Low,mileage
+FORTUNER,"MIRROR ASSEMBLY, OUTER REAR VIEW, LH",879610K550,38.87,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+FORTUNER,"MIRROR ASSEMBLY, OUTER REAR VIEW, RH",879310K570,38.87,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+FORTUNER,"MIRROR ASSEMBLY, OUTER REAR VIEW, RH",879100K570,326.5,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+FORTUNER,"COVER, OUTER MIRROR, LH",879450K907,30.06,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+FORTUNER,"COVER, OUTER MIRROR, LH",879450K120,62.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+FORTUNER,"MIRROR OUTER, LH",879610K170,32.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+FORTUNER,"OUTER MIRROR, RH",879310K170,32.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+FORTUNER,"COVER, OUTER MIRROR, RH",879150K907,30.06,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+FORTUNER,"COVER, OUTER MIRROR, RH",879150K120,62.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+FORTUNER,"MIRROR ASSEMBLY, OUTER REAR VIEW, LH",879400K550,338.52,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+FORTUNER,"MIRROR ASSEMBLY, OUTER REAR VIEW, RH",879100K572,341.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+FORTUNER,"RUBBER, WIPER BLADE",8521428090,6.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Wipers,False,Low,warranty
+FORTUNER,"BUSH, STABILIZER",488150K080,9.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Suspension,False,Low,warranty
+FORTUNER,SHOE KIT BRAKE RR,044950K150,61.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Brakes,False,High,freight_warranty
+FORTUNER,"PULLEY, ALTERNATOR",274150L030,50.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+FORTUNER,"PAD KIT,DISC BRAKE",044650K370,92.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,"ELEMENT ASSY, FUEL FILTER",233900L070,28.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"PAD KIT, DISC BRAKE",044650K550,111.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,"PAD KIT, DISC BRAKE",044660K010,57.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+FORTUNER,CABIN AIR FILTER,87139YZZ49,29.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Mid,mileage
+FORTUNER,"RUBBER, WIPER BLADE",8521453080,9.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+FORTUNER,CLIP,90467T0019,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+FORTUNER,CLIP,9046709191,0.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+FORTUNER,CLIP,9090467036,0.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+FORTUNER,CLIP OUTSIDE MOULDING,7539635020,0.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+FORTUNER,EMBLEM RADIATOR GRILLE,753110K040,21.52,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+FORTUNER,EXTENSION JACK HANDLE,091140K140,5.88,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+FORTUNER,FLUID WINDSHIELD WASH,0880880210,0.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+FORTUNER,GROMMET SCREW,90189T0014,0.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+FORTUNER,Handle Seat Track SEAT ADJUSTER,722110K030,3.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+FORTUNER,NUT HUB WITH WASHER,9094201109,4.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+FORTUNER,SCREW PIECE REAR BUMPER,521610K040,1.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Body & Accessories,False,Low,warranty
+FORTUNER,SCREW WITH WASHER,9015960621,0.41,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+FORTUNER,SEAL NOZZLE HOLDER WINDSHIELD WASHER BRACKET,236810L010,1.54,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+FORTUNER,COOLANT SUPER LONG LIFE,888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Engine & Fluids,True,Mid,compression
+FORTUNER,SUPPORT SHOCK ABSORBER MOUNTING FRONT,486090K120,6.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+FORTUNER,SWITCH COURTESY LAMP,842310K030,1.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+FORTUNER,CLIP OUTSIDE MOULDING,753950K010,1.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+FORTUNER,SCREW GROMMET,90189T0007,0.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+FORTUNER,Fender Vent Garnish,P64030K008,58.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+FORTUNER,Fr+Rr Under Run Set,P61540K003,208.78,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+FORTUNER,H/L Garnish Chrome,P64010K007,98.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+FORTUNER,Hood Emblem (Chrome ),P61870K005,34.52,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+FORTUNER,Illuminated Scuff Plate - White,P65310K005A0,189.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+FORTUNER,"Rear Lamp Cover, Chrome",P64100K002A3,103.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+FORTUNER,Sunshade,P62340K001,72.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+FORTUNER,3D Floor Mat At,P62100K00R,74.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+FORTUNER,Car Cushion,PZ0100D621A0,9.22,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+FORTUNER,Orvm Garnish,P64030K004,53.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Body & Accessories,False,High,warranty
+URBAN_CRUSER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+URBAN_CRUSER,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+URBAN_CRUSER,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+URBAN_CRUSER,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+URBAN_CRUSER,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+URBAN_CRUSER,Front grill accent (upper),P6417WC040,13.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+URBAN_CRUSER,SCR PU Fabric RED ARROW (V),P6220WC310,32.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+URBAN_CRUSER,Neck Cushion ( Brown & Silver ),P62B0WC050B0,9.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+URBAN_CRUSER,CLIP OIL FILTER,90118WC341,1.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Filters,False,Low,mileage
+URBAN_CRUSER,All Weather 3D Mat,P6210WC141,38.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Back Door Garnish,P6405WC063,8.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+URBAN_CRUSER,Body Side Molding Garnish Finish,P6170WC093,36.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Bumper Corner Protector,P6177WC031,21.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Deluxe Carpet Mat (Rhd),P6210WC105,30.88,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Door Handle Garnish,P6405WC064,17.06,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Door Sill Guard - Metal  Sill,P6241WC081,30.63,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Door Visor - Chrome,P6162WC055,33.5,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Fog Lamp Kit,P6641WC024,46.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+URBAN_CRUSER,Head Lamp Garnish,P6405WC066,15.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+URBAN_CRUSER,Luggage Tray,P6210WC212,11.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+URBAN_CRUSER,Number Plate Garnish,P6405WC067,10.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Premium Carpet Mat (Rhd),P6210WC104,67.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+URBAN_CRUSER,Pvc Premium Mat - Black,P6210WC102,28.52,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Pvc Premium Mat - Transparent,P6210WC101,41.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Rear Bumper Garnish,P6405WC065,12.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+URBAN_CRUSER,Rubber Mat (Rhd),P6210WC103,37.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+QUALIS,"SHOCK ABSORBER ASSEMBLY, FRONT RH / LH",485000B050,45.19,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Mid,warranty
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035222,122.57,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035374,123.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035410,123.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"COVER ASSEMBLY, CLUTCH",312100B070,38.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+QUALIS,"WIPER ARM ASSEMBLY, REAR",852410B010,4.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+QUALIS,"DISC ASSEMBLY, CLUTCH",312500B080,66.22,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"HEADLAMP ASSEMBLY, LH",811500B090,77.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"HEADLAMP ASSEMBLY, LH",811500B220,93.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"WIPER ARM, FRONT LH",852210B030,6.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+QUALIS,"WIPER ARM, FRONT RH",852110B030,5.86,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+QUALIS,OIL FILTER,90915TD004,7.92,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Low,mileage
+QUALIS,"LAMP ASSEMBLY, LICENSE PLATE",812700B040,37.82,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, FRONT TURN SIGNAL, RH",815100B040,23.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, FRONT TURN SIGNAL, RH",815100B090,29.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, FRONT TURN SIGNAL, LH",815200B040,23.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, FRONT TURN SIGNAL, LH",815200B090,29.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"BLADE, FRONT WIPER, RH",852120B020,4.98,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+QUALIS,"SHOCK ABSORBER ASSEMBLY, REAR RH",485310B060,53.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,High,warranty
+QUALIS,"BULB (FOR HEADLAMP, NO.1)",9098113015,8.33,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+QUALIS,"LINK ASSEMBLY, FRONT WIPER",851500B030,12.85,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Mid,warranty
+QUALIS,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",1780135030,29.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+QUALIS,"FUEL FILTER, ELEMENT KIT",042340B010,4.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,mileage
+QUALIS,"BULB, FOG LAMP",9098113071,21.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",9008092016,13.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"DRUM SUB-ASSEMBLY, REAR BRAKE",424310B030,44.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+QUALIS,"MOTOR ASSEMBLY,FRONT WIPER",851100B040,57.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,High,warranty
+QUALIS,"FUEL FILTER, ELEMENT ASSEMBLY",2335505010,1.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,mileage
+QUALIS,"FUEL FILTER, ELEMENT SUB-ASSEMBLY",2339064480,40.58,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+QUALIS,"BRAKE DISC, FRONT",435120B040,118.04,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+QUALIS,"RUBBER, WIPER, RH",852140B010,3.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+QUALIS,"SHOE KIT, REAR BRAKE",044950B050,59.03,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+QUALIS,"SHOE KIT, REAR BRAKE",474200B050,14.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+QUALIS,"SHOE KIT, REAR BRAKE",474300B050,14.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+QUALIS,WINDSHIELD WASHER FLUID,0880880020,0.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+QUALIS,"BLADE ASSEMBLY, REAR WIPER",852420B010,4.73,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Wipers,False,Low,warranty
+QUALIS,"PAD KIT, DISC BRAKE, FRONT",04465YZZR1,72.04,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+QUALIS,"HUB SUB-ASSEMBLY, FRONT AXLE RH",435020B030,73.2,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+QUALIS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+QUALIS,"CABLE ASSEMBLY, HOOD LOCK CONTROL",536300B040,5.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+QUALIS,BULB (FOR SIDE TURN SIGNAL LAMP),9098115012,3.23,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+QUALIS,"BULB, DOME",9913212100,2.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+QUALIS,BULB (FOR REAR COMBINATION LAMP,9913221210,2.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+QUALIS,"CABLE ASSEMBLY, ACCELERATOR CONTROL",781800B090,4.67,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Low,warranty
+QUALIS,"HOSE, RADIATOR, INLET",1657105040,4.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500B050,23.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, REAR COMBINATION, RH",815500B110,58.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"HOSE, RADIATOR, OUTLET",1657205040,8.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,"COVER ASSEMBLY, CLUTCH",3121022101,101.23,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600B050,26.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+QUALIS,"HOSE, WATER BY-PASS, NO.2",1626454121,10.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,"LAMP ASSEMBLY, REAR COMBINATION, LH",815600B110,67.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"HOSE, FLEXIBLE, NO.1(FOR FRONT)",9008094074,7.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,"HEADLAMP ASSEMBLY, RH",811100B090,77.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"HEADLAMP ASSEMBLY, RH",811100B220,93.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,High,warranty
+QUALIS,"LAMP ASSEMBLY, DOME, ROOM, NO.1",812400B060B0,5.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+QUALIS,OIL FILTER,90915300028T,17.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Mid,mileage
+QUALIS,"MIRROR ASSEMBLY, OUTER REAR VIEW, RH",879100B070,29.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,"MIRROR ASSEMBLY, OUTER REAR VIEW, LH",879400B070,24.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,"MIRROR ASSEMBLY, OUTER REAR VIEW, LH",879400B051,12.61,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,"MIRROR ASSEMBLY, OUTER REAR VIEW, RH",879100B051,12.61,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,STARTER KIT,2822666060,12.14,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,STARTER KIT,2822672010,10.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,"GASKET, DRAIN PLUG",1215710010,0.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+QUALIS,"Bridgestone,195/70 R14 95H",TY01B14103,72.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+QUALIS,AMARON  FLO,BA01A35P10,43.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+QUALIS,AMARON BLACK,BA01A35P11,32.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+QUALIS,AMARON BLACK,BA01A65D11,61.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+QUALIS,AMARON GO,BA01A35P13,35.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+QUALIS,AMARON GO,BA01A65D12,69.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,High,warranty
+QUALIS,AMARON PRO,BA01A35P14,48.01,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+QUALIS,ENGINE FLUSH - DIESEL,0881480090,17.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,CLEANER INJECTOR-DIESEL,0881300860,17.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+QUALIS,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+QUALIS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+QUALIS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+QUALIS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+QUALIS,CLIP DOOR GLASS WEATHERSTRIP,6821110030,0.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,CLIP DOOR GLASS WEATHERSTRIP,682110B010,0.12,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,EMBLEM BACK DOOR NO,754310B090,3.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,EMBLEM FRONT FENDER,753510B040,3.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,HOLDER DOOR CONTROL,697510B060B0,0.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,KNOB FRONT DOOR LOCK,697410B040B0,0.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,LABEL BHARAT 2,1129805010,1.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,ORNAMENT WHEEL CAP,426030B040,10.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Mid,warranty
+QUALIS,PAD ACCELARATOR PEDAL,781110B050,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Low,freight_warranty
+QUALIS,PAD PEDAL,313210B020,0.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Low,freight_warranty
+QUALIS,RETAINER DOOR TRIM,6777112050,0.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,WEATHER STRIP WINDOW SEAL,681600B020,6.95,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,NAME PLATE BACK DOOR,754420B030,1.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,SILENCER SPRING REAR,482520B120,0.34,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,BEZEL BACK DOOR INSTRUMENT INTERIOR TRIM,697830B030B0,1.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,NUT,9017906127,0.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,CLIP,9046708156,1.03,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+QUALIS,EMBLEM BACK DOOR TOYOTA NAME,754310B080,1.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,SHIFT SEAT,3350535020,7.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+QUALIS,WHEEL DISC,426110B060,50.59,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,High,freight_warranty
+QUALIS,SCREW,9015950203,1.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,HAZARD WARNING SWITCH,843320B030,6.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,EMBLEM RADIATOR GRILLE,753110B040,1.79,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,HOLDER FRONT DOOR LOCK,697510B030B0,0.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,WRENCH HUB NUT BOX,091500K100,8.76,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,SCREW JACK,091110B080,33.31,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,ORNAMENT SUB ASSEMBLY,754030B020,21.94,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+QUALIS,EMBLEM  BACK DOOR TOYOTA NAME,754310B070,2.8,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+QUALIS,GROMMET,9018906006,0.82,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+QUALIS,SEAT BELT FRONT INNER,732300B060B1,5.86,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,WEATHERSTRIP,681700B050,6.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+QUALIS,JACK HANDLE ROD,091150B060,3.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+YARIS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+YARIS,"BEARING, STRUT",4861952030,2.9,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+YARIS,BULB,9098113044,1.99,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+YARIS,OIL FILTER 65*72,90915YZZN2,5.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Filters,False,Low,mileage
+YARIS,"CYLINDER,WHEEL BRAKE",475500D021,22.29,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Mid,freight_warranty
+YARIS,"ELEMENT, AIR REFINER",8713902130,31.18,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+YARIS,BATTERY TRANSMITTER,897450K010,1.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Electrical & Lighting,False,Low,warranty
+YARIS,"Bridgestone,185/60 R15 84T",TY01B15103,63.89,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+YARIS,"Bridgestone,185/60 R15 84T",TY01B15100,61.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+YARIS,"Goodyear,175/65 R14 82T",TY01G14101,55.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+YARIS,"Goodyear,185/60 R15 84H",TY01G15100,68.66,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Tyres,False,High,warranty
+YARIS,AMARON  FLO,BA01A35P10,43.77,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+YARIS,AMARON BLACK,BA01A35P11,32.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+YARIS,AMARON GO,BA01A35P13,35.46,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+YARIS,AMARON PRO,BA01A35P14,48.01,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Mid,warranty
+YARIS,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+YARIS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+YARIS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+YARIS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+YARIS,CLIP,9046709050,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+YARIS,CLIP,90467T0019,0.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+YARIS,CLIP,9046710161,0.72,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Misc Hardware,False,Low,warranty
+YARIS,PAD PEDAL,313210D050,1.87,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Brakes,False,Low,freight_warranty
+YARIS,SCREW PIECE REAR BUMPER,521610K040,1.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Body & Accessories,False,Low,warranty
+YARIS,SUPPORT BRACKET FRONT,486090D111,12.06,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Mid,warranty
+YARIS,SUPPORT EXHAUST PIPE,175650Y010,3.17,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+YARIS,CLIP,9046710203,0.58,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+YARIS,CLIP,9046709240,0.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+YARIS,NUT HUB,9094201007,1.71,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+YARIS,DOOR WEATHERSTRIP RETAINER,6786712150,0.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+YARIS,CUSHION RETAINER,9094802179,1.6,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+YARIS,CLAMP,90469T0011,0.98,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+YARIS,BULB,9098111062,1.45,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Low,warranty
+YARIS,GROMMET,9018906006,0.82,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Other,False,Low,warranty
+YARIS,BOLT HUB,9094202081,1.88,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Misc Hardware,False,Low,warranty
+YARIS,WIPER ARM HEAD CAP,852920D030,1.65,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Suspension,False,Low,warranty
+YARIS,DOOR DUST PROOF SEAL,678370K090,0.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HYRYDER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+HYRYDER,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HYRYDER,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+HYRYDER,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HYRYDER,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+HYRYDER,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+HYRYDER,Mudflap,PL389WC060,6.9,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HYRYDER,All Weather 3D Floormat,PL210WC076,32.37,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Hood Emblem,PL081WC010,15.96,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Cables & Controls,False,Mid,warranty
+HYRYDER,Door Visor - Premium (Ss Insert),PL162WC052,29.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Door Edge Protector,PL081WC011,6.79,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HYRYDER,Rear Door Lid Garnish,PL417WC055,15.84,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Fender Garnish,PL417WC054,10.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Front Bumper Garnish,PL417WC051,50.64,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,High,warranty
+HYRYDER,Head Lamp Garnish,PL417WC053,15.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Electrical & Lighting,False,Mid,warranty
+HYRYDER,Body Cladding,PL170WC092,31.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Back Door Garnish,PL405WC061,12.3,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Rear Bumper Garnish,PL417WC075,41.53,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Orvm Garnish -Chrome,PL403WC031,6.08,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HYRYDER,Body Side Molding - Chrome,PL170WC090,28.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Rear Reflector Garnish (Black Chrome),PL405WC062,8.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty
+HYRYDER,Door Sill Guard On Metal Sill Painted,PL241WC092,28.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Cushion,PL081WC012,9.04,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+HYRYDER,Door Visor - Premium (Black Ss Insert),PL162WC053,37.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Roof Ornament,PL280WC075,46.87,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Mid,warranty
+HYRYDER,Window Sunshade - 4 Door,PL234WC051,13.68,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Pvc Floormat - Black,PL210WC074,24.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Side Step,PL388WC020,169.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Premium,warranty
+HYRYDER,Designer Floor Mat,PL210WC077,27.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Window Sunshade - Rear Windshield,PL234WC053,8.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Other,False,Low,warranty
+HYRYDER,Door Visor - Basic (Smoke Grey),PL162WC051,21.26,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Door Sill Guard On Plastic,PL241WC091,22.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Pvc Floormat - Transparent,PL210WC075,27.21,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Mid,warranty
+HYRYDER,Window Sunshade - 2 Rear Door,PL234WC052,8.95,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Body & Accessories,False,Low,warranty

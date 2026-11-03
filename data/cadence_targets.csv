@@ -1,0 +1,109 @@
+model,part_description,part_number,price_usd,image_url,multi_model_part,category,cadence_priority,price_tier,battlecard
+GLANZA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+GLANZA,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+GLANZA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+GLANZA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+GLANZA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+GLANZA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+GLANZA,CLUTCH DISC ASSEMBLY FRICTION DISC,31250WC001,17.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+HICROSS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+HICROSS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HICROSS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+HICROSS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HICROSS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+HICROSS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+INNOVA,"COVER ASSEMBLY, CLUTCH",312100K030,49.07,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+INNOVA,"COVER ASSEMBLY, CLUTCH",312100K120,49.35,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+INNOVA,"DISC ASSEMBLY, CLUTCH",312500K040,73.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+INNOVA,"DISC ASSEMBLY, CLUTCH",312500K100,61.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+INNOVA,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",178010C030,22.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",90916T2006,41.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,FUEL FILTER ASSEMBLY (FOR EFI),233000C020,32.36,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+INNOVA,FUEL FILTER ASSEMBLY,233000L042,59.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,High,mileage
+INNOVA,FUEL FILTER ASSEMBLY,2330030450,21.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,"FUEL FILTER, ELEMENT ASSEMBLY",233900L041,24.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+INNOVA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+INNOVA,"CABLE SUB-ASSEMBLYY, FUEL LID LOCK CONTROL",770350K100,7.5,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,warranty
+INNOVA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+INNOVA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+INNOVA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+INNOVA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+INNOVA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+INNOVA,CLUTCH RELEASE FORK COLLAR,312430K010,1.0,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+INNOVA,CLUTCH CYLINDER,314700K020,53.81,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+CRYSTA,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+CRYSTA,"ELEMENT ASSY, FUEL FILTER",233900L070,28.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+CRYSTA,"DISC ASSY, CLUTCH",312500K452,87.62,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+CRYSTA,COVER ASSY CLUTCH,312100K450,78.97,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+CRYSTA,CLEANER AIR ELEMENT,177000L370,99.55,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,High,warranty
+CRYSTA,"KIT, PUMP, FUEL",0400986175,23.16,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,warranty
+CRYSTA,GEAR POWER STEERING,442500K611,415.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Premium,mileage_compression
+CRYSTA,ELEMENT AIR CLEANER,178010L040,21.27,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,warranty
+CRYSTA,ENGINE FLUSH - DIESEL,0881480090,17.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,CLEANER INJECTOR-DIESEL,0881300860,17.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+CRYSTA,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+CRYSTA,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+CRYSTA,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+CRYSTA,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+CRYSTA,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+CRYSTA,GEAR SHIFT KNOB,P64660K001A3,28.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+CRYSTA,GEAR SHIFT KNOB - TOP COVER,P64660K002A3,3.8,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+CRYSTA,Gear Shift Knob,P64660K002B3,6.4,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Low,mileage_compression
+FORTUNER,"COVER ASSEMBLY, CLUTCH",312100K190,146.39,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+FORTUNER,"DISC ASSEMBLY, CLUTCH",312500K222,105.15,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+FORTUNER,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",178010C030,22.25,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",90916T2006,41.24,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+FORTUNER,FUEL FILTER ASSEMBLY,233000L042,59.48,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,High,mileage
+FORTUNER,FUEL FILTER ASSEMBLY,2330030450,21.05,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,"FUEL FILTER, ELEMENT ASSEMBLY",233900L041,24.02,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+FORTUNER,"ELEMENT ASSY, FUEL FILTER",233900L070,28.69,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,mileage
+FORTUNER,COOLANT SUPER LONG LIFE,888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Engine & Fluids,True,Mid,compression
+URBAN_CRUSER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+URBAN_CRUSER,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+URBAN_CRUSER,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+URBAN_CRUSER,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+URBAN_CRUSER,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+URBAN_CRUSER,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035222,122.57,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035374,123.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",3125035410,123.43,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"COVER ASSEMBLY, CLUTCH",312100B070,38.7,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,Mid,mileage_compression
+QUALIS,"DISC ASSEMBLY, CLUTCH",312500B080,66.22,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,"AIR CLEANER FILTER, ELEMENT SUB-ASSEMBLY",1780135030,29.11,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+QUALIS,"FUEL FILTER, ELEMENT KIT",042340B010,4.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,mileage
+QUALIS,"ENGINE BELT, V-RIBBED (FAN & ALTERNATOR)",9008092016,13.83,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"FUEL FILTER, ELEMENT ASSEMBLY",2335505010,1.91,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Low,mileage
+QUALIS,"FUEL FILTER, ELEMENT SUB-ASSEMBLY",2339064480,40.58,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Fuel & Injection,True,Mid,mileage
+QUALIS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+QUALIS,"COVER ASSEMBLY, CLUTCH",3121022101,101.23,https://www.toyotapartsconnect.in/images/logo-toyota.svg,False,Transmission,True,High,mileage_compression
+QUALIS,ENGINE FLUSH - DIESEL,0881480090,17.47,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,CLEANER INJECTOR-DIESEL,0881300860,17.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+QUALIS,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+QUALIS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+QUALIS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+QUALIS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+QUALIS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+YARIS,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+YARIS,ENGINE FLUSH - PETROL,0881480061,16.44,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,INJECTOR CLEANER - PETROL,0881380019,16.1,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Fuel & Injection,True,Mid,compression
+YARIS,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+YARIS,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+YARIS,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+YARIS,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
+HYRYDER,SUPER LL COOLANT,0888980075,18.56,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,compression
+HYRYDER,"Toyota Motor Oil 0W-16 Synthetic, 3.3 Ltr",0888083202,24.13,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HYRYDER,"Toyota Motor Oil 5W-30 Synthetic, 1 Ltr",0888080071,8.09,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Low,mileage_compression
+HYRYDER,"Toyota Motor Oil 5W-30 Synthetic, 5 ltr",0888080072,40.42,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Engine & Fluids,True,Mid,mileage_compression
+HYRYDER,"Toyota Differential Oil '85W-90, 20 Ltr",0888580713,128.32,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,warranty
+HYRYDER,"Toyota Transmission Oil '80W-90, 20 ltr",0888580703,140.74,https://www.toyotapartsconnect.in/images/logo-toyota.svg,True,Transmission,True,High,mileage_compression
