@@ -29,12 +29,13 @@ def send_sms(to_number: str = None, body: str = "", to_phone: str = None) -> dic
     Returns:
         dict with 'sid', 'status', 'to'
     """
-    client = Client(ACCOUNT_SID, AUTH_TOKEN)
+    load_dotenv()
+    client = Client(os.getenv("TWILIO_ACCOUNT_SID") or ACCOUNT_SID, os.getenv("TWILIO_AUTH_TOKEN") or AUTH_TOKEN)
 
     try:
         message = client.messages.create(
             body=body,
-            from_=FROM_NUMBER,
+            from_=os.getenv("TWILIO_PHONE_NUMBER") or FROM_NUMBER,
             to=target_number,
         )
         return {

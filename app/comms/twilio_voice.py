@@ -71,14 +71,15 @@ def make_call(to_number: str, lead_id: int, touch_number: int, call_script: str 
     session_id = session.id
     db.close()
 
-    client = Client(ACCOUNT_SID, AUTH_TOKEN)
+    load_dotenv()
+    client = Client(os.getenv("TWILIO_ACCOUNT_SID") or ACCOUNT_SID, os.getenv("TWILIO_AUTH_TOKEN") or AUTH_TOKEN)
     twiml_url = f"{effective_base_url}/twiml/call-start/{session_id}?lang={language}"
 
     try:
         call = client.calls.create(
             url=twiml_url,
             to=to_number,
-            from_=FROM_NUMBER,
+            from_=os.getenv("TWILIO_PHONE_NUMBER") or FROM_NUMBER,
             status_callback=f"{effective_base_url}/webhook/voice-status/{session_id}",
             status_callback_event=["initiated", "ringing", "answered", "completed"],
             status_callback_method="POST",
