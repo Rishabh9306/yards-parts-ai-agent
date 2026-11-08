@@ -22,6 +22,7 @@ from pathlib import Path
 from datetime import datetime
 from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.responses import PlainTextResponse, HTMLResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from sqlalchemy.orm import Session
 from sqlalchemy import func, or_
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -53,6 +54,16 @@ app = FastAPI(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR / "templates"
+STATIC_DIR = BASE_DIR / "app" / "static"
+STATIC_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+
+@app.get("/architecture-diagram.png")
+def get_architecture_diagram():
+    diag_path = STATIC_DIR / "architecture_diagram.png"
+    if diag_path.exists():
+        return FileResponse(diag_path, media_type="image/png")
+    raise HTTPException(status_code=404, detail="Diagram not found")
 TWIML_BASE_URL = os.getenv("TWIML_BASE_URL", "https://homeland-ride-strain-explanation.trycloudflare.com")
 
 
@@ -212,6 +223,8 @@ def health(request: Request):
 # ── Dashboard UI ───────────────────────────────────────────────────────────────
 @app.get("/landing", response_class=HTMLResponse)
 @app.get("/spec", response_class=HTMLResponse)
+@app.get("/dashboard/landing", response_class=HTMLResponse)
+@app.get("/dashboard/spec", response_class=HTMLResponse)
 def spec_landing_page():
     """Yards & Parts AI Agent — specification & product architecture overview."""
     html_file = TEMPLATES_DIR / "landing.html"
@@ -764,8 +777,8 @@ def sync_crm(db: Session = Depends(get_db)):
         lead.updated_at = datetime.utcnow()
         synced_deals += 1
 
-        # Sync to Zoho CRM if live connection is configured and verified
-        if zoho_active:
+        # Sync to Zoho CRM if live connection is configured and verified for real Zoho deal IDs
+        if zoho_active and lead.zoho_deal_id and lead.zoho_deal_id.isdigit():
             try:
                 zoho_client.update_deal_stage(
                     deal_id=lead.zoho_deal_id,

@@ -311,6 +311,16 @@
       <div class="flow-box"><b>CRM feed</b>Events → your in-house CRM</div>
     </div>
 
+    <div style="margin: 28px 0; background: #ffffff; border: 1.5px solid #0f172a; border-radius: 12px; padding: 18px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); text-align: center;">
+      <a href="/architecture-diagram.png" target="_blank" title="Click to open full-resolution 5400x3300 diagram">
+        <img src="/static/architecture_diagram.png" alt="Yards &amp; Parts End-to-End System Architecture Diagram" style="width: 100%; max-width: 1100px; height: auto; display: block; margin: 0 auto; border-radius: 8px; border: 1px solid #e2e8f0;" />
+      </a>
+      <div style="margin-top: 12px; font-size: 13px; color: #475569; font-weight: 600; display: flex; justify-content: space-between; align-items: center; padding: 0 8px;">
+        <span>Figure 1: Yards &amp; Parts Automotive — End-to-End System Architecture &amp; Data Pipeline (Click to expand 4K)</span>
+        <a href="/architecture-diagram.png" download="Yards_Parts_Architecture_Diagram.png" style="font-size: 12px; color: #2563eb; text-decoration: none; font-weight: 600; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; background: #f8fafc;">⬇ Download Hi-Res PNG</a>
+      </div>
+    </div>
+
     <p>The agent core is the one piece every channel shares — it's what actually understands a customer, decodes their vehicle, and carries the conversation from "does this fit my car" to a closed order. Everything else is a tool the core calls: decode this VIN, check this fitment, look up this SKU, send this text, log this event. That's what makes "integrate with all ecommerce stores" realistic — the core never talks to Shopify's API directly, it talks to a <code>CommerceConnector</code> interface that Shopify implements today and WooCommerce/BigCommerce/etc. can implement later.</p>
 
     <div class="callout">
