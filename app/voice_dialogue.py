@@ -15,12 +15,13 @@ Features:
 """
 
 import json
+import threading
 import re
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
 from twilio.twiml.voice_response import VoiceResponse, Gather
 
-from app.models.db import Lead, CallSession, ConversationMessage
+from app.models.db import Lead, CallSession, ConversationMessage, SessionLocal
 from app.battlecards import detect_objection, get_battlecard
 from app.comms import twilio_sms, email_client
 from app.crm import zoho_client
@@ -380,6 +381,39 @@ def process_voice_turn(
 
     tokens = set(re.findall(r'\b\w+\b', speech_clean))
 
+    # Dynamic Gemini reasoning check for questions outside basic timing checks
+    gemini_reply = None
+    gemini_order_confirmed = False
+    gemini_discount_granted = False
+
+    if (
+        current_step not in ("greeting", "timing_check", "timing_negotiation")
+        and not any(k in speech_clean for k in ["mail", "email", "inbox", "text", "sms", "call me back", "wrong number"])
+        and len(speech_clean) > 2
+    ):
+        try:
+            from app.services.gemini_voice_service import generate_voice_response
+            lead_dict = {
+                "customer_name": lead.customer_name,
+                "model": model,
+                "part_description": part_desc,
+                "quote_value_usd": quote_price,
+                "negotiated_price": session.negotiated_price or round(quote_price * 0.96, 2),
+            }
+            g_res = generate_voice_response(
+                customer_speech=customer_speech,
+                lead_data=lead_dict,
+                transcript_history=transcript,
+                current_step=current_step,
+                timeout=3.5,
+            )
+            if g_res and g_res.get("reply"):
+                gemini_reply = g_res["reply"]
+                gemini_order_confirmed = g_res.get("order_confirmed", False)
+                gemini_discount_granted = g_res.get("discount_granted", False)
+        except Exception as e:
+            print(f"[Gemini Voice Error] {e}")
+
     # ── 1. TIMING PERMISSION & RIGHT TIME TO SPEAK FLOW ───────────────────────────
     if current_step in ("greeting", "timing_check"):
         if any(w in speech_clean for w in ["wrong number", "not me", "wrong person", "wrong customer"]):
@@ -503,7 +537,24 @@ def process_voice_turn(
                 f"Perfect, {first_name}! I have logged {preferred_time} in our system, and our parts specialist will call you then. "
                 f"I've also emailed and texted you the full itemized PDF quote so you have all the numbers handy. Take care!"
             )
-# ── 2. INTENT: EMAIL / MAIL REQUEST ("please mail it to me", "email me", "inbox") ──
+    # ── 1.5 DYNAMIC GEMINI AI REASONING (WITH STRICT BOUNDARIES) ───────────────
+    elif gemini_reply:
+        ai_reply_text = gemini_reply
+        if gemini_discount_granted:
+            session.discount_pct = 4.0
+            session.negotiated_price = round(quote_price * 0.96, 2)
+            if "pricing_concern" not in objections:
+                objections.append("pricing_concern")
+
+        if gemini_order_confirmed:
+            next_step = "confirm_end"
+            is_terminal = True
+            session.status = "completed"
+            lead.status = "re_engaged"
+        else:
+            next_step = "gemini_dialogue"
+
+    # ── 2. INTENT: EMAIL / MAIL REQUEST ("please mail it to me", "email me", "inbox") ──
     elif any(k in speech_clean for k in ["mail", "email", "inbox", "send it to my email", "write to me", "send via email", "email it"]):
         next_step = "info_sent"
         lead.status = "quote_emailed"
@@ -616,6 +667,16 @@ def process_voice_turn(
         )
         if "pricing_concern" not in objections:
             objections.append("pricing_concern")
+
+    # ── FURTHER DISCOUNT / LOWER PRICE INQUIRY ──────────────────────────────────
+    elif session.current_step in ("price_negotiated", "price_negotiated_limit") and any(k in speech_clean for k in ["further", "more", "lower", "bring it down", "can you do better", "less", "cheaper", "down further"]):
+        next_step = "price_negotiated_limit"
+        current_neg = session.negotiated_price or round(quote_price * 0.96, 2)
+        ai_reply_text = (
+            f"That 4% trade discount is the absolute maximum pre-authorized on our commercial fleet tier, {first_name}, "
+            f"because it already includes free priority express freight and our full 90-day mechanical warranty. "
+            f"I can officially lock in ${current_neg:.2f} for you right now. Would you like to go ahead and place the order?"
+        )
 
     # ── 6. INTENT: GENERAL PRICING INQUIRY (Transparency First — No Premature Discount) ──
     elif any(k in speech_clean for k in [
@@ -1025,7 +1086,18 @@ def process_voice_turn(
     db.commit()
 
     if is_terminal:
-        send_post_call_summary_sms(session, lead, db)
-        return build_terminal_twiml(ai_reply_text)
+        def _async_post_call(sess_id, ld_id):
+            try:
+                db_bg = SessionLocal()
+                sess = db_bg.query(CallSession).filter(CallSession.id == sess_id).first()
+                ld = db_bg.query(Lead).filter(Lead.id == ld_id).first()
+                if sess and ld:
+                    send_post_call_summary_sms(sess, ld, db_bg)
+                db_bg.close()
+            except Exception as e:
+                print(f"[ASYNC POST-CALL ERROR] {e}")
+
+        threading.Thread(target=_async_post_call, args=(session.id, lead.id), daemon=True).start()
+        return build_terminal_twiml(ai_reply_text, lang=lang)
     else:
-        return build_gather_twiml(ai_reply_text, session.id, base_url)
+        return build_gather_twiml(ai_reply_text, session.id, base_url, lang=lang)

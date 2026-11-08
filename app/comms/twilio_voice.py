@@ -19,7 +19,7 @@ AUTH_TOKEN   = os.getenv("TWILIO_AUTH_TOKEN")
 FROM_NUMBER  = os.getenv("TWILIO_PHONE_NUMBER")
 
 # The public URL Twilio fetches to execute the interactive voice dialogue state machine
-TWIML_BASE_URL = os.getenv("TWIML_BASE_URL", "https://homeland-ride-strain-explanation.trycloudflare.com")
+TWIML_BASE_URL = os.getenv("TWIML_BASE_URL", "https://miniature-selections-recognition-consortium.trycloudflare.com")
 
 
 def get_twiml_base_url() -> str:
@@ -81,8 +81,8 @@ def make_call(to_number: str, lead_id: int, touch_number: int, call_script: str 
             to=to_number,
             from_=os.getenv("TWILIO_PHONE_NUMBER") or FROM_NUMBER,
             status_callback=f"{effective_base_url}/webhook/voice-status/{session_id}",
-            status_callback_event=["initiated", "ringing", "answered", "completed"],
-            status_callback_method="POST",
+
+
         )
         return {
             "status":     "success",

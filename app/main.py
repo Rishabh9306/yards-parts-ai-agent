@@ -64,7 +64,7 @@ def get_architecture_diagram():
     if diag_path.exists():
         return FileResponse(diag_path, media_type="image/png")
     raise HTTPException(status_code=404, detail="Diagram not found")
-TWIML_BASE_URL = os.getenv("TWIML_BASE_URL", "https://homeland-ride-strain-explanation.trycloudflare.com")
+TWIML_BASE_URL = os.getenv("TWIML_BASE_URL", "https://miniature-selections-recognition-consortium.trycloudflare.com")
 
 
 def get_twiml_base_url(request: Request = None) -> str:
